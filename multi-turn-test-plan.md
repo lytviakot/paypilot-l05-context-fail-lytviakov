@@ -49,7 +49,7 @@
 дата прогонів       ...
 ```
 
-**Prediction before the lab:** the dispute amount (240 EUR) will disappear from the history at step 5. Reason: step 5 is the first step where the agent has to take the 240 EUR the client gave in the opening message back from the history. (Written before any run. This is a guess about the loss step; the measured loss step is compared with it in 2.3.)
+**Prediction before the lab:** the dispute amount (240 EUR) will disappear from the history at step 3 (loss step), and the loss will become visible in the agent reply at step 5 (manifestation step). Reason: the history is summarized after the first few steps, so the summary replaces the opening message before the agent needs the amount again at step 5. (Written before any run. Revised once from "loss at step 5" after thinking about the difference between loss and manifestation; the first version is in the git history. Compared with the measured distribution in 2.3.)
 *Записуєте до першого прогону. Наприкінці лабораторної звірите з розподілом у розділі 2.3.*
 
 ---

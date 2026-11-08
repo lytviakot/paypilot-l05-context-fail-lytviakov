@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H02",
+  "run": 3,
+  "turn": 1,
+  "user": "I'm CUS-0004. Transaction TX-0401, 240.00 EUR: the goods never arrived. Which reason code applies?",
+  "answer": "For a transaction where the goods were paid for but never arrived, the applicable reason code is **goods_not_received**.\n\nI haven't opened anything yet. If you'd like to pursue this for TX-0401 (EUR 240.00), I can first check whether it's eligible for a dispute under this code. If it is, I'll open the dispute only after you confirm.",
+  "trace": {
+    "request_id": "00bdc37fa80a4e1e",
+    "name": "agent.request",
+    "span_id": "6913df05adc444c0",
+    "started_at": 1794142236.7767842,
+    "ended_at": 1794142238.7462587,
+    "duration_ms": 1969.5,
+    "attributes": {
+      "session.id": "dd9f3e9836aa",
+      "dialog.step_number": 1,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 2828,
+      "gen_ai.usage.total_output_tokens": 310
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "4d9d1cfa9f7d4fe0",
+        "started_at": 1794142236.777057,
+        "ended_at": 1794142238.7462387,
+        "duration_ms": 1969.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2828,
+          "gen_ai.usage.output_tokens": 310
+        },
+        "children": []
+      }
+    ]
+  }
+}

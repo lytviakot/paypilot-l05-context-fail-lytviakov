@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H02",
+  "run": 1,
+  "turn": 5,
+  "user": "Fine. Back to that charge, what do I do next?",
+  "answer": "Your dispute on TX-0401 (EUR 240.00) is eligible under **goods not received**, but I haven't filed it yet. Filing is irreversible, so I need your explicit go-ahead.\n\n**What happens next:**\n1. Reply **\"yes\"** and I will file the dispute for the full EUR 240.00 under goods not received.\n2. Once it's filed, the dispute is under review.\n\n**Deadline:** The dispute must be filed by **2026-10-18**. Filing sooner is better.\n\n**Before you confirm:** You can withdraw a dispute at any time before it is resolved, but a withdrawal is final. The same transaction cannot be disputed again under the same reason code.\n\nWould you like me to file it now?",
+  "trace": {
+    "request_id": "0b79054359124cb4",
+    "name": "agent.request",
+    "span_id": "6a02e5df59ca49fa",
+    "started_at": 1794140890.9717956,
+    "ended_at": 1794140893.6138258,
+    "duration_ms": 2642.0,
+    "attributes": {
+      "session.id": "37c4f250d62d",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4702,
+      "gen_ai.usage.total_output_tokens": 474
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "58ca1725b79a4aad",
+        "started_at": 1794140890.9719026,
+        "ended_at": 1794140893.6138005,
+        "duration_ms": 2641.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4702,
+          "gen_ai.usage.output_tokens": 474
+        },
+        "children": []
+      }
+    ]
+  }
+}

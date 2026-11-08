@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H03",
+  "run": 2,
+  "turn": 9,
+  "user": "And what amount are we disputing?",
+  "answer": "No amount is set yet. Each TechMart Online charge is EUR 240.00, so whichever one you pick, the dispute would be for **EUR 240.00** on that transaction. Opening a dispute on both would be for EUR 480.00, but only if you confirm that you were charged for two separate purchases that were not delivered.\n\nWhich transaction does the dispute cover?\n- **TX-0401** (20 July 2026, EUR 240.00)\n- **TX-0402** (14 July 2026, EUR 240.00)\n\nOr is this a duplicate charge for one purchase? Once you answer, I will run the eligibility check and wait for your explicit confirmation before filing.",
+  "trace": {
+    "request_id": "f9c83c7649cf4baf",
+    "name": "agent.request",
+    "span_id": "b1b1d7ce56d247b1",
+    "started_at": 1794142395.9391813,
+    "ended_at": 1794142398.8791537,
+    "duration_ms": 2940.0,
+    "attributes": {
+      "session.id": "c3c182d78bb1",
+      "dialog.step_number": 9,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6643,
+      "gen_ai.usage.total_output_tokens": 510
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "01f208469f8f46df",
+        "started_at": 1794142395.9394417,
+        "ended_at": 1794142398.87914,
+        "duration_ms": 2939.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6643,
+          "gen_ai.usage.output_tokens": 510
+        },
+        "children": []
+      }
+    ]
+  }
+}

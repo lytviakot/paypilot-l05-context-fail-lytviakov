@@ -1,0 +1,128 @@
+{
+  "case": "MEM-001-RC",
+  "run": 1,
+  "turn": 2,
+  "user": "Thanks. How does the review process work in general?",
+  "answer": "Here is how disputes work at Verta, based on our dispute documentation:\n\n1. **Case states:** A dispute moves through open → under_review → provisional_credit → resolved_upheld or resolved_declined. Your dispute (ID 1) is currently open.\n2. **Review timeline:** The target is 10 business days for card reason codes, such as duplicate_charge, and 20 business days for transfer reason codes. Complex cases involving a foreign acquirer can take up to 45 calendar days, and you would be notified if that happens.\n3. **Withdrawal:** You can withdraw the dispute while it is open or under review. Withdrawal is final, and the same transaction cannot be disputed again under the same reason code.\n\nI can't give you a more specific timeline for your case than these general targets. If you want an update on your dispute, I can escalate it to a human agent.",
+  "trace": {
+    "request_id": "bef8ea8b14624600",
+    "name": "agent.request",
+    "span_id": "2ca94ef9c7d5448c",
+    "started_at": 1794138500.0830894,
+    "ended_at": 1794138502.5452623,
+    "duration_ms": 2462.2,
+    "attributes": {
+      "session.id": "dc135f550773",
+      "dialog.step_number": 2,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7253,
+      "gen_ai.usage.total_output_tokens": 401
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "3a4aca6f294c48d6",
+        "started_at": 1794138500.0832288,
+        "ended_at": 1794138501.0863273,
+        "duration_ms": 1003.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3310,
+          "gen_ai.usage.output_tokens": 122
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "c89cbca36a3240cb",
+        "started_at": 1794138501.0863783,
+        "ended_at": 1794138501.0871017,
+        "duration_ms": 0.7,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute review process how long does it take"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute review process how long does it take",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 0.7071,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              },
+              {
+                "id": "disputes-process.md#s4",
+                "doc": "disputes-process.md",
+                "score": 0.61,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+              },
+              {
+                "id": "disputes-process.md#s2",
+                "doc": "disputes-process.md",
+                "score": 0.6,
+                "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under_review cases can be\nwithdrawn by the customer."
+              },
+              {
+                "id": "disputes-process.md#s1",
+                "doc": "disputes-process.md",
+                "score": 0.5714,
+                "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a reason code. The agent verifies eligibility\nbefore the case is opened; an ineligible request is refused with the failing\ncondition named, except where confidentiality rules apply."
+              }
+            ]
+          },
+          "retrieval.query": "dispute review process how long does it take",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s6",
+              "score": 0.7071,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            },
+            {
+              "id": "disputes-process.md#s4",
+              "score": 0.61,
+              "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex"
+            },
+            {
+              "id": "disputes-process.md#s2",
+              "score": 0.6,
+              "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under"
+            },
+            {
+              "id": "disputes-process.md#s1",
+              "score": 0.5714,
+              "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a re"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "e227481f45ff4a31",
+        "started_at": 1794138501.0871527,
+        "ended_at": 1794138502.5452476,
+        "duration_ms": 1458.1,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3943,
+          "gen_ai.usage.output_tokens": 279
+        },
+        "children": []
+      }
+    ]
+  }
+}

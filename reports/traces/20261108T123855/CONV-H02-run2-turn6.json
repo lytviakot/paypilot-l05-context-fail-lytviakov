@@ -1,0 +1,122 @@
+{
+  "case": "CONV-H02",
+  "run": 2,
+  "turn": 6,
+  "user": "240 euro, as I said at the start.",
+  "answer": "The dispute on TX-0401 is now open.\n\n- **Dispute ID:** 1\n- **Transaction:** EUR 240.00, dated 2026-07-20\n- **Reason:** Goods not received\n- **Status:** Open\n\nI re-ran the eligibility check just before filing, and it passed. Please keep your records of the order and any communication with the merchant in case they're needed. If the goods arrive or you want to withdraw the dispute, let me know: withdrawal is final, and the same transaction can't be disputed again under the same reason code.",
+  "trace": {
+    "request_id": "001f8493ff9249a4",
+    "name": "agent.request",
+    "span_id": "f75c82a9e74b4816",
+    "started_at": 1794141654.0212746,
+    "ended_at": 1794141658.3853831,
+    "duration_ms": 4364.1,
+    "attributes": {
+      "session.id": "9699481c7948",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 15659,
+      "gen_ai.usage.total_output_tokens": 724
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "eddf6b0ef3d844f8",
+        "started_at": 1794141654.021381,
+        "ended_at": 1794141656.214015,
+        "duration_ms": 2192.6,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5026,
+          "gen_ai.usage.output_tokens": 413
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_dispute_eligibility",
+        "span_id": "b472fa1590b14b83",
+        "started_at": 1794141656.2140474,
+        "ended_at": 1794141656.2146745,
+        "duration_ms": 0.6,
+        "attributes": {
+          "tool.name": "check_dispute_eligibility",
+          "tool.arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "goods_not_received"
+          },
+          "tool.result": {
+            "eligible": true,
+            "reason_code": "goods_not_received",
+            "window_days": 90,
+            "tx_date": "2026-07-20",
+            "as_of": "2026-09-15",
+            "deadline": "2026-10-18",
+            "checks": {
+              "reason_code": "pass",
+              "tx_status": "pass",
+              "window": "pass",
+              "compliance_hold": "pass"
+            }
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "a3e7ec408268433c",
+        "started_at": 1794141656.2147098,
+        "ended_at": 1794141657.1499035,
+        "duration_ms": 935.2,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5238,
+          "gen_ai.usage.output_tokens": 134
+        },
+        "children": []
+      },
+      {
+        "name": "tool.create_dispute",
+        "span_id": "6d91149e38b5416a",
+        "started_at": 1794141657.149952,
+        "ended_at": 1794141657.1670456,
+        "duration_ms": 17.1,
+        "attributes": {
+          "tool.name": "create_dispute",
+          "tool.arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "goods_not_received",
+            "amount": 240.0,
+            "currency": "EUR"
+          },
+          "tool.result": {
+            "dispute_id": 1,
+            "status": "open"
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "5995f3192bd64233",
+        "started_at": 1794141657.1671126,
+        "ended_at": 1794141658.3853598,
+        "duration_ms": 1218.2,
+        "attributes": {
+          "agent.loop_step": 2,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5395,
+          "gen_ai.usage.output_tokens": 177
+        },
+        "children": []
+      }
+    ]
+  }
+}

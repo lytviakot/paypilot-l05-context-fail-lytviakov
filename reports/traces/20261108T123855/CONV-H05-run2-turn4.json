@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H05",
+  "run": 2,
+  "turn": 4,
+  "user": "What happens after I file?",
+  "answer": "Once you file, the case is opened and moves into review. Here is what the documentation says:\n\n1. **Open:** The dispute is recorded against TX-0401 (EUR 240.00) under `goods_not_received`.\n2. **Under review:** The case is assessed. The review target is 10 business days for card reason codes and 20 business days for transfer reason codes. I could not confirm from the documentation which category `goods_not_received` falls under, so I can't say which target applies to your case. Complex cases involving a foreign acquirer can take up to 45 calendar days, and you would be notified if that applies.\n3. **Outcome:** The case is resolved as upheld or declined.\n\n**Provisional credit:** The documentation describes provisional credits only for fraud reason codes over EUR 50. Your reason code is not a fraud code, so I can't confirm that a provisional credit would apply. Please don't assume a refund will arrive before the review concludes.\n\n**Withdrawal:** You can withdraw the dispute while it is open or under review. Withdrawal is final, and the same transaction cannot be disputed again under the same reason code.\n\nThe documentation I can access does not describe how or when you are told the final outcome. If you need that detail, I can search again or escalate your question to a human agent.\n\nDo you want me to open the dispute for EUR 240.00 under `goods_not_received` now?",
+  "trace": {
+    "request_id": "dbc8315380bb407c",
+    "name": "agent.request",
+    "span_id": "89136341923149f7",
+    "started_at": 1794142010.5925736,
+    "ended_at": 1794142015.5790753,
+    "duration_ms": 4986.5,
+    "attributes": {
+      "session.id": "5051f540f30a",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 8563,
+      "gen_ai.usage.total_output_tokens": 883
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "63f00a92dce0410c",
+        "started_at": 1794142010.5926917,
+        "ended_at": 1794142011.6785357,
+        "duration_ms": 1085.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3951,
+          "gen_ai.usage.output_tokens": 136
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "b5dda7f1aaa84e07",
+        "started_at": 1794142011.678573,
+        "ended_at": 1794142011.6791968,
+        "duration_ms": 0.6,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "after dispute is opened provisional credit customer notification outcome"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "after dispute is opened provisional credit customer notification outcome",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s3",
+                "doc": "disputes-process.md",
+                "score": 1.9215,
+                "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied within two business days. Provisional credit is\nreversed if the dispute is later declined."
+              },
+              {
+                "id": "glossary.md#s7",
+                "doc": "glossary.md",
+                "score": 1.4142,
+                "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+              },
+              {
+                "id": "disputes-process.md#s1",
+                "doc": "disputes-process.md",
+                "score": 1.1429,
+                "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a reason code. The agent verifies eligibility\nbefore the case is opened; an ineligible request is refused with the failing\ncondition named, except where confidentiality rules apply."
+              },
+              {
+                "id": "disputes.md#s2",
+                "doc": "disputes.md",
+                "score": 0.889,
+                "text": "Payment dispute rules\n## Eligibility conditions\nA dispute is eligible only if all of the following hold: the reason code is\nvalid; the transaction status is settled; the transaction date is within the\nreason code's window relative to the current date; and no customer-level\nrestriction applies (for example, an account under compliance review cannot\nopen new disputes until the review concludes)."
+              }
+            ]
+          },
+          "retrieval.query": "after dispute is opened provisional credit customer notification outcome",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s3",
+              "score": 1.9215,
+              "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied wit"
+            },
+            {
+              "id": "glossary.md#s7",
+              "score": 1.4142,
+              "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+            },
+            {
+              "id": "disputes-process.md#s1",
+              "score": 1.1429,
+              "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a re"
+            },
+            {
+              "id": "disputes.md#s2",
+              "score": 0.889,
+              "text": "Payment dispute rules\n## Eligibility conditions\nA dispute is eligible only if all of the following hold: the reason code is\nvalid; the transaction status is set"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "295e25521fc6498c",
+        "started_at": 1794142011.6792858,
+        "ended_at": 1794142015.5790617,
+        "duration_ms": 3899.8,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4612,
+          "gen_ai.usage.output_tokens": 747
+        },
+        "children": []
+      }
+    ]
+  }
+}

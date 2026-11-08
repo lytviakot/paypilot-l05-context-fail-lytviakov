@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H05",
+  "run": 1,
+  "turn": 6,
+  "user": "Is the deadline the same for every reason code?",
+  "answer": "No, the deadline differs by reason code. Each code has its own window, counted in days from the transaction date:\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |\n\nFor TX-0401 (goods_not_received, 90 days), the window closes on 2026-10-18, which matches the deadline I gave you. If the reason code were changed, the deadline would change too. A dispute filed under the wrong code is declined and would have to be refiled, which may push it past the window. The code must match what happened.\n\nWould you like me to open the dispute for TX-0401 for 240.00 EUR under goods_not_received?",
+  "trace": {
+    "request_id": "fdae34337fc64180",
+    "name": "agent.request",
+    "span_id": "6113b755e4c844d3",
+    "started_at": 1794140960.1526845,
+    "ended_at": 1794140962.6139338,
+    "duration_ms": 2461.2,
+    "attributes": {
+      "session.id": "065d06a4bf06",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 11176,
+      "gen_ai.usage.total_output_tokens": 406
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "d615850cf8694ff4",
+        "started_at": 1794140960.1529424,
+        "ended_at": 1794140961.143143,
+        "duration_ms": 990.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5247,
+          "gen_ai.usage.output_tokens": 142
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "dd9acb85a64246b4",
+        "started_at": 1794140961.1431794,
+        "ended_at": 1794140961.1437337,
+        "duration_ms": 0.6,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute window days from transaction date by reason code"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute window days from transaction date by reason code",
+            "fragments": [
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 2.3338,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "glossary.md#s3",
+                "doc": "glossary.md",
+                "score": 1.633,
+                "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+              },
+              {
+                "id": "disputes.md#s2",
+                "doc": "disputes.md",
+                "score": 1.397,
+                "text": "Payment dispute rules\n## Eligibility conditions\nA dispute is eligible only if all of the following hold: the reason code is\nvalid; the transaction status is settled; the transaction date is within the\nreason code's window relative to the current date; and no customer-level\nrestriction applies (for example, an account under compliance review cannot\nopen new disputes until the review concludes)."
+              },
+              {
+                "id": "reason-codes.md#s6",
+                "doc": "reason-codes.md",
+                "score": 1.372,
+                "text": "Reason code guide\n## Choosing a code\nThe reason code must match what actually happened. A dispute filed under the\nwrong code is declined and must be refiled, which may push it past its window."
+              }
+            ]
+          },
+          "retrieval.query": "dispute window days from transaction date by reason code",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes.md#s1",
+              "score": 2.3338,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute o"
+            },
+            {
+              "id": "glossary.md#s3",
+              "score": 1.633,
+              "text": "Glossary\n## Chargeback window\nThe number of days, counted from the transaction date, during which a dispute\nmay be raised under a given reason code."
+            },
+            {
+              "id": "disputes.md#s2",
+              "score": 1.397,
+              "text": "Payment dispute rules\n## Eligibility conditions\nA dispute is eligible only if all of the following hold: the reason code is\nvalid; the transaction status is set"
+            },
+            {
+              "id": "reason-codes.md#s6",
+              "score": 1.372,
+              "text": "Reason code guide\n## Choosing a code\nThe reason code must match what actually happened. A dispute filed under the\nwrong code is declined and must be refiled, wh"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "1e04572fe7394668",
+        "started_at": 1794140961.143784,
+        "ended_at": 1794140962.613921,
+        "duration_ms": 1470.1,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5929,
+          "gen_ai.usage.output_tokens": 264
+        },
+        "children": []
+      }
+    ]
+  }
+}

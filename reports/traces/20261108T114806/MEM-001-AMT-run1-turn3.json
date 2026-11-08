@@ -1,0 +1,140 @@
+{
+  "case": "MEM-001-AMT",
+  "run": 1,
+  "turn": 3,
+  "user": "And what are the typical timelines?",
+  "answer": "The published review targets are:\n\n- **10 business days** for card reason codes\n- **20 business days** for transfer reason codes\n- **Up to 45 calendar days** for complex cases involving a foreign acquirer. You are notified if your case falls into this category.\n\nYour case is dispute 1 on TX-0401, a 240.00 EUR duplicate charge, which is currently open. The knowledge base does not say whether duplicate charges count as card or transfer reason codes. My earlier statement that the 10-business-day target would normally apply was an inference, not something the documentation confirms. So I can't tell you which target applies to your case.\n\nThe 10-day and 20-day figures are review targets, not guaranteed deadlines. I can't see the status of your case from my side. For a confirmed timeline or case updates, I can escalate your case to a human agent. Would you like me to do that?",
+  "trace": {
+    "request_id": "383bf53fa6194bd7",
+    "name": "agent.request",
+    "span_id": "729e646ceb614b2c",
+    "started_at": 1794138518.7257628,
+    "ended_at": 1794138526.3999658,
+    "duration_ms": 7674.2,
+    "attributes": {
+      "session.id": "95d8731db767",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7082,
+      "gen_ai.usage.total_output_tokens": 615
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "0c5b3c789e0f4a1b",
+        "started_at": 1794138518.725871,
+        "ended_at": 1794138522.804195,
+        "duration_ms": 4078.3,
+        "attributes": {
+          "summary.text": "**Conversation summary: CUS-0004 (Danylo Kovalenko)**\n\n**Customer:** CUS-0004, Danylo Kovalenko, tier1\n**Account:** ACC-1005, EUR, balance 1310.20 EUR, tier1\n\n**Dispute opened:**\n- Dispute ID: 1\n- Transaction: TX-0401\n- Reason code: duplicate_charge\n- Amount: 240.00 EUR (as stated by customer)\n- Status: open\n- Transaction date: 2026-07-20\n- Dispute window: 60 days\n- Deadline: 2026-09-18 (checked as of 2026-09-15)\n- Eligibility checks, all passed: reason_code, tx_status, window, compliance_hold\n\n**Process explained to customer (from kb_clean, disputes-process.md):**\n- Case states: open, under_review, provisional_credit, resolved_upheld, resolved_declined.\n- Review target: 10 business days for card reason codes; 20 business days for transfer reason codes; up to 45 calendar days for complex foreign-acquirer cases, with customer notification.\n- Withdrawal: allowed only while open or under_review. Withdrawal is final, and the same transaction cannot be disputed again under the same reason code.\n\n**Commitments and caveats:**\n- The assistant said the 10-business-day target would normally apply to this duplicate charge, but that exact timing for this case could not be confirmed. The \"duplicate charges are card-related\" classification was the assistant's inference and is not stated in the retrieved KB text. Verify before relying on it.\n- The assistant cannot see case outcomes from its side.\n- The assistant offered to escalate to a human agent for updates or review questions. The customer has not yet accepted this offer.",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "c2b27ed103af4a19",
+        "started_at": 1794138522.8042252,
+        "ended_at": 1794138524.2547016,
+        "duration_ms": 1450.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3196,
+          "gen_ai.usage.output_tokens": 256
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "576396f8a9914bcd",
+        "started_at": 1794138524.2547355,
+        "ended_at": 1794138524.255274,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute review timeline duplicate_charge card transfer business days"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute review timeline duplicate_charge card transfer business days",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s4",
+                "doc": "disputes-process.md",
+                "score": 1.525,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+              },
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 0.8752,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "complaints.md#s3",
+                "doc": "complaints.md",
+                "score": 0.8575,
+                "text": "Complaints\n## Acknowledgement and resolution\nA complaint is acknowledged within one business day and resolved within 15\nbusiness days. Complex complaints may take up to 35 business days, with the\ncustomer informed of the delay."
+              },
+              {
+                "id": "security-policy.md#s2",
+                "doc": "security-policy.md",
+                "score": 0.7845,
+                "text": "Customer security policy\n## Card blocking\nA customer may block a card immediately. Blocking is reversible for 30 days;\nafter that a replacement card must be ordered."
+              }
+            ]
+          },
+          "retrieval.query": "dispute review timeline duplicate_charge card transfer business days",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s4",
+              "score": 1.525,
+              "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex"
+            },
+            {
+              "id": "disputes.md#s1",
+              "score": 0.8752,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute o"
+            },
+            {
+              "id": "complaints.md#s3",
+              "score": 0.8575,
+              "text": "Complaints\n## Acknowledgement and resolution\nA complaint is acknowledged within one business day and resolved within 15\nbusiness days. Complex complaints may ta"
+            },
+            {
+              "id": "security-policy.md#s2",
+              "score": 0.7845,
+              "text": "Customer security policy\n## Card blocking\nA customer may block a card immediately. Blocking is reversible for 30 days;\nafter that a replacement card must be ord"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "6535c5b25b0f438d",
+        "started_at": 1794138524.2553153,
+        "ended_at": 1794138526.3999481,
+        "duration_ms": 2144.6,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3886,
+          "gen_ai.usage.output_tokens": 359
+        },
+        "children": []
+      }
+    ]
+  }
+}

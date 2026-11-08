@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H05",
+  "run": 4,
+  "turn": 4,
+  "user": "What happens after I file?",
+  "answer": "Once the dispute is filed, it starts in the **open** state. It then moves to **under_review**, and ends as either **resolved_upheld** or **resolved_declined**. You can withdraw it while it is open or under review.\n\n- **Provisional credit:** My knowledge base describes a provisional credit (a temporary refund) only for disputed amounts over EUR 50 under fraud reason codes, applied within two business days. It is reversed if the dispute is declined. Your case uses the goods_not_received code, and the knowledge base doesn't say whether a provisional credit applies to it, so I can't confirm one for you.\n- **Withdrawal:** You can withdraw at any time before resolution. Withdrawal is final, and you could not dispute TX-0401 again under the same reason code.\n- **Timing:** The review timelines I described earlier apply. I can't confirm which one applies to goods_not_received.\n\nThe dispute window closes on **2026-10-18**. If you want me to open it, please confirm TX-0401, EUR 240.00, and goods not received.",
+  "trace": {
+    "request_id": "4e5072e1802749e0",
+    "name": "agent.request",
+    "span_id": "dca315fe0dea4199",
+    "started_at": 1794142055.915429,
+    "ended_at": 1794142059.7424161,
+    "duration_ms": 3827.0,
+    "attributes": {
+      "session.id": "e2d0ea57bec5",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 8711,
+      "gen_ai.usage.total_output_tokens": 660
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "1785eac04c4b4627",
+        "started_at": 1794142055.9155264,
+        "ended_at": 1794142057.131952,
+        "duration_ms": 1216.4,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4045,
+          "gen_ai.usage.output_tokens": 175
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "2b1bf1a809d948cf",
+        "started_at": 1794142057.1319962,
+        "ended_at": 1794142057.1326795,
+        "duration_ms": 0.7,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "what happens after a dispute is filed provisional credit withdrawal"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "what happens after a dispute is filed provisional credit withdrawal",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s3",
+                "doc": "disputes-process.md",
+                "score": 2.2418,
+                "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied within two business days. Provisional credit is\nreversed if the dispute is later declined."
+              },
+              {
+                "id": "glossary.md#s7",
+                "doc": "glossary.md",
+                "score": 1.8856,
+                "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+              },
+              {
+                "id": "disputes-process.md#s1",
+                "doc": "disputes-process.md",
+                "score": 1.4286,
+                "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a reason code. The agent verifies eligibility\nbefore the case is opened; an ineligible request is refused with the failing\ncondition named, except where confidentiality rules apply."
+              },
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 1.4142,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              }
+            ]
+          },
+          "retrieval.query": "what happens after a dispute is filed provisional credit withdrawal",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s3",
+              "score": 2.2418,
+              "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied wit"
+            },
+            {
+              "id": "glossary.md#s7",
+              "score": 1.8856,
+              "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+            },
+            {
+              "id": "disputes-process.md#s1",
+              "score": 1.4286,
+              "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a re"
+            },
+            {
+              "id": "disputes-process.md#s6",
+              "score": 1.4142,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "bd4cdefdb31148c9",
+        "started_at": 1794142057.132769,
+        "ended_at": 1794142059.742403,
+        "duration_ms": 2609.6,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4666,
+          "gen_ai.usage.output_tokens": 485
+        },
+        "children": []
+      }
+    ]
+  }
+}

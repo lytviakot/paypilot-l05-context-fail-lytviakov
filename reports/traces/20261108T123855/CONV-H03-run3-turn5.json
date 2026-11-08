@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 3,
+  "turn": 5,
+  "user": "Fine. Back to that charge, what do I do next?",
+  "answer": "The charge is TX-0401, EUR 240.00, dated 2026-07-20. Its eligibility check passed for a goods-not-received dispute, and the dispute window closes on 2026-10-18.\n\nTo open the dispute, reply **\"yes\"** and I will file it for the full EUR 240.00 under goods not received. Filing is irreversible, so please confirm only if you want that.\n\nIf you have any delivery evidence, such as a tracking number, the seller's correspondence, or a refund request, keep it. It may be useful if the seller disputes the claim.",
+  "trace": {
+    "request_id": "86b41e2906cb4ea5",
+    "name": "agent.request",
+    "span_id": "d4b5fb9357bb4be7",
+    "started_at": 1794141824.8119106,
+    "ended_at": 1794141827.0003912,
+    "duration_ms": 2188.5,
+    "attributes": {
+      "session.id": "e22605cee1eb",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4508,
+      "gen_ai.usage.total_output_tokens": 322
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "2b60a304ea384e7a",
+        "started_at": 1794141824.8120768,
+        "ended_at": 1794141827.0003533,
+        "duration_ms": 2188.3,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4508,
+          "gen_ai.usage.output_tokens": 322
+        },
+        "children": []
+      }
+    ]
+  }
+}

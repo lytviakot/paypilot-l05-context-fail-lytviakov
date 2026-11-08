@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H05",
+  "run": 1,
+  "turn": 4,
+  "user": "What happens after I file?",
+  "answer": "Once you file, the dispute is opened as a case and goes through review. Here is what our documentation says:\n\n- **Case stages:** open → under_review → provisional_credit → resolved_upheld or resolved_declined. You can withdraw the case only while it is open or under review.\n- **Review timing:** The target is 10 business days for card reason codes or 20 business days for transfer reason codes, with up to 45 calendar days for complex foreign-acquirer cases. The documentation does not specify which applies to goods_not_received, so I can't give an exact timeline for your case.\n- **Provisional credit:** Our documentation says a provisional credit is applied within two business days only for fraud reason codes over EUR 50. Your dispute uses goods_not_received, so this rule does not appear to apply to your case. I can't confirm whether a provisional credit would be given.\n- **Outcome:** If the dispute is upheld, it is resolved in your favour. If it is declined, any provisional credit is reversed. The documentation does not describe how the outcome is communicated or what happens to the money in the upheld case.\n\nFiling is irreversible, and withdrawal is final. Would you like me to open the dispute for TX-0401 (240.00 EUR, goods_not_received) now?",
+  "trace": {
+    "request_id": "2577669ce4504885",
+    "name": "agent.request",
+    "span_id": "8536fb31e5e445b6",
+    "started_at": 1794140955.9633112,
+    "ended_at": 1794140959.0946314,
+    "duration_ms": 3131.3,
+    "attributes": {
+      "session.id": "065d06a4bf06",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 8829,
+      "gen_ai.usage.total_output_tokens": 552
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "10a83d1d33e84302",
+        "started_at": 1794140955.9634418,
+        "ended_at": 1794140957.0217915,
+        "duration_ms": 1058.3,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4108,
+          "gen_ai.usage.output_tokens": 144
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "58ddc83593d249cc",
+        "started_at": 1794140957.0218287,
+        "ended_at": 1794140957.0226667,
+        "duration_ms": 0.8,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "what happens after a dispute is filed provisional credit outcome"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "what happens after a dispute is filed provisional credit outcome",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s3",
+                "doc": "disputes-process.md",
+                "score": 2.2418,
+                "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied within two business days. Provisional credit is\nreversed if the dispute is later declined."
+              },
+              {
+                "id": "glossary.md#s7",
+                "doc": "glossary.md",
+                "score": 1.8856,
+                "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+              },
+              {
+                "id": "disputes-process.md#s1",
+                "doc": "disputes-process.md",
+                "score": 1.4286,
+                "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a reason code. The agent verifies eligibility\nbefore the case is opened; an ineligible request is refused with the failing\ncondition named, except where confidentiality rules apply."
+              },
+              {
+                "id": "complaints.md#s1",
+                "doc": "complaints.md",
+                "score": 1.2374,
+                "text": "Complaints\n## Difference from a dispute\nA dispute concerns a specific transaction. A complaint concerns the service\nitself: a delay, an error, or the conduct of an agent. The two follow separate\nprocesses."
+              }
+            ]
+          },
+          "retrieval.query": "what happens after a dispute is filed provisional credit outcome",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s3",
+              "score": 2.2418,
+              "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied wit"
+            },
+            {
+              "id": "glossary.md#s7",
+              "score": 1.8856,
+              "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+            },
+            {
+              "id": "disputes-process.md#s1",
+              "score": 1.4286,
+              "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a re"
+            },
+            {
+              "id": "complaints.md#s1",
+              "score": 1.2374,
+              "text": "Complaints\n## Difference from a dispute\nA dispute concerns a specific transaction. A complaint concerns the service\nitself: a delay, an error, or the conduct of"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "32e1f70976d74b5b",
+        "started_at": 1794140957.022742,
+        "ended_at": 1794140959.0946174,
+        "duration_ms": 2071.9,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4721,
+          "gen_ai.usage.output_tokens": 408
+        },
+        "children": []
+      }
+    ]
+  }
+}

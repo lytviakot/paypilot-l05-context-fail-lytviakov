@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 2,
+  "turn": 10,
+  "user": "And I still have time to file, right?",
+  "answer": "Yes. Based on the eligibility check as of 2026-09-15, the deadline to file TX-0401 is **2026-10-18**, about a month away. I will re-run the eligibility check right before filing to confirm nothing has changed.\n\nTo proceed, reply **\"yes\"** to file the goods_not_received dispute for EUR 240.00. Please also tell me whether TX-0402 (EUR 240.00 to TechMart Online, 2026-07-14) was a separate order or a second charge for the same order.",
+  "trace": {
+    "request_id": "d0678da517d34cf2",
+    "name": "agent.request",
+    "span_id": "7b4f7380ae4a4cf0",
+    "started_at": 1794141806.9958768,
+    "ended_at": 1794141809.2682366,
+    "duration_ms": 2272.4,
+    "attributes": {
+      "session.id": "783781e4b5cf",
+      "dialog.step_number": 10,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5708,
+      "gen_ai.usage.total_output_tokens": 411
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "7cb6ad6a5a5346a6",
+        "started_at": 1794141806.9961026,
+        "ended_at": 1794141809.26818,
+        "duration_ms": 2272.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5708,
+          "gen_ai.usage.output_tokens": 411
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H01",
+  "run": 4,
+  "turn": 5,
+  "user": "And I still have time to file, right?",
+  "answer": "Yes. The eligibility check passed as of today, 2026-09-15, and the deadline is **2026-10-18**. That leaves about a month.\n\nI haven't filed it yet. Reply \"yes\" and I'll open the dispute for EUR 240.00 under goods_not_received.",
+  "trace": {
+    "request_id": "c16e5b4853d34b5a",
+    "name": "agent.request",
+    "span_id": "8970872789ef40d7",
+    "started_at": 1794142144.7324066,
+    "ended_at": 1794142145.679261,
+    "duration_ms": 946.9,
+    "attributes": {
+      "session.id": "377cbcc3ae30",
+      "dialog.step_number": 5,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4728,
+      "gen_ai.usage.total_output_tokens": 93
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "fd3550bc39a343d8",
+        "started_at": 1794142144.732764,
+        "ended_at": 1794142145.6792428,
+        "duration_ms": 946.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4728,
+          "gen_ai.usage.output_tokens": 93
+        },
+        "children": []
+      }
+    ]
+  }
+}

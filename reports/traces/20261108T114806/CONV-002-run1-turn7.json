@@ -1,0 +1,44 @@
+{
+  "case": "CONV-002",
+  "run": 1,
+  "turn": 7,
+  "user": "And I still have time to file, right?",
+  "answer": "You don't need to file again. Dispute 1 for TX-0401 (EUR 240.00) is already open. The filing deadline for this transaction was 2026-10-18, and that window has been met.",
+  "trace": {
+    "request_id": "3203a3e342ff40ae",
+    "name": "agent.request",
+    "span_id": "09b32644f9ac49c8",
+    "started_at": 1794138619.6965258,
+    "ended_at": 1794138621.0891998,
+    "duration_ms": 1392.7,
+    "attributes": {
+      "session.id": "7cbc14a40c92",
+      "dialog.step_number": 7,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5297,
+      "gen_ai.usage.total_output_tokens": 161
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "0801a263268a4a77",
+        "started_at": 1794138619.6966405,
+        "ended_at": 1794138621.0891871,
+        "duration_ms": 1392.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5297,
+          "gen_ai.usage.output_tokens": 161
+        },
+        "children": []
+      }
+    ]
+  }
+}

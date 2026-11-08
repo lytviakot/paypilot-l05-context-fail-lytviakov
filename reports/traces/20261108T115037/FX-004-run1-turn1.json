@@ -1,0 +1,135 @@
+{
+  "case": "FX-004",
+  "run": 1,
+  "turn": 1,
+  "user": "I'm CUS-0007. Convert 2000 EUR to USD. What is the final amount I receive?",
+  "answer": "Your converted amount would be **USD 2,154.35**, based on this quote for EUR 2,000:\n\n- **Mid-market rate:** 1 EUR = 1.086957 USD\n- **Gross amount:** 2,000 × 1.086957 = USD 2,173.91\n- **Tier 2 spread (0.9%):** −USD 19.57\n- **Final amount:** USD 2,154.35\n\nThe quote lists a free allowance of EUR 1,000 for your tier, with EUR 0 used so far. The system did not apply it to this conversion, so the spread was charged on the full amount. I can't tell from the quote why it wasn't applied. If you think it should have been, I can escalate this to a human agent.",
+  "trace": {
+    "request_id": "752b9e2cb3774d90",
+    "name": "agent.request",
+    "span_id": "b6e7f7f9a6e4445c",
+    "started_at": 1794138637.513606,
+    "ended_at": 1794138642.393825,
+    "duration_ms": 4880.2,
+    "attributes": {
+      "session.id": "a597adfadab7",
+      "dialog.step_number": 1,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0007",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 9034,
+      "gen_ai.usage.total_output_tokens": 803
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "cb1326d6558c452f",
+        "started_at": 1794138637.513872,
+        "ended_at": 1794138638.5805836,
+        "duration_ms": 1066.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2817,
+          "gen_ai.usage.output_tokens": 122
+        },
+        "children": []
+      },
+      {
+        "name": "tool.get_account",
+        "span_id": "b933b0e3fe274695",
+        "started_at": 1794138638.5806346,
+        "ended_at": 1794138638.5810418,
+        "duration_ms": 0.4,
+        "attributes": {
+          "tool.name": "get_account",
+          "tool.arguments": {},
+          "tool.result": {
+            "customer": {
+              "id": "CUS-0007",
+              "name": "Greta Lindqvist",
+              "tier": "tier2"
+            },
+            "accounts": [
+              {
+                "id": "ACC-1008",
+                "customer_id": "CUS-0007",
+                "currency": "EUR",
+                "balance": 27600.0,
+                "tier": "tier2",
+                "holder": "Greta Lindqvist"
+              }
+            ]
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "5b8034f2ec3a4e0b",
+        "started_at": 1794138638.581105,
+        "ended_at": 1794138639.4007215,
+        "duration_ms": 819.6,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2968,
+          "gen_ai.usage.output_tokens": 131
+        },
+        "children": []
+      },
+      {
+        "name": "tool.quote_fx",
+        "span_id": "abf50072bb794cf7",
+        "started_at": 1794138639.400752,
+        "ended_at": 1794138639.4010987,
+        "duration_ms": 0.3,
+        "attributes": {
+          "tool.name": "quote_fx",
+          "tool.arguments": {
+            "customer_id": "CUS-0007",
+            "amount": 2000,
+            "from_currency": "EUR",
+            "to_currency": "USD"
+          },
+          "tool.result": {
+            "from_currency": "EUR",
+            "to_currency": "USD",
+            "amount": 2000,
+            "mid_rate": 1.086957,
+            "tier": "tier2",
+            "spread_pct": 0.9,
+            "allowance_total_eur": 1000,
+            "allowance_used_before_eur": 0.0,
+            "allowance_applied": false,
+            "gross_amount": 2173.913043,
+            "spread_amount": 19.565217,
+            "final_amount": 2154.347826
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "c02053d4485c488c",
+        "started_at": 1794138639.4011576,
+        "ended_at": 1794138642.393809,
+        "duration_ms": 2992.7,
+        "attributes": {
+          "agent.loop_step": 2,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3249,
+          "gen_ai.usage.output_tokens": 550
+        },
+        "children": []
+      }
+    ]
+  }
+}

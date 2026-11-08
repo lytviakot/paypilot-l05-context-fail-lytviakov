@@ -1,0 +1,94 @@
+{
+  "case": "CONV-H03",
+  "run": 2,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily transfer limit is **EUR 5,000.00**, as of 2026-09-15. Today you have spent EUR 0.00, so the full EUR 5,000.00 remains.\n\nThe limit system reports a single daily transfer limit for your tier and does not break out a separate card-only limit. If you need to confirm how it applies to card payments specifically, I can search the knowledge base or escalate to a human agent.",
+  "trace": {
+    "request_id": "e5baa77a909a423f",
+    "name": "agent.request",
+    "span_id": "e623659cee9c4366",
+    "started_at": 1794141783.1761796,
+    "ended_at": 1794141790.9582083,
+    "duration_ms": 7782.0,
+    "attributes": {
+      "session.id": "783781e4b5cf",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6175,
+      "gen_ai.usage.total_output_tokens": 495
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "adff688e37934080",
+        "started_at": 1794141783.1762981,
+        "ended_at": 1794141787.8511317,
+        "duration_ms": 4674.8,
+        "attributes": {
+          "summary.text": "**Case summary: CUS-0004 (Danylo Kovalenko, tier1)**\n\n**Account:** ACC-1005, EUR, balance 1,310.20 EUR\n\n**Disputed transaction: TX-0401**\n- Amount: 240.00 EUR, card, outgoing, settled\n- Merchant: TechMart Online\n- Date: 2026-07-20\n- Issue: customer says the goods never arrived\n- Reason code: goods_not_received (90-day window)\n- Eligibility check (as of 2026-09-15): eligible. Reason code, transaction status, window, and compliance hold all passed.\n- Dispute deadline: 2026-10-18\n- Status: **not yet filed.** I asked the customer to confirm with \"yes\" before opening it. Filing cannot be reversed. Withdrawal is possible before resolution, but it is final, and the same transaction cannot be disputed again under the same code.\n\n**Possible related transaction: TX-0402**\n- Amount: 240.00 EUR, card, outgoing, settled\n- Merchant: TechMart Online\n- Date: 2026-07-14\n- Status: the customer has not said whether this was a separate order or a",
+          "summary.replaced_messages": 12
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "9c4f9a0613a64fea",
+        "started_at": 1794141787.8511798,
+        "ended_at": 1794141789.332366,
+        "duration_ms": 1481.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3000,
+          "gen_ai.usage.output_tokens": 261
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "55cf13bedf4149f5",
+        "started_at": 1794141789.3324628,
+        "ended_at": 1794141789.3333282,
+        "duration_ms": 0.9,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "730370921583460a",
+        "started_at": 1794141789.3334093,
+        "ended_at": 1794141790.9581876,
+        "duration_ms": 1624.8,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3175,
+          "gen_ai.usage.output_tokens": 234
+        },
+        "children": []
+      }
+    ]
+  }
+}

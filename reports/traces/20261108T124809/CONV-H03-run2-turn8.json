@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H03",
+  "run": 2,
+  "turn": 8,
+  "user": "OK, back to the dispute. Remind me which reason code we are talking about.",
+  "answer": "The reason code in our notes is **service_not_rendered**. No dispute has been opened yet.\n\nThat code is for services that were not provided. Since your complaint is about goods that were never received, **goods_not_received** is probably the better fit. Also, the transaction is not yet confirmed. Your account shows two TechMart Online charges of EUR 240.00 (TX-0401 on 20 July and TX-0402 on 14 July), and I need you to tell me which one the dispute covers, or whether it is a duplicate charge.\n\nOnce you confirm the transaction and the reason, I will run the eligibility check and file only after your explicit go-ahead.",
+  "trace": {
+    "request_id": "6fe2acf8c11b4180",
+    "name": "agent.request",
+    "span_id": "810bd2658fdb4797",
+    "started_at": 1794142393.18543,
+    "ended_at": 1794142395.9339187,
+    "duration_ms": 2748.5,
+    "attributes": {
+      "session.id": "c3c182d78bb1",
+      "dialog.step_number": 8,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6423,
+      "gen_ai.usage.total_output_tokens": 503
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "3b301fbbc6624e2c",
+        "started_at": 1794142393.185705,
+        "ended_at": 1794142395.9339032,
+        "duration_ms": 2748.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6423,
+          "gen_ai.usage.output_tokens": 503
+        },
+        "children": []
+      }
+    ]
+  }
+}

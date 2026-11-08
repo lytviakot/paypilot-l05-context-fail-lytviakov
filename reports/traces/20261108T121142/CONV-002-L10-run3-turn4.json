@@ -1,0 +1,131 @@
+{
+  "case": "CONV-002-L10",
+  "run": 3,
+  "turn": 4,
+  "user": "And the FX spread if I pay in USD?",
+  "answer": "For a USD conversion on your tier 1 account, the FX spread is **1.5%** of the gross converted amount. The first **EUR 500** of conversions each month are free of spread. Once that allowance is used up, the full 1.5% applies.\n\nI can't tell from the data available to me how much of this month's allowance you have already used, so I can't say whether a specific amount would be spread-free. If you tell me the amount you want to convert, I can run a full quote showing the mid rate, spread, allowance used, and final amount.",
+  "trace": {
+    "request_id": "5d378683a84940c0",
+    "name": "agent.request",
+    "span_id": "590ed3c5e98a49f8",
+    "started_at": 1794140102.8356876,
+    "ended_at": 1794140106.639861,
+    "duration_ms": 3804.2,
+    "attributes": {
+      "session.id": "f7876e56c1ff",
+      "dialog.step_number": 4,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7348,
+      "gen_ai.usage.total_output_tokens": 568
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "808ec434679a44af",
+        "started_at": 1794140102.8359437,
+        "ended_at": 1794140104.352125,
+        "duration_ms": 1516.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3295,
+          "gen_ai.usage.output_tokens": 200
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "bf0164fb050542d0",
+        "started_at": 1794140104.3521562,
+        "ended_at": 1794140104.3525934,
+        "duration_ms": 0.4,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "FX spread tier1 USD card payments conversion fee"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "FX spread tier1 USD card payments conversion fee",
+            "fragments": [
+              {
+                "id": "fees-detail.md#s2",
+                "doc": "fees-detail.md",
+                "score": 1.6059,
+                "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+              },
+              {
+                "id": "fx-guide.md#s1",
+                "doc": "fx-guide.md",
+                "score": 1.0914,
+                "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier spread (a percentage of the gross converted amount);\nthe free monthly conversion allowance. If the whole conversion fits within the\ncustomer's remaining monthly allowance, no spread is charged. Once the\nallowance is exhausted, the full tier spread applies to the conversion."
+              },
+              {
+                "id": "tariffs.md#s2",
+                "doc": "tariffs.md",
+                "score": 0.8321,
+                "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tier | FX spread | Free monthly conversion allowance |\n|---|---|---|\n| Tier 1 | 1.5% | EUR 500 |\n| Tier 2 | 0.9% | EUR 1,000 |\n| Tier 3 | 0.5% | EUR 5,000 |"
+              },
+              {
+                "id": "fx-guide.md#s2",
+                "doc": "fx-guide.md",
+                "score": 0.7538,
+                "text": "Currency conversion guide\n## Reading a quote\nA complete quote lists: mid rate, spread percentage applied, allowance total\nand allowance used before this conversion, gross converted amount, spread\namount, and the final credited amount. The final amount equals the gross\namount minus the spread amount."
+              }
+            ]
+          },
+          "retrieval.query": "FX spread tier1 USD card payments conversion fee",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "fees-detail.md#s2",
+              "score": 1.6059,
+              "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+            },
+            {
+              "id": "fx-guide.md#s1",
+              "score": 1.0914,
+              "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier s"
+            },
+            {
+              "id": "tariffs.md#s2",
+              "score": 0.8321,
+              "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tie"
+            },
+            {
+              "id": "fx-guide.md#s2",
+              "score": 0.7538,
+              "text": "Currency conversion guide\n## Reading a quote\nA complete quote lists: mid rate, spread percentage applied, allowance total\nand allowance used before this convers"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "3f7bdf5311ae4e6a",
+        "started_at": 1794140104.352646,
+        "ended_at": 1794140106.6398482,
+        "duration_ms": 2287.2,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4053,
+          "gen_ai.usage.output_tokens": 368
+        },
+        "children": []
+      }
+    ]
+  }
+}

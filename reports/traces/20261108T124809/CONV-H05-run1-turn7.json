@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H05",
+  "run": 1,
+  "turn": 7,
+  "user": "OK, so for my case, what is the deadline?",
+  "answer": "I can't give you one definite deadline yet, because I don't have the transaction reference for your case in this conversation. The window is 90 days from the transaction date for both goods_not_received and service_not_rendered, so the deadline depends on which charge it is:\n\n- **TX-0402** (TechMart Online, EUR 240.00, 14 July 2026): window closes about **12 October 2026**.\n- **TX-0401** (TechMart Online, EUR 240.00, 20 July 2026): window closes about **18 October 2026**.\n\nPlease confirm which transaction you mean and the reason code that fits (goods_not_received if the goods never arrived). Then I'll run the eligibility check, which gives the authoritative answer on whether the window is still open. Nothing has been filed.",
+  "trace": {
+    "request_id": "b822daf56def464b",
+    "name": "agent.request",
+    "span_id": "13a10d753aa14a25",
+    "started_at": 1794142630.1211815,
+    "ended_at": 1794142634.2892745,
+    "duration_ms": 4168.1,
+    "attributes": {
+      "session.id": "c03a9ea440e4",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6606,
+      "gen_ai.usage.total_output_tokens": 812
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "73c17975c1034f76",
+        "started_at": 1794142630.121452,
+        "ended_at": 1794142634.2892618,
+        "duration_ms": 4167.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6606,
+          "gen_ai.usage.output_tokens": 812
+        },
+        "children": []
+      }
+    ]
+  }
+}

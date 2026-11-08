@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H05",
+  "run": 1,
+  "turn": 7,
+  "user": "OK, so for my case, what is the deadline?",
+  "answer": "The deadline for your case is **2026-10-18**. TX-0401 is dated 2026-07-20, and goods_not_received has a 90-day window, which ends on that date.\n\nIf you confirm, I can open the dispute for TX-0401 for 240.00 EUR under goods_not_received before then.",
+  "trace": {
+    "request_id": "16f4948d1df343cf",
+    "name": "agent.request",
+    "span_id": "57eef0dba81a4379",
+    "started_at": 1794140962.618848,
+    "ended_at": 1794140964.01888,
+    "duration_ms": 1400.0,
+    "attributes": {
+      "session.id": "065d06a4bf06",
+      "dialog.step_number": 7,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6212,
+      "gen_ai.usage.total_output_tokens": 249
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "f49fe250d42246a0",
+        "started_at": 1794140962.6189556,
+        "ended_at": 1794140964.0188646,
+        "duration_ms": 1399.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6212,
+          "gen_ai.usage.output_tokens": 249
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H04",
+  "run": 5,
+  "turn": 1,
+  "user": "I'm CUS-0004. Transaction TX-0401, 240.00 EUR: the goods never arrived. Which reason code applies?",
+  "answer": "The reason code that applies is **goods_not_received**. It matches your situation: you paid for goods that never arrived. Per our dispute rules, this code has a 90-day window counted from the transaction date.\n\nI haven't checked TX-0401 yet. If you'd like me to proceed, I'll first confirm the transaction is eligible under this code (date, status, and any account-level restrictions). I'll only open the dispute if that check passes, and I'll confirm with you before filing.",
+  "trace": {
+    "request_id": "fe59da76ca7a4504",
+    "name": "agent.request",
+    "span_id": "fbbc9f9536a94c7f",
+    "started_at": 1794141963.2560604,
+    "ended_at": 1794141966.7092416,
+    "duration_ms": 3453.2,
+    "attributes": {
+      "session.id": "eb6f6736152c",
+      "dialog.step_number": 1,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5900,
+      "gen_ai.usage.total_output_tokens": 529
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "80d80fd6195847c0",
+        "started_at": 1794141963.2563074,
+        "ended_at": 1794141964.8939679,
+        "duration_ms": 1637.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2634,
+          "gen_ai.usage.output_tokens": 244
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "0bc176337f624c93",
+        "started_at": 1794141964.8940244,
+        "ended_at": 1794141964.8947976,
+        "duration_ms": 0.8,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute reason code goods not received"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute reason code goods not received",
+            "fragments": [
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 1.3128,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "reason-codes.md#s6",
+                "doc": "reason-codes.md",
+                "score": 1.2005,
+                "text": "Reason code guide\n## Choosing a code\nThe reason code must match what actually happened. A dispute filed under the\nwrong code is declined and must be refiled, which may push it past its window."
+              },
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 0.8839,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              },
+              {
+                "id": "glossary.md#s4",
+                "doc": "glossary.md",
+                "score": 0.8528,
+                "text": "Glossary\n## Reason code\nThe classification of why a transaction is disputed. The reason code determines\nthe chargeback window and the evidence required."
+              }
+            ]
+          },
+          "retrieval.query": "dispute reason code goods not received",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes.md#s1",
+              "score": 1.3128,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute o"
+            },
+            {
+              "id": "reason-codes.md#s6",
+              "score": 1.2005,
+              "text": "Reason code guide\n## Choosing a code\nThe reason code must match what actually happened. A dispute filed under the\nwrong code is declined and must be refiled, wh"
+            },
+            {
+              "id": "disputes-process.md#s6",
+              "score": 0.8839,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            },
+            {
+              "id": "glossary.md#s4",
+              "score": 0.8528,
+              "text": "Glossary\n## Reason code\nThe classification of why a transaction is disputed. The reason code determines\nthe chargeback window and the evidence required."
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "646999db8b824d1a",
+        "started_at": 1794141964.8949125,
+        "ended_at": 1794141966.7092073,
+        "duration_ms": 1814.3,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3266,
+          "gen_ai.usage.output_tokens": 285
+        },
+        "children": []
+      }
+    ]
+  }
+}

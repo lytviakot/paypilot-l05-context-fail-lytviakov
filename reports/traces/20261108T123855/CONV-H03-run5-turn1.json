@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H03",
+  "run": 5,
+  "turn": 1,
+  "user": "I'm CUS-0004. Transaction TX-0401, 240.00 EUR: the goods never arrived. Which reason code applies?",
+  "answer": "The reason code for this case is **goods_not_received**. It covers a purchase you paid for where the goods did not arrive.\n\nThe dispute window for this code is **90 days from the transaction date**. A dispute opened after that window closes is not eligible. I haven't checked TX-0401's date or eligibility yet.\n\nIf you want to proceed, I can check whether TX-0401 is eligible under this code. If it is, I can open the dispute for the full EUR 240.00 once you confirm.",
+  "trace": {
+    "request_id": "48badc119f054d74",
+    "name": "agent.request",
+    "span_id": "bd84eb9d52074ac7",
+    "started_at": 1794141863.9334548,
+    "ended_at": 1794141867.1603408,
+    "duration_ms": 3226.9,
+    "attributes": {
+      "session.id": "99dcaf3ce8a4",
+      "dialog.step_number": 1,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5935,
+      "gen_ai.usage.total_output_tokens": 519
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "b1bd4eaec6aa437c",
+        "started_at": 1794141863.933714,
+        "ended_at": 1794141865.210221,
+        "duration_ms": 1276.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2634,
+          "gen_ai.usage.output_tokens": 187
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "93b66d3a191648fb",
+        "started_at": 1794141865.2102673,
+        "ended_at": 1794141865.21078,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute reason codes goods_not_received"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute reason codes goods_not_received",
+            "fragments": [
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 1.1669,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "disputes-process.md#s4",
+                "doc": "disputes-process.md",
+                "score": 0.7625,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+              },
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 0.7071,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              },
+              {
+                "id": "notifications.md#s2",
+                "doc": "notifications.md",
+                "score": 0.6124,
+                "text": "Notifications\n## Dispute updates\nA dispute generates a notification on every state change. The notification\nnames the state, never the internal reason for a decision."
+              }
+            ]
+          },
+          "retrieval.query": "dispute reason codes goods_not_received",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes.md#s1",
+              "score": 1.1669,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute o"
+            },
+            {
+              "id": "disputes-process.md#s4",
+              "score": 0.7625,
+              "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex"
+            },
+            {
+              "id": "disputes-process.md#s6",
+              "score": 0.7071,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            },
+            {
+              "id": "notifications.md#s2",
+              "score": 0.6124,
+              "text": "Notifications\n## Dispute updates\nA dispute generates a notification on every state change. The notification\nnames the state, never the internal reason for a dec"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "0ef2c6d555cd468c",
+        "started_at": 1794141865.2108533,
+        "ended_at": 1794141867.1603217,
+        "duration_ms": 1949.5,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3301,
+          "gen_ai.usage.output_tokens": 332
+        },
+        "children": []
+      }
+    ]
+  }
+}

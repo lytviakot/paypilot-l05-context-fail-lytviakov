@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 5,
+  "turn": 5,
+  "user": "Fine. Back to that charge, what do I do next?",
+  "answer": "To dispute the EUR 240.00 charge on TX-0401 (goods not received), here's what happens next:\n\n1. **Confirm the dispute.** Reply \"yes\" and I'll open it. Eligibility was confirmed on 2026-09-15, and the deadline to file is 2026-10-18. Once filed, the dispute can't be undone, though you can withdraw it before it is resolved. A withdrawal is final, and you couldn't dispute this transaction again under the same reason code.\n2. **Tell me how you paid.** Was TX-0401 paid by card or by bank transfer? The review timeline depends on this:\n   - Card: up to 10 business days.\n   - Transfer: up to 20 business days.\n   - If the merchant's bank is outside the EU, the review can take up to 45 calendar days, and I would notify you if that applies.\n3. **Track progress.** You'll receive a notification each time the dispute status changes.\n\nShould you want to speak with a human agent at any point, I can arrange that too.",
+  "trace": {
+    "request_id": "f24544b655c44fa4",
+    "name": "agent.request",
+    "span_id": "0ac79f02129d40d5",
+    "started_at": 1794141880.8636887,
+    "ended_at": 1794141884.7085457,
+    "duration_ms": 3844.9,
+    "attributes": {
+      "session.id": "99dcaf3ce8a4",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4699,
+      "gen_ai.usage.total_output_tokens": 760
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "4691200e0c4f4c76",
+        "started_at": 1794141880.863797,
+        "ended_at": 1794141884.7085304,
+        "duration_ms": 3844.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4699,
+          "gen_ai.usage.output_tokens": 760
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H05",
+  "run": 1,
+  "turn": 5,
+  "user": "Remind me: which reason code and which amount are we disputing?",
+  "answer": "We are disputing transaction **TX-0401** under reason code **`goods_not_received`** for the full amount of **EUR 240.00**.\n\nThe dispute has not been opened yet. It will only be filed after you reply \"yes,\" and it must be opened by **2026-10-18**.",
+  "trace": {
+    "request_id": "510e7c7cdd934df2",
+    "name": "agent.request",
+    "span_id": "161ade6c48994b4b",
+    "started_at": 1794141991.9400792,
+    "ended_at": 1794141993.2308006,
+    "duration_ms": 1290.7,
+    "attributes": {
+      "session.id": "d894f2866d15",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5005,
+      "gen_ai.usage.total_output_tokens": 188
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "85e9d337728d456b",
+        "started_at": 1794141991.940282,
+        "ended_at": 1794141993.2307498,
+        "duration_ms": 1290.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5005,
+          "gen_ai.usage.output_tokens": 188
+        },
+        "children": []
+      }
+    ]
+  }
+}

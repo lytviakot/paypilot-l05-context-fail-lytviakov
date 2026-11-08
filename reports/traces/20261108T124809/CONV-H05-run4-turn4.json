@@ -1,0 +1,131 @@
+{
+  "case": "CONV-H05",
+  "run": 4,
+  "turn": 4,
+  "user": "What happens after I file?",
+  "answer": "Once the dispute is filed, here is what the documentation says happens:\n\n- **Case status:** The case opens and moves through the review stages: open, then under_review, and then a final outcome of resolved_upheld or resolved_declined.\n- **Review time:** For card reason codes such as goods_not_received, the review target is 10 business days. Foreign-acquirer cases can take up to 45 calendar days, and you would be notified if that applies.\n- **Provisional credit:** A provisional credit within two business days applies to fraud reason codes where the amount is over EUR 50. Goods_not_received is not a fraud code, so the documentation does not provide for a provisional credit on this case. If the dispute is declined, any provisional credit is reversed.\n- **Withdrawal:** You can withdraw the dispute while it is open or under review. Withdrawal is final, and the same transaction cannot be disputed again under the same reason code.\n\nThe documentation I retrieved does not say how you will be notified of each stage or what evidence you may need to supply, so I cannot confirm those details.\n\nWould you like me to file the goods_not_received dispute now? It cannot be reversed once submitted.",
+  "trace": {
+    "request_id": "703d01ba0bc34ee0",
+    "name": "agent.request",
+    "span_id": "2886603331f54251",
+    "started_at": 1794142712.3312185,
+    "ended_at": 1794142715.5958643,
+    "duration_ms": 3264.6,
+    "attributes": {
+      "session.id": "6ff820d92e3b",
+      "dialog.step_number": 4,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 8595,
+      "gen_ai.usage.total_output_tokens": 540
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "19f13aa020cb4fc5",
+        "started_at": 1794142712.3314624,
+        "ended_at": 1794142713.5326304,
+        "duration_ms": 1201.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3946,
+          "gen_ai.usage.output_tokens": 163
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "fd9c98daf7e44dc9",
+        "started_at": 1794142713.5326579,
+        "ended_at": 1794142713.5331721,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "after dispute is opened provisional credit notification outcome"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "after dispute is opened provisional credit notification outcome",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s3",
+                "doc": "disputes-process.md",
+                "score": 1.9215,
+                "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied within two business days. Provisional credit is\nreversed if the dispute is later declined."
+              },
+              {
+                "id": "glossary.md#s7",
+                "doc": "glossary.md",
+                "score": 1.4142,
+                "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+              },
+              {
+                "id": "disputes-process.md#s1",
+                "doc": "disputes-process.md",
+                "score": 1.0,
+                "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a reason code. The agent verifies eligibility\nbefore the case is opened; an ineligible request is refused with the failing\ncondition named, except where confidentiality rules apply."
+              },
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 0.8752,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              }
+            ]
+          },
+          "retrieval.query": "after dispute is opened provisional credit notification outcome",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s3",
+              "score": 1.9215,
+              "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied wit"
+            },
+            {
+              "id": "glossary.md#s7",
+              "score": 1.4142,
+              "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+            },
+            {
+              "id": "disputes-process.md#s1",
+              "score": 1.0,
+              "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a re"
+            },
+            {
+              "id": "disputes.md#s1",
+              "score": 0.8752,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute o"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "767eafb674fc4fb2",
+        "started_at": 1794142713.5332167,
+        "ended_at": 1794142715.5958471,
+        "duration_ms": 2062.6,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4649,
+          "gen_ai.usage.output_tokens": 377
+        },
+        "children": []
+      }
+    ]
+  }
+}

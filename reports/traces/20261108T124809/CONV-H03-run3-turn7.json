@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H03",
+  "run": 3,
+  "turn": 7,
+  "user": "Unrelated question: what is the fee for an international transfer?",
+  "answer": "International transfers (SWIFT) carry a **flat fee of EUR 15.00 plus 0.3%** of the EUR equivalent of the transfer amount.\n\nFor example, a EUR 1,000 SWIFT transfer would cost EUR 15.00 + EUR 3.00 (0.3% of 1,000) = **EUR 18.00** in fees.\n\nThe FX spread (1.5% for Tier 1, after your EUR 500 monthly free allowance) would be charged separately if the transfer involves a currency conversion.\n\nWhenever you're ready, tell me which TechMart charge (TX-0401 or TX-0402) to dispute.",
+  "trace": {
+    "request_id": "e603a075e1774d8a",
+    "name": "agent.request",
+    "span_id": "c25dd84e0cce42a0",
+    "started_at": 1794142429.475269,
+    "ended_at": 1794142431.3523223,
+    "duration_ms": 1877.1,
+    "attributes": {
+      "session.id": "10a18811606d",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5951,
+      "gen_ai.usage.total_output_tokens": 304
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "5187a426ad5d4485",
+        "started_at": 1794142429.4756203,
+        "ended_at": 1794142431.3522997,
+        "duration_ms": 1876.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5951,
+          "gen_ai.usage.output_tokens": 304
+        },
+        "children": []
+      }
+    ]
+  }
+}

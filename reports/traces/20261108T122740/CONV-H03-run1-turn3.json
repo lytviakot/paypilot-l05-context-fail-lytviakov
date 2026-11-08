@@ -1,0 +1,94 @@
+{
+  "case": "CONV-H03",
+  "run": 1,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily limit on file for your tier (tier1) is **EUR 5,000**. As of today (2026-09-15) you have spent EUR 0 of it, so EUR 5,000 remains.\n\nThe limit system reports this as a transfer limit. It does not list a separate card-only limit, so I can't confirm from my records whether card payments are counted under the same EUR 5,000 figure. If you need that confirmed, I can search the documentation or escalate to a human agent.\n\nYour monthly limit is EUR 50,000, with EUR 35.50 used and EUR 49,964.50 remaining.",
+  "trace": {
+    "request_id": "e4b6c482dcc34172",
+    "name": "agent.request",
+    "span_id": "186962735bcf4448",
+    "started_at": 1794140902.9456332,
+    "ended_at": 1794140910.1379461,
+    "duration_ms": 7192.3,
+    "attributes": {
+      "session.id": "bb06b44bcb4e",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6257,
+      "gen_ai.usage.total_output_tokens": 472
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "06661063cc5b4446",
+        "started_at": 1794140902.9457316,
+        "ended_at": 1794140906.774547,
+        "duration_ms": 3828.8,
+        "attributes": {
+          "summary.text": "**Customer:** CUS-0004, Danylo Kovalenko (tier1)\n**Account:** ACC-1005, EUR, balance 1310.20 EUR\n\n**Disputed transaction:** TX-0401, 240.00 EUR, dated 2026-07-20. Customer reports the goods never arrived.\n\n**Reason code:** goods_not_received (90-day window from transaction date)\n\n**Eligibility check (as of 2026-09-15):** Eligible. Deadline to open is **2026-10-18**. Checks passed: reason_code, tx_status, window, compliance_hold.\n\n**Status:** No dispute has been opened. I asked the customer to confirm the full 240.00 EUR dispute. Opening a dispute is not reversible through withdrawal in the usual sense: a customer may withdraw before resolution, but withdrawal is final and TX-0401 cannot be disputed again under goods_not_received.\n\n**Process reference:**\n- Review target: 10 business days for card reason codes, 20 for transfer codes. Complex foreign-acquirer cases may take up to 45 calendar days, and the customer is notified if so.\n- The customer receives a notification on each state change. Notifications name the state, not the internal reason for a decision.\n\n**Pending:** Customer confirmation to open the dispute.",
+          "summary.replaced_messages": 9
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "c7345afac35b49ac",
+        "started_at": 1794140906.774573,
+        "ended_at": 1794140907.9134858,
+        "duration_ms": 1138.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3041,
+          "gen_ai.usage.output_tokens": 157
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "7fd26933e74b4fb2",
+        "started_at": 1794140907.9135184,
+        "ended_at": 1794140907.9140196,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "7cfc0fa92d0e4000",
+        "started_at": 1794140907.9140544,
+        "ended_at": 1794140910.1379328,
+        "duration_ms": 2223.9,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3216,
+          "gen_ai.usage.output_tokens": 315
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 2,
+  "turn": 8,
+  "user": "OK, back to the dispute. Remind me which reason code we are talking about.",
+  "answer": "The reason code for TX-0401 is **goods_not_received**. It covers a card payment for goods you paid for that never arrived. Eligibility for this code is confirmed, and the deadline is **2026-10-18**.\n\nTo proceed, reply **\"yes\"** to file the dispute for EUR 240.00. I also still need to know whether TX-0402 (EUR 240.00 to TechMart Online on 2026-07-14) was a separate order or a second charge for the same order.",
+  "trace": {
+    "request_id": "ac3d881b809a477a",
+    "name": "agent.request",
+    "span_id": "a98c2dbede4543ac",
+    "started_at": 1794141804.792538,
+    "ended_at": 1794141805.972152,
+    "duration_ms": 1179.6,
+    "attributes": {
+      "session.id": "783781e4b5cf",
+      "dialog.step_number": 8,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5411,
+      "gen_ai.usage.total_output_tokens": 155
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "f861971f9b564823",
+        "started_at": 1794141804.7927094,
+        "ended_at": 1794141805.9721081,
+        "duration_ms": 1179.4,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5411,
+          "gen_ai.usage.output_tokens": 155
+        },
+        "children": []
+      }
+    ]
+  }
+}

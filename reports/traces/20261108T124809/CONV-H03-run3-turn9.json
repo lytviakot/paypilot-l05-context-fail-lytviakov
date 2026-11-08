@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H03",
+  "run": 3,
+  "turn": 9,
+  "user": "And what amount are we disputing?",
+  "answer": "We would be disputing the full **EUR 240.00**, the amount of the transaction you choose. Both TechMart Online charges are EUR 240.00, so the amount is the same either way.\n\nWhich one did you not receive goods for: **TX-0401** (20 July 2026) or **TX-0402** (14 July 2026)? Once you tell me, I'll confirm the transaction, reason code and amount with you before I file the dispute.",
+  "trace": {
+    "request_id": "d9a148254be14549",
+    "name": "agent.request",
+    "span_id": "618771977d714a20",
+    "started_at": 1794142432.9665134,
+    "ended_at": 1794142434.674094,
+    "duration_ms": 1707.6,
+    "attributes": {
+      "session.id": "10a18811606d",
+      "dialog.step_number": 9,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6329,
+      "gen_ai.usage.total_output_tokens": 263
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "c598801df32b46e5",
+        "started_at": 1794142432.9668007,
+        "ended_at": 1794142434.6740782,
+        "duration_ms": 1707.3,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6329,
+          "gen_ai.usage.output_tokens": 263
+        },
+        "children": []
+      }
+    ]
+  }
+}

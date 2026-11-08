@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H05",
+  "run": 5,
+  "turn": 7,
+  "user": "OK, so for my case, what is the deadline?",
+  "answer": "For TX-0401 (dated 20 July 2026), the goods_not_received window is 90 days from the transaction date. That makes the last day **18 October 2026**. The eligibility check I ran earlier confirmed the dispute is currently within its window.\n\nDo you want me to open the dispute for TX-0401 under goods_not_received for EUR 240.00?",
+  "trace": {
+    "request_id": "f803387c9f554898",
+    "name": "agent.request",
+    "span_id": "de03880d58184ff8",
+    "started_at": 1794142755.2012603,
+    "ended_at": 1794142757.5890887,
+    "duration_ms": 2387.8,
+    "attributes": {
+      "session.id": "117578007613",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6054,
+      "gen_ai.usage.total_output_tokens": 393
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "a3a776f189a545c3",
+        "started_at": 1794142755.2015338,
+        "ended_at": 1794142757.5890672,
+        "duration_ms": 2387.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6054,
+          "gen_ai.usage.output_tokens": 393
+        },
+        "children": []
+      }
+    ]
+  }
+}

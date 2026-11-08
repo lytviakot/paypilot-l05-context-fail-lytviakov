@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H04",
+  "run": 4,
+  "turn": 4,
+  "user": "And what was the amount we are disputing?",
+  "answer": "The amount being disputed is **EUR 240.00**, the full value of transaction TX-0401. No dispute has been opened yet, so nothing has been submitted. It will only be opened after you confirm with \"yes.\"",
+  "trace": {
+    "request_id": "79c55ba1769f41ee",
+    "name": "agent.request",
+    "span_id": "9d67504b6fa94b5d",
+    "started_at": 1794141962.0482693,
+    "ended_at": 1794141963.072573,
+    "duration_ms": 1024.3,
+    "attributes": {
+      "session.id": "be1ef02164e4",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 3982,
+      "gen_ai.usage.total_output_tokens": 70
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "6e0dfcfcc4e6438b",
+        "started_at": 1794141962.04841,
+        "ended_at": 1794141963.072556,
+        "duration_ms": 1024.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3982,
+          "gen_ai.usage.output_tokens": 70
+        },
+        "children": []
+      }
+    ]
+  }
+}

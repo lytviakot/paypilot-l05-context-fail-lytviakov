@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H02",
+  "run": 5,
+  "turn": 6,
+  "user": "240 euro, as I said at the start.",
+  "answer": "The amount matches what we discussed, but I need an explicit **yes** or **no** before I open the dispute. Nothing has been filed yet.\n\nIf you reply **yes**, I will open a goods-not-received dispute for **EUR 240.00** on **TX-0401** (account ACC-1005). That step is irreversible. The dispute must be filed by **2026-10-18**.\n\nIf you reply **no**, nothing will be filed.",
+  "trace": {
+    "request_id": "482f4742ead34a04",
+    "name": "agent.request",
+    "span_id": "e0bbeaa620fa4091",
+    "started_at": 1794141738.4497147,
+    "ended_at": 1794141740.3372166,
+    "duration_ms": 1887.5,
+    "attributes": {
+      "session.id": "e8630b8d080d",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4875,
+      "gen_ai.usage.total_output_tokens": 303
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "f778da5e41424ab3",
+        "started_at": 1794141738.4498675,
+        "ended_at": 1794141740.337198,
+        "duration_ms": 1887.3,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4875,
+          "gen_ai.usage.output_tokens": 303
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H05",
+  "run": 5,
+  "turn": 4,
+  "user": "What happens after I file?",
+  "answer": "Once a dispute is filed, here is what the documentation says happens:\n\n1. **Case opens.** The dispute starts in the \"open\" state and moves through the case states described earlier: under_review, then either resolved_upheld or resolved_declined.\n2. **Notifications.** You receive a notification every time the dispute changes state. Each notification names the new state but not the internal reason for any decision.\n3. **Provisional credit.** A provisional credit (a temporary refund) is applied within two business days only where the disputed amount exceeds EUR 50 and the reason code is a fraud code. TX-0401 is EUR 240.00, but goods_not_received is not a fraud code, so the documentation does not indicate a provisional credit for this dispute.\n4. **Review timeline.** The review target is 10 business days for card reason codes and 20 business days for transfer reason codes. The documentation does not state which applies to goods_not_received, so I can't confirm the timeline for TX-0401.\n5. **Withdrawal.** You can withdraw the dispute while it is open or under review. Withdrawal is final.\n\nThe dispute has not been opened yet. If you want to proceed with TX-0401 (EUR 240.00, goods not received), reply \"yes\" and I will open it.",
+  "trace": {
+    "request_id": "aa80ebee66d444d7",
+    "name": "agent.request",
+    "span_id": "b21ab62277e64378",
+    "started_at": 1794142077.6256485,
+    "ended_at": 1794142080.7048044,
+    "duration_ms": 3079.2,
+    "attributes": {
+      "session.id": "a031e98b4e8a",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 8622,
+      "gen_ai.usage.total_output_tokens": 528
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "42100e018a024aed",
+        "started_at": 1794142077.6257522,
+        "ended_at": 1794142078.6967423,
+        "duration_ms": 1071.0,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4035,
+          "gen_ai.usage.output_tokens": 120
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "02ff93006bde417a",
+        "started_at": 1794142078.6967745,
+        "ended_at": 1794142078.6972318,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute after filing case states provisional credit notification outcome"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute after filing case states provisional credit notification outcome",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s3",
+                "doc": "disputes-process.md",
+                "score": 1.281,
+                "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied within two business days. Provisional credit is\nreversed if the dispute is later declined."
+              },
+              {
+                "id": "glossary.md#s7",
+                "doc": "glossary.md",
+                "score": 0.9428,
+                "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+              },
+              {
+                "id": "notifications.md#s2",
+                "doc": "notifications.md",
+                "score": 0.8165,
+                "text": "Notifications\n## Dispute updates\nA dispute generates a notification on every state change. The notification\nnames the state, never the internal reason for a decision."
+              },
+              {
+                "id": "disputes-process.md#s2",
+                "doc": "disputes-process.md",
+                "score": 0.8,
+                "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under_review cases can be\nwithdrawn by the customer."
+              }
+            ]
+          },
+          "retrieval.query": "dispute after filing case states provisional credit notification outcome",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s3",
+              "score": 1.281,
+              "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied wit"
+            },
+            {
+              "id": "glossary.md#s7",
+              "score": 0.9428,
+              "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+            },
+            {
+              "id": "notifications.md#s2",
+              "score": 0.8165,
+              "text": "Notifications\n## Dispute updates\nA dispute generates a notification on every state change. The notification\nnames the state, never the internal reason for a dec"
+            },
+            {
+              "id": "disputes-process.md#s2",
+              "score": 0.8,
+              "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "c1dda61fd7024468",
+        "started_at": 1794142078.6972775,
+        "ended_at": 1794142080.7047894,
+        "duration_ms": 2007.5,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4587,
+          "gen_ai.usage.output_tokens": 408
+        },
+        "children": []
+      }
+    ]
+  }
+}

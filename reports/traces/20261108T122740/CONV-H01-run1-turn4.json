@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H01",
+  "run": 1,
+  "turn": 4,
+  "user": "Fine. Back to that charge, what do I do next?",
+  "answer": "Here's what happens next:\n\n1. **Confirm the dispute.** Reply **yes** and I'll open a dispute for TX-0401 (EUR 240.00) under `goods_not_received`. I haven't opened it yet because it can't be reversed, and I want your explicit confirmation first.\n2. **After it's opened**, the dispute will be reviewed. I can't tell you the outcome or timeline from my tools, so I can't promise a refund.\n3. **Before the deadline (18 October 2026)**, you can still raise it if you change your mind, but I'd recommend acting sooner.\n\nIf you'd like to try the seller first, you can contact them about the delivery. That doesn't affect your right to dispute, which remains open until the deadline.\n\nShall I open the dispute now?",
+  "trace": {
+    "request_id": "4ee03ea47220495f",
+    "name": "agent.request",
+    "span_id": "c9fb2ea7776043c7",
+    "started_at": 1794140868.579487,
+    "ended_at": 1794140871.0165112,
+    "duration_ms": 2437.0,
+    "attributes": {
+      "session.id": "d5e293904477",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 3500,
+      "gen_ai.usage.total_output_tokens": 403
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "99de8fa7e31a4bc5",
+        "started_at": 1794140868.5796282,
+        "ended_at": 1794140871.0164964,
+        "duration_ms": 2436.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3500,
+          "gen_ai.usage.output_tokens": 403
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H05",
+  "run": 4,
+  "turn": 6,
+  "user": "Is the deadline the same for every reason code?",
+  "answer": "No, each reason code has its own window, counted in days from the transaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| service_not_rendered | 90 |\n| duplicate_charge | 60 |\n| unauthorized_debit | 56 |\n\nFor goods_not_received, the 90 days run from the transaction date. Both TechMart Online payments (TX-0401 on 20 July 2026 and TX-0402 on 14 July 2026) fall inside that window based on the dates in your account. The window is only one condition, though. The eligibility check is what confirms whether a specific transaction can be disputed, so I will run it again once you tell me which transaction you want to dispute.",
+  "trace": {
+    "request_id": "590a86034d034d36",
+    "name": "agent.request",
+    "span_id": "e4652d063e3948e5",
+    "started_at": 1794142724.0189893,
+    "ended_at": 1794142726.1182795,
+    "duration_ms": 2099.3,
+    "attributes": {
+      "session.id": "6ff820d92e3b",
+      "dialog.step_number": 6,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5887,
+      "gen_ai.usage.total_output_tokens": 373
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "ac5d14832fc94eee",
+        "started_at": 1794142724.019238,
+        "ended_at": 1794142726.118266,
+        "duration_ms": 2099.0,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5887,
+          "gen_ai.usage.output_tokens": 373
+        },
+        "children": []
+      }
+    ]
+  }
+}

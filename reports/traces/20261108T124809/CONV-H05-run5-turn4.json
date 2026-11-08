@@ -1,0 +1,131 @@
+{
+  "case": "CONV-H05",
+  "run": 5,
+  "turn": 4,
+  "user": "What happens after I file?",
+  "answer": "Once the dispute is filed, it is opened as a case and reviewed. Here is what the documentation says about the steps after filing.\n\n**Status.** The case moves through the states described earlier: open, then under_review, then either resolved_upheld or resolved_declined. You can withdraw it only while it is open or under_review.\n\n**Provisional credit.** A provisional credit is a temporary refund applied while the dispute is reviewed. It is reversed if the dispute is declined. Under the documented rules, it is applied within two business days only when the disputed amount is over EUR 50 and the reason code is a fraud code. Goods not received is not a fraud code, so the documentation does not indicate a provisional credit for TX-0401. Please note that this is my reading of the rules, and the documentation does not state it directly for this reason code.\n\n**Timeline.** The review target is 10 business days for card reason codes and 20 business days for transfer reason codes. The documentation does not say which category goods not received falls under. Complex cases with a foreign acquirer can take up to 45 calendar days, and you would be notified if that happens.\n\nWould you like me to open the dispute for TX-0401 under goods not received?",
+  "trace": {
+    "request_id": "d2d43d9645274d53",
+    "name": "agent.request",
+    "span_id": "ed63d14cd1304b3b",
+    "started_at": 1794142742.0730984,
+    "ended_at": 1794142745.2351077,
+    "duration_ms": 3162.0,
+    "attributes": {
+      "session.id": "117578007613",
+      "dialog.step_number": 4,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 8611,
+      "gen_ai.usage.total_output_tokens": 518
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "a993b1576913470c",
+        "started_at": 1794142742.0733426,
+        "ended_at": 1794142743.190985,
+        "duration_ms": 1117.6,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3994,
+          "gen_ai.usage.output_tokens": 139
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "3c9f8a34726d4b27",
+        "started_at": 1794142743.1910572,
+        "ended_at": 1794142743.1916754,
+        "duration_ms": 0.6,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "what happens after a dispute is filed provisional credit resolution outcome"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "what happens after a dispute is filed provisional credit resolution outcome",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s3",
+                "doc": "disputes-process.md",
+                "score": 2.2418,
+                "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied within two business days. Provisional credit is\nreversed if the dispute is later declined."
+              },
+              {
+                "id": "glossary.md#s7",
+                "doc": "glossary.md",
+                "score": 1.8856,
+                "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+              },
+              {
+                "id": "disputes-process.md#s1",
+                "doc": "disputes-process.md",
+                "score": 1.4286,
+                "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a reason code. The agent verifies eligibility\nbefore the case is opened; an ineligible request is refused with the failing\ncondition named, except where confidentiality rules apply."
+              },
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 1.4142,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              }
+            ]
+          },
+          "retrieval.query": "what happens after a dispute is filed provisional credit resolution outcome",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s3",
+              "score": 2.2418,
+              "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied wit"
+            },
+            {
+              "id": "glossary.md#s7",
+              "score": 1.8856,
+              "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+            },
+            {
+              "id": "disputes-process.md#s1",
+              "score": 1.4286,
+              "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a re"
+            },
+            {
+              "id": "disputes-process.md#s6",
+              "score": 1.4142,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "1625215425f14fe3",
+        "started_at": 1794142743.1917286,
+        "ended_at": 1794142745.2350938,
+        "duration_ms": 2043.4,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4617,
+          "gen_ai.usage.output_tokens": 379
+        },
+        "children": []
+      }
+    ]
+  }
+}

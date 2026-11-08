@@ -1,0 +1,85 @@
+{
+  "case": "CONV-H01",
+  "run": 2,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily transfer limit on file for your tier (tier1) is **5,000 EUR**. The limit check doesn't break out card payments separately, so I can't confirm a card-specific daily limit from it.\n\nYour current usage as of 15 September 2026:\n- **Daily:** 0.00 EUR spent, 5,000.00 EUR remaining\n- **Monthly:** 35.50 EUR spent, 49,964.50 EUR remaining (monthly limit 50,000 EUR)\n\nI can search the knowledge base for card-specific limits if you want more detail. Separately, the TX-0401 dispute is still unfiled. Let me know whether you want me to file it for 240.00 EUR under goods_not_received.",
+  "trace": {
+    "request_id": "cf6b754cff8e403c",
+    "name": "agent.request",
+    "span_id": "5ad8cf9ce28e4e4b",
+    "started_at": 1794142110.1970077,
+    "ended_at": 1794142113.3371537,
+    "duration_ms": 3140.1,
+    "attributes": {
+      "session.id": "92ccfccd6907",
+      "dialog.step_number": 3,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 8749,
+      "gen_ai.usage.total_output_tokens": 402
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "528b1edb00084a2f",
+        "started_at": 1794142110.1972966,
+        "ended_at": 1794142111.1488922,
+        "duration_ms": 951.6,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4287,
+          "gen_ai.usage.output_tokens": 102
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "f1709429bb484aeb",
+        "started_at": 1794142111.1489403,
+        "ended_at": 1794142111.149608,
+        "duration_ms": 0.7,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "0b2c519de06446a7",
+        "started_at": 1794142111.149648,
+        "ended_at": 1794142113.3371272,
+        "duration_ms": 2187.5,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4462,
+          "gen_ai.usage.output_tokens": 300
+        },
+        "children": []
+      }
+    ]
+  }
+}

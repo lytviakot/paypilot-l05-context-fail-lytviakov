@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 2,
+  "turn": 2,
+  "user": "Can I dispute it?",
+  "answer": "Yes, TX-0401 is eligible for a dispute under goods_not_received. The check passed on the transaction status, the 90-day window, and the compliance hold.\n\nIf you want me to proceed, I'll open the dispute for the full 240.00 EUR on TX-0401 (TechMart Online, 20 July 2026). Once filed, it can't be reversed. Please reply \"yes\" to confirm.",
+  "trace": {
+    "request_id": "6a86ee8cdaa045db",
+    "name": "agent.request",
+    "span_id": "0ef73e85dbb44746",
+    "started_at": 1794141780.6191235,
+    "ended_at": 1794141783.169249,
+    "duration_ms": 2550.1,
+    "attributes": {
+      "session.id": "783781e4b5cf",
+      "dialog.step_number": 2,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4261,
+      "gen_ai.usage.total_output_tokens": 393
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "22f3111d14484d20",
+        "started_at": 1794141780.619325,
+        "ended_at": 1794141783.169225,
+        "duration_ms": 2549.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4261,
+          "gen_ai.usage.output_tokens": 393
+        },
+        "children": []
+      }
+    ]
+  }
+}

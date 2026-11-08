@@ -1,0 +1,47 @@
+{
+  "case": "CONV-002-L10",
+  "run": 4,
+  "turn": 8,
+  "user": "Unrelated question: what is the fee for an international transfer?",
+  "answer": "A SWIFT transfer, Verta's international transfer type, has this fee under the tariff schedule:\n\n- **Flat fee:** EUR 15.00\n- **Percentage fee:** 0.3% of the transfer amount, calculated on the EUR equivalent\n\nFor example, a EUR 1,000 SWIFT transfer would cost EUR 15.00 + EUR 3.00 (0.3%) = EUR 18.00 in fees.\n\nThe fee schedule I retrieved doesn't say whether a currency conversion adds anything to a SWIFT transfer. If you're sending a non-EUR amount, I can check the FX terms too.",
+  "trace": {
+    "request_id": "86ccc90326b34fce",
+    "name": "agent.request",
+    "span_id": "6f6ee1cb87184edc",
+    "started_at": 1794140161.7466853,
+    "ended_at": 1794140164.3913274,
+    "duration_ms": 2644.6,
+    "attributes": {
+      "session.id": "3a6e70550e47",
+      "dialog.step_number": 8,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6222,
+      "gen_ai.usage.total_output_tokens": 441
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "29dd51318fda4e7e",
+        "started_at": 1794140161.7469282,
+        "ended_at": 1794140164.3913124,
+        "duration_ms": 2644.4,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6222,
+          "gen_ai.usage.output_tokens": 441
+        },
+        "children": []
+      }
+    ]
+  }
+}

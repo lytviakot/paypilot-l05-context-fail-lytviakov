@@ -1,0 +1,94 @@
+{
+  "case": "CONV-H02",
+  "run": 5,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily transfer limit on file for your tier (tier1) is **EUR 5,000.00**. As of today (2026-09-15) you have not spent any of it, so the full **EUR 5,000.00 remains**.\n\nFor reference, your monthly limit is EUR 50,000.00, with EUR 35.50 used so far, leaving EUR 49,964.50.\n\nThe limit system I checked reports transfer limits and doesn't break out card spending separately. If you need to confirm whether card payments count against this same daily figure, I can search the Verta documentation for that.",
+  "trace": {
+    "request_id": "146ab23136b1457d",
+    "name": "agent.request",
+    "span_id": "b2d6137cac52416a",
+    "started_at": 1794141723.2921648,
+    "ended_at": 1794141731.2717066,
+    "duration_ms": 7979.5,
+    "attributes": {
+      "session.id": "e8630b8d080d",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6439,
+      "gen_ai.usage.total_output_tokens": 680
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "1bfbe36c8ae44c37",
+        "started_at": 1794141723.2922633,
+        "ended_at": 1794141727.1539998,
+        "duration_ms": 3861.7,
+        "attributes": {
+          "summary.text": "**Support conversation summary (for future reference)**\n\n**Customer:** CUS-0004, Danylo Kovalenko, tier1\n**Account:** ACC-1005, EUR, balance 1310.20, tier1, holder Danylo Kovalenko. (The first account lookup for \"CUS-0004\" returned not found. A later lookup succeeded and returned this account.)\n\n**Disputed transaction:** TX-0401, EUR 240.00, transaction date 2026-07-20. Customer reports the goods never arrived.\n\n**Reason code:** goods_not_received, which is the applicable code. Window is 90 days from the transaction date. Filing under the wrong code is declined and must be refiled, which may push it past the window. Withdrawal is final, and the same transaction cannot be re-disputed under the same code.\n\n**Eligibility check (as of 2026-09-15):** eligible = true. Reason code, transaction status, window, and compliance hold all passed. Deadline: **2026-10-18**.\n\n**Status:** No dispute has been opened. The agent told the customer that disputes are irreversible and asked for an explicit yes/no confirmation before opening one. The customer has not yet confirmed.\n\n**Commitments made:** The agent said it would run the eligibility check first and would not open the dispute unless the check passed. The check passed. The agent will open the dispute only after explicit customer confirmation.\n\n**Next step:** Await the customer's yes/no. If yes, open a goods_not_received dispute for EUR 240.00 on TX-0401 under ACC-1005, before 2026-10-18.",
+          "summary.replaced_messages": 11
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "60a3bf4b49434452",
+        "started_at": 1794141727.154031,
+        "ended_at": 1794141729.0432577,
+        "duration_ms": 1889.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3132,
+          "gen_ai.usage.output_tokens": 335
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "0097d936bdff42a3",
+        "started_at": 1794141729.0433033,
+        "ended_at": 1794141729.0439818,
+        "duration_ms": 0.7,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "dab711e6910a46e0",
+        "started_at": 1794141729.0440197,
+        "ended_at": 1794141731.2716894,
+        "duration_ms": 2227.7,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3307,
+          "gen_ai.usage.output_tokens": 345
+        },
+        "children": []
+      }
+    ]
+  }
+}

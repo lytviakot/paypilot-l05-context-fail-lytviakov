@@ -1,0 +1,140 @@
+{
+  "case": "CONV-H04",
+  "run": 5,
+  "turn": 3,
+  "user": "OK. What documents do I need to prepare for the dispute?",
+  "answer": "The knowledge base doesn't list documents required to open a goods-not-received dispute. It does say that you may be asked for supporting evidence after filing, and the types it names are:\n\n- **Order confirmation** for the purchase of TX-0401 (240.00 EUR)\n- **Delivery record**, such as tracking information showing the goods were not delivered\n- **Correspondence with the merchant** about the order and the non-delivery\n\nIf you are asked for evidence and do not supply it within **7 calendar days**, the case will be declined. It's worth gathering these now so you can respond quickly.\n\nThe dispute has not been filed yet. The deadline to open it is **2026-10-18**. When you're ready, reply \"yes\" and I will open the goods-not-received dispute for TX-0401.",
+  "trace": {
+    "request_id": "3521e51ab4834c23",
+    "name": "agent.request",
+    "span_id": "87dfbc076a7d4239",
+    "started_at": 1794141969.4608645,
+    "ended_at": 1794141976.341015,
+    "duration_ms": 6880.2,
+    "attributes": {
+      "session.id": "eb6f6736152c",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6858,
+      "gen_ai.usage.total_output_tokens": 491
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "76f0a8b3755a4cce",
+        "started_at": 1794141969.4609807,
+        "ended_at": 1794141973.1702533,
+        "duration_ms": 3709.3,
+        "attributes": {
+          "summary.text": "**Conversation summary: CUS-0004, TX-0401 goods-not-received dispute**\n\n**Customer:** CUS-0004\n**Transaction:** TX-0401, 240.00 EUR (full amount)\n**Issue:** Customer paid for goods that never arrived.\n**Reason code:** goods_not_received (window: 90 days from transaction date)\n**Transaction date:** 2026-07-20\n**As-of date at eligibility check:** 2026-09-15\n**Dispute deadline:** 2026-10-18\n**Eligibility check (check_dispute_eligibility):** eligible = true. All checks passed: reason_code, tx_status, window, compliance_hold.\n\n**Current status:** The dispute has NOT been filed. I asked the customer to reply \"yes\" to confirm before opening it, because filing is irreversible. Awaiting that confirmation.\n\n**Relevant policy:**\n- A dispute filed under the wrong reason code is declined and must be refiled, which may push it past the window. The code must match what actually happened.\n- The customer can withdraw a dispute any time before resolution. Withdrawal is final, and the same transaction cannot be disputed again under the same reason code.\n\n**Commitments made:** None beyond confirming before filing. No refund or outcome has been promised.\n\n**Next step:** On the customer's \"yes,\" open the goods_not_received dispute for TX-0401 (240.00 EUR) before 2026-10-18.",
+          "summary.replaced_messages": 8
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "73196bd1eaae4747",
+        "started_at": 1794141973.1702793,
+        "ended_at": 1794141974.0994356,
+        "duration_ms": 929.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3097,
+          "gen_ai.usage.output_tokens": 124
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "6d32fb3531524bdf",
+        "started_at": 1794141974.0994678,
+        "ended_at": 1794141974.0999503,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "goods not received dispute required documents evidence"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "goods not received dispute required documents evidence",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s5",
+                "doc": "disputes-process.md",
+                "score": 0.6489,
+                "text": "Dispute handling process\n## Evidence requirements\nThe customer may be asked for supporting evidence: an order confirmation, a\ndelivery record, correspondence with the merchant. Failure to supply requested\nevidence within 7 calendar days results in the case being declined."
+              },
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 0.5835,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 0.5303,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              },
+              {
+                "id": "glossary.md#s7",
+                "doc": "glossary.md",
+                "score": 0.4714,
+                "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+              }
+            ]
+          },
+          "retrieval.query": "goods not received dispute required documents evidence",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s5",
+              "score": 0.6489,
+              "text": "Dispute handling process\n## Evidence requirements\nThe customer may be asked for supporting evidence: an order confirmation, a\ndelivery record, correspondence wi"
+            },
+            {
+              "id": "disputes.md#s1",
+              "score": 0.5835,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute o"
+            },
+            {
+              "id": "disputes-process.md#s6",
+              "score": 0.5303,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            },
+            {
+              "id": "glossary.md#s7",
+              "score": 0.4714,
+              "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "f1a9c225ee1c4474",
+        "started_at": 1794141974.100004,
+        "ended_at": 1794141976.3409915,
+        "duration_ms": 2241.0,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3761,
+          "gen_ai.usage.output_tokens": 367
+        },
+        "children": []
+      }
+    ]
+  }
+}

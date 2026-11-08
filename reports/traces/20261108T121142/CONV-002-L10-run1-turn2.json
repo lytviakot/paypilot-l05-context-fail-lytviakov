@@ -1,0 +1,47 @@
+{
+  "case": "CONV-002-L10",
+  "run": 1,
+  "turn": 2,
+  "user": "Can I dispute it?",
+  "answer": "Yes. TX-0401 is eligible for a dispute under goods_not_received, and the deadline is 2026-10-18.\n\nFiling is irreversible, so I need your explicit go-ahead before I open it. If you confirm, I will file a dispute for EUR 240.00 on account ACC-1005 under goods_not_received.",
+  "trace": {
+    "request_id": "358d4f2247c7425c",
+    "name": "agent.request",
+    "span_id": "6abc7770ffd04133",
+    "started_at": 1794140020.3382502,
+    "ended_at": 1794140021.9057562,
+    "duration_ms": 1567.5,
+    "attributes": {
+      "session.id": "6c96b8e04be8",
+      "dialog.step_number": 2,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4058,
+      "gen_ai.usage.total_output_tokens": 246
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "1fd28b40349548f7",
+        "started_at": 1794140020.3385148,
+        "ended_at": 1794140021.9057431,
+        "duration_ms": 1567.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4058,
+          "gen_ai.usage.output_tokens": 246
+        },
+        "children": []
+      }
+    ]
+  }
+}

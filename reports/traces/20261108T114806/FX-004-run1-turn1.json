@@ -1,0 +1,216 @@
+{
+  "case": "FX-004",
+  "run": 1,
+  "turn": 1,
+  "user": "I'm CUS-0007. Convert 2000 EUR to USD. What is the final amount I receive?",
+  "answer": "You would receive **USD 2,154.35** for EUR 2,000.\n\n| Component | Value |\n|---|---|\n| Mid-market rate (EUR→USD) | 1.086957 |\n| Gross converted amount | USD 2,173.91 |\n| Tier 2 spread (0.9%) | −USD 19.57 |\n| **Final amount credited** | **USD 2,154.35** |\n\nThe free monthly conversion allowance for Tier 2 is EUR 1,000. You have not used any of it this month, but this conversion (EUR 2,000) exceeds the allowance. Under Verta's rules, when a conversion crosses the allowance boundary, the spread applies to the whole amount, so the spread is charged on all EUR 2,000 rather than only the part above EUR 1,000.\n\nIf you convert EUR 1,000 or less, the allowance covers it and no spread is charged. Splitting the conversion across months would also change how the allowance applies, but I can only confirm the exact rules in the fee documentation if you need that.",
+  "trace": {
+    "request_id": "5755bf5909fe4c5b",
+    "name": "agent.request",
+    "span_id": "98b857b1dd904c46",
+    "started_at": 1794138486.7119935,
+    "ended_at": 1794138494.065922,
+    "duration_ms": 7353.9,
+    "attributes": {
+      "session.id": "03ac1e25ce21",
+      "dialog.step_number": 1,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0007",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 12341,
+      "gen_ai.usage.total_output_tokens": 1248
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "bb4191571cf44595",
+        "started_at": 1794138486.7169662,
+        "ended_at": 1794138488.3461943,
+        "duration_ms": 1629.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2623,
+          "gen_ai.usage.output_tokens": 190
+        },
+        "children": []
+      },
+      {
+        "name": "tool.get_account",
+        "span_id": "8ef2a9fab753495b",
+        "started_at": 1794138488.3463397,
+        "ended_at": 1794138488.3469238,
+        "duration_ms": 0.6,
+        "attributes": {
+          "tool.name": "get_account",
+          "tool.arguments": {},
+          "tool.result": {
+            "customer": {
+              "id": "CUS-0007",
+              "name": "Greta Lindqvist",
+              "tier": "tier2"
+            },
+            "accounts": [
+              {
+                "id": "ACC-1008",
+                "customer_id": "CUS-0007",
+                "currency": "EUR",
+                "balance": 27600.0,
+                "tier": "tier2",
+                "holder": "Greta Lindqvist"
+              }
+            ]
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "6f4abdca1d234f3d",
+        "started_at": 1794138488.3469663,
+        "ended_at": 1794138489.1796339,
+        "duration_ms": 832.7,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2774,
+          "gen_ai.usage.output_tokens": 131
+        },
+        "children": []
+      },
+      {
+        "name": "tool.quote_fx",
+        "span_id": "c2c1e3b7cb444502",
+        "started_at": 1794138489.179692,
+        "ended_at": 1794138489.1803427,
+        "duration_ms": 0.7,
+        "attributes": {
+          "tool.name": "quote_fx",
+          "tool.arguments": {
+            "customer_id": "CUS-0007",
+            "amount": 2000,
+            "from_currency": "EUR",
+            "to_currency": "USD"
+          },
+          "tool.result": {
+            "from_currency": "EUR",
+            "to_currency": "USD",
+            "amount": 2000,
+            "mid_rate": 1.086957,
+            "tier": "tier2",
+            "spread_pct": 0.9,
+            "allowance_total_eur": 1000,
+            "allowance_used_before_eur": 0.0,
+            "allowance_applied": false,
+            "gross_amount": 2173.913043,
+            "spread_amount": 19.565217,
+            "final_amount": 2154.347826
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "6ef8c28d579246db",
+        "started_at": 1794138489.180382,
+        "ended_at": 1794138491.4723167,
+        "duration_ms": 2291.9,
+        "attributes": {
+          "agent.loop_step": 2,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3055,
+          "gen_ai.usage.output_tokens": 410
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "8a871e6d77ae42c9",
+        "started_at": 1794138491.4723494,
+        "ended_at": 1794138491.4839604,
+        "duration_ms": 11.6,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "free FX allowance tier2 EUR spread applied"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "free FX allowance tier2 EUR spread applied",
+            "fragments": [
+              {
+                "id": "tariffs.md#s2",
+                "doc": "tariffs.md",
+                "score": 1.6641,
+                "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tier | FX spread | Free monthly conversion allowance |\n|---|---|---|\n| Tier 1 | 1.5% | EUR 500 |\n| Tier 2 | 0.9% | EUR 1,000 |\n| Tier 3 | 0.5% | EUR 5,000 |"
+              },
+              {
+                "id": "fx-operations.md#s3",
+                "doc": "fx-operations.md",
+                "score": 1.069,
+                "text": "Currency conversion operations\n## Allowance accounting\nThe free monthly conversion allowance is counted in EUR equivalent and resets on\nthe first calendar day of each month. Allowance consumption is recorded at\nsettlement. A conversion that would cross the allowance boundary has the tier\nspread applied to the entire conversion, not only to the portion above the\nboundary."
+              },
+              {
+                "id": "fx-guide.md#s2",
+                "doc": "fx-guide.md",
+                "score": 0.9045,
+                "text": "Currency conversion guide\n## Reading a quote\nA complete quote lists: mid rate, spread percentage applied, allowance total\nand allowance used before this conversion, gross converted amount, spread\namount, and the final credited amount. The final amount equals the gross\namount minus the spread amount."
+              },
+              {
+                "id": "fx-guide.md#s1",
+                "doc": "fx-guide.md",
+                "score": 0.8489,
+                "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier spread (a percentage of the gross converted amount);\nthe free monthly conversion allowance. If the whole conversion fits within the\ncustomer's remaining monthly allowance, no spread is charged. Once the\nallowance is exhausted, the full tier spread applies to the conversion."
+              }
+            ]
+          },
+          "retrieval.query": "free FX allowance tier2 EUR spread applied",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "tariffs.md#s2",
+              "score": 1.6641,
+              "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tie"
+            },
+            {
+              "id": "fx-operations.md#s3",
+              "score": 1.069,
+              "text": "Currency conversion operations\n## Allowance accounting\nThe free monthly conversion allowance is counted in EUR equivalent and resets on\nthe first calendar day o"
+            },
+            {
+              "id": "fx-guide.md#s2",
+              "score": 0.9045,
+              "text": "Currency conversion guide\n## Reading a quote\nA complete quote lists: mid rate, spread percentage applied, allowance total\nand allowance used before this convers"
+            },
+            {
+              "id": "fx-guide.md#s1",
+              "score": 0.8489,
+              "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier s"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "f5477159543044a7",
+        "started_at": 1794138491.4840348,
+        "ended_at": 1794138494.0658598,
+        "duration_ms": 2581.8,
+        "attributes": {
+          "agent.loop_step": 3,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3889,
+          "gen_ai.usage.output_tokens": 517
+        },
+        "children": []
+      }
+    ]
+  }
+}

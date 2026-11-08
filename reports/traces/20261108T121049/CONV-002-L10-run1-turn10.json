@@ -1,0 +1,44 @@
+{
+  "case": "CONV-002-L10",
+  "run": 1,
+  "turn": 10,
+  "user": "And what is the amount and the filing deadline for it?",
+  "answer": "The dispute would be for **EUR 240.00**, the full amount of TX-0401.\n\nThe filing deadline is **2026-10-18**. The goods-not-received window is 90 days from the transaction date of 2026-07-20, and the eligibility check passed as of 2026-09-15.\n\nI haven't opened the dispute yet. Reply **yes** and I'll file it for EUR 240.00, or **no** and I'll leave it unopened.",
+  "trace": {
+    "request_id": "ef31236543c84421",
+    "name": "agent.request",
+    "span_id": "21ffbadabd8043e0",
+    "started_at": 1794139899.2586977,
+    "ended_at": 1794139900.966171,
+    "duration_ms": 1707.5,
+    "attributes": {
+      "session.id": "84ca6e161c88",
+      "dialog.step_number": 10,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6777,
+      "gen_ai.usage.total_output_tokens": 332
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "5754fae553a74dc6",
+        "started_at": 1794139899.2588124,
+        "ended_at": 1794139900.9661577,
+        "duration_ms": 1707.3,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6777,
+          "gen_ai.usage.output_tokens": 332
+        },
+        "children": []
+      }
+    ]
+  }
+}

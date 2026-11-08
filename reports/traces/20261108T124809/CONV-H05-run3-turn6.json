@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H05",
+  "run": 3,
+  "turn": 6,
+  "user": "Is the deadline the same for every reason code?",
+  "answer": "No, the window depends on the reason code. Each code's window is counted in days from the transaction date:\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| service_not_rendered | 90 |\n| duplicate_charge | 60 |\n| unauthorized_debit | 56 |\n\nFor the two TechMart Online charges, a goods_not_received dispute would run 90 days from the transaction date:\n\n- **TX-0402** (2026-07-14): window closes around 2026-10-12\n- **TX-0401** (2026-07-20): window closes around 2026-10-18\n\nI can't confirm today's date from my tools, so the eligibility check is the authoritative test. A dispute filed after its window closes is refused. Once you tell me which charge is the undelivered purchase, I'll run that check under goods_not_received before anything is filed.",
+  "trace": {
+    "request_id": "3de467d6a5ee4963",
+    "name": "agent.request",
+    "span_id": "27a0869405384977",
+    "started_at": 1794142694.653575,
+    "ended_at": 1794142698.1760526,
+    "duration_ms": 3522.5,
+    "attributes": {
+      "session.id": "e4880b573ce8",
+      "dialog.step_number": 6,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6416,
+      "gen_ai.usage.total_output_tokens": 670
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "0387b0277dca4de4",
+        "started_at": 1794142694.6538243,
+        "ended_at": 1794142698.17604,
+        "duration_ms": 3522.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6416,
+          "gen_ai.usage.output_tokens": 670
+        },
+        "children": []
+      }
+    ]
+  }
+}

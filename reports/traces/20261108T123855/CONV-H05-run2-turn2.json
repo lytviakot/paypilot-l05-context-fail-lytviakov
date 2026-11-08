@@ -1,0 +1,87 @@
+{
+  "case": "CONV-H05",
+  "run": 2,
+  "turn": 2,
+  "user": "Can I dispute it?",
+  "answer": "Yes. TX-0401 (EUR 240.00, dated 2026-07-20) is eligible for a dispute under the `goods_not_received` reason code. The checks passed: reason code, transaction status, and the 90-day window.\n\nThe deadline to open the dispute is **2026-10-18**.\n\nOpening a dispute can't be undone. Do you want me to open it now for the full EUR 240.00?",
+  "trace": {
+    "request_id": "cc717e5846624e71",
+    "name": "agent.request",
+    "span_id": "1a1c718680ca4f03",
+    "started_at": 1794141999.8214393,
+    "ended_at": 1794142003.36565,
+    "duration_ms": 3544.2,
+    "attributes": {
+      "session.id": "5051f540f30a",
+      "dialog.step_number": 2,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5722,
+      "gen_ai.usage.total_output_tokens": 413
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "dfd4ad492ae5433e",
+        "started_at": 1794141999.8215506,
+        "ended_at": 1794142000.9996624,
+        "duration_ms": 1178.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2755,
+          "gen_ai.usage.output_tokens": 163
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_dispute_eligibility",
+        "span_id": "fb9ca64ec2864a3b",
+        "started_at": 1794142000.9997094,
+        "ended_at": 1794142001.0007792,
+        "duration_ms": 1.1,
+        "attributes": {
+          "tool.name": "check_dispute_eligibility",
+          "tool.arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "goods_not_received"
+          },
+          "tool.result": {
+            "eligible": true,
+            "reason_code": "goods_not_received",
+            "window_days": 90,
+            "tx_date": "2026-07-20",
+            "as_of": "2026-09-15",
+            "deadline": "2026-10-18",
+            "checks": {
+              "reason_code": "pass",
+              "tx_status": "pass",
+              "window": "pass",
+              "compliance_hold": "pass"
+            }
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "e90a7bbab1f546b8",
+        "started_at": 1794142001.0008337,
+        "ended_at": 1794142003.3656209,
+        "duration_ms": 2364.8,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2967,
+          "gen_ai.usage.output_tokens": 250
+        },
+        "children": []
+      }
+    ]
+  }
+}

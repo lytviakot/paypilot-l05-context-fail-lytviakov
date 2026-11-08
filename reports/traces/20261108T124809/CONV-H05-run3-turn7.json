@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H05",
+  "run": 3,
+  "turn": 7,
+  "user": "OK, so for my case, what is the deadline?",
+  "answer": "Your deadline depends on which TechMart Online charge is the undelivered purchase. For goods_not_received, the window is 90 days from the transaction date:\n\n- **TX-0402** (EUR 240.00, 2026-07-14): window closes around **2026-10-12**\n- **TX-0401** (EUR 240.00, 2026-07-20): window closes around **2026-10-18**\n\nPlease tell me which charge you're disputing. I'll then run the eligibility check under goods_not_received, which is the authoritative test. If it passes, I'll wait for your explicit confirmation before filing, since filing can't be undone.",
+  "trace": {
+    "request_id": "0c5cb67882df4cae",
+    "name": "agent.request",
+    "span_id": "70944413b7c84a79",
+    "started_at": 1794142698.1812267,
+    "ended_at": 1794142701.185288,
+    "duration_ms": 3004.1,
+    "attributes": {
+      "session.id": "e4880b573ce8",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6731,
+      "gen_ai.usage.total_output_tokens": 641
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "e200d9450c4b4ed0",
+        "started_at": 1794142698.1814566,
+        "ended_at": 1794142701.1852713,
+        "duration_ms": 3003.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6731,
+          "gen_ai.usage.output_tokens": 641
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H01",
+  "run": 1,
+  "turn": 5,
+  "user": "And I still have time to file, right?",
+  "answer": "Yes. The deadline for TX-0401 is **18 October 2026**, and as of today (15 September 2026) you have about 33 days left.\n\nI also need to correct my last message. I said contacting the seller would not affect your right to dispute. I can't confirm that from my tools, so please check with Verta's dispute rules before relying on it. Filing before the deadline is the safe course.\n\nWould you like me to open the dispute for TX-0401 (EUR 240.00, `goods_not_received`) now? Reply yes to confirm.",
+  "trace": {
+    "request_id": "1624d8fb5a23496b",
+    "name": "agent.request",
+    "span_id": "72a7dd66cdba4fac",
+    "started_at": 1794140871.021465,
+    "ended_at": 1794140872.8549864,
+    "duration_ms": 1833.5,
+    "attributes": {
+      "session.id": "d5e293904477",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 3766,
+      "gen_ai.usage.total_output_tokens": 310
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "30201486b4424708",
+        "started_at": 1794140871.0215857,
+        "ended_at": 1794140872.8549705,
+        "duration_ms": 1833.4,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3766,
+          "gen_ai.usage.output_tokens": 310
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H05",
+  "run": 1,
+  "turn": 4,
+  "user": "What happens after I file?",
+  "answer": "Once the dispute is opened, it enters the review process:\n\n1. **Notifications:** You'll receive a notification each time the case changes state. Notifications name the new state but not the internal reason for any decision.\n2. **Provisional credit:** The documents apply provisional credit only to fraud reason codes over EUR 50. `goods_not_received` is not a fraud code, so the documents don't provide for a provisional credit on TX-0401. The EUR 240.00 would be refunded only if the dispute is upheld.\n3. **Review:** The review target is 10 business days for card reason codes and 20 business days for transfer reason codes. Complex cases involving a foreign acquirer may take up to 45 calendar days, and you'd be notified if that applies. The documents don't state which category this case falls under.\n4. **Outcome:** The case is either upheld or declined. The documents don't describe what the customer must do beyond that.\n5. **Withdrawal:** While the case is open or under review, you can withdraw it. Withdrawal is final, and the same transaction cannot be disputed again under the same reason code.\n\nTo proceed, reply \"yes\" and I'll open the `goods_not_received` dispute for the full EUR 240.00 on TX-0401. It must be opened by 2026-10-18.",
+  "trace": {
+    "request_id": "3a4c55385b324079",
+    "name": "agent.request",
+    "span_id": "186ced2f31524934",
+    "started_at": 1794141988.2082052,
+    "ended_at": 1794141991.9339128,
+    "duration_ms": 3725.7,
+    "attributes": {
+      "session.id": "d894f2866d15",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 8540,
+      "gen_ai.usage.total_output_tokens": 663
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "e7827868f99e49b1",
+        "started_at": 1794141988.2083442,
+        "ended_at": 1794141989.2029552,
+        "duration_ms": 994.6,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3974,
+          "gen_ai.usage.output_tokens": 112
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "bfd77ddbbd5b4e52",
+        "started_at": 1794141989.2029898,
+        "ended_at": 1794141989.2037961,
+        "duration_ms": 0.8,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "what happens after a dispute is opened provisional credit outcome notification"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "what happens after a dispute is opened provisional credit outcome notification",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s3",
+                "doc": "disputes-process.md",
+                "score": 2.2418,
+                "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied within two business days. Provisional credit is\nreversed if the dispute is later declined."
+              },
+              {
+                "id": "glossary.md#s7",
+                "doc": "glossary.md",
+                "score": 1.8856,
+                "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+              },
+              {
+                "id": "disputes-process.md#s1",
+                "doc": "disputes-process.md",
+                "score": 1.5714,
+                "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a reason code. The agent verifies eligibility\nbefore the case is opened; an ineligible request is refused with the failing\ncondition named, except where confidentiality rules apply."
+              },
+              {
+                "id": "notifications.md#s2",
+                "doc": "notifications.md",
+                "score": 1.4289,
+                "text": "Notifications\n## Dispute updates\nA dispute generates a notification on every state change. The notification\nnames the state, never the internal reason for a decision."
+              }
+            ]
+          },
+          "retrieval.query": "what happens after a dispute is opened provisional credit outcome notification",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s3",
+              "score": 2.2418,
+              "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied wit"
+            },
+            {
+              "id": "glossary.md#s7",
+              "score": 1.8856,
+              "text": "Glossary\n## Provisional credit\nA temporary refund applied while a dispute is reviewed; reversed if the dispute\nis declined."
+            },
+            {
+              "id": "disputes-process.md#s1",
+              "score": 1.5714,
+              "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a re"
+            },
+            {
+              "id": "notifications.md#s2",
+              "score": 1.4289,
+              "text": "Notifications\n## Dispute updates\nA dispute generates a notification on every state change. The notification\nnames the state, never the internal reason for a dec"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "1db4624a05e7440b",
+        "started_at": 1794141989.2038522,
+        "ended_at": 1794141991.9338965,
+        "duration_ms": 2730.0,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4566,
+          "gen_ai.usage.output_tokens": 551
+        },
+        "children": []
+      }
+    ]
+  }
+}

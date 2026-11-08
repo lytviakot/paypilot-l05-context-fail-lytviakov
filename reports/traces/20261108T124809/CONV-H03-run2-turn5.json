@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H03",
+  "run": 2,
+  "turn": 5,
+  "user": "Fine. Back to that charge, what do I do next?",
+  "answer": "To move forward, I need two things from you:\n\n1. **Confirm the reason.** The dispute is currently prepared under \"service_not_rendered.\" If the goods were never delivered, \"goods_not_received\" is likely the better fit. Tell me which applies, and I will re-check eligibility under that code before anything is filed.\n2. **Give explicit confirmation to file.** Once a dispute is opened it cannot be reversed, so I will not file it until you say so.\n\nAfter you confirm, I'll open the dispute and give you the reference. If you'd rather have a human agent review the case first, I can escalate it instead.",
+  "trace": {
+    "request_id": "a1755080df1248ab",
+    "name": "agent.request",
+    "span_id": "0ab3d2fe33414e35",
+    "started_at": 1794142378.2256823,
+    "ended_at": 1794142382.6338046,
+    "duration_ms": 4408.1,
+    "attributes": {
+      "session.id": "c3c182d78bb1",
+      "dialog.step_number": 5,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4467,
+      "gen_ai.usage.total_output_tokens": 770
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "b811e58d16274933",
+        "started_at": 1794142378.2259576,
+        "ended_at": 1794142382.6337912,
+        "duration_ms": 4407.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4467,
+          "gen_ai.usage.output_tokens": 770
+        },
+        "children": []
+      }
+    ]
+  }
+}

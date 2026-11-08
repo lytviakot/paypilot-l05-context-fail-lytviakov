@@ -1,0 +1,47 @@
+{
+  "case": "CONV-002-L10",
+  "run": 5,
+  "turn": 10,
+  "user": "And what is the amount and the filing deadline for it?",
+  "answer": "Both candidates are EUR 240.00, but the deadline depends on which charge it is:\n\n- **TX-0402**, 14 July 2026, TechMart Online: deadline **12 October 2026**\n- **TX-0401**, 20 July 2026, TechMart Online: deadline **18 October 2026**\n\nWhich one was the order that didn't arrive? Once you tell me, I'll confirm the dispute details with you and file only after your explicit go-ahead.",
+  "trace": {
+    "request_id": "1b2c6d2dc6a94a2b",
+    "name": "agent.request",
+    "span_id": "5691bb820bda433e",
+    "started_at": 1794140200.3928747,
+    "ended_at": 1794140202.308147,
+    "duration_ms": 1915.3,
+    "attributes": {
+      "session.id": "ef044535542e",
+      "dialog.step_number": 10,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6307,
+      "gen_ai.usage.total_output_tokens": 326
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "f90cb6714687436a",
+        "started_at": 1794140200.3932025,
+        "ended_at": 1794140202.3081331,
+        "duration_ms": 1914.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6307,
+          "gen_ai.usage.output_tokens": 326
+        },
+        "children": []
+      }
+    ]
+  }
+}

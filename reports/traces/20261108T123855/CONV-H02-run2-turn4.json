@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H02",
+  "run": 2,
+  "turn": 4,
+  "user": "And the FX spread if I pay in USD?",
+  "answer": "For a Tier 1 customer, the spread on EUR-to-USD conversions is **1.5%** over the mid-market rate. The spread applies only after the monthly free conversion allowance is used up. That allowance is **EUR 500** per calendar month, counted in EUR equivalent and reset on the first day of each month.\n\nTwo points to keep in mind:\n\n- **Whole-conversion rule:** If a conversion crosses the allowance boundary, the spread applies to the entire amount, not just the part above the limit.\n- **Your remaining allowance:** I can't see how much of this month's EUR 500 allowance you've used. The monthly figure from the limits check (EUR 35.50 spent) is a transfer limit, so I can't assume it reflects conversions.\n\nIf you tell me the amount you want to convert, I can run a full quote showing the mid rate, the spread, the allowance applied, and the final USD amount. Note that card payments carry a separate percentage fee on the EUR equivalent, with no flat fee.\n\nThe dispute on TX-0401 (EUR 240.00, goods not received) is still waiting for your yes or no.",
+  "trace": {
+    "request_id": "a9f9ba52a4c74385",
+    "name": "agent.request",
+    "span_id": "f30eff84e9a24fa0",
+    "started_at": 1794141647.0263262,
+    "ended_at": 1794141651.014148,
+    "duration_ms": 3987.8,
+    "attributes": {
+      "session.id": "9699481c7948",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7938,
+      "gen_ai.usage.total_output_tokens": 719
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "6401e599c42d43bb",
+        "started_at": 1794141647.026493,
+        "ended_at": 1794141648.27685,
+        "duration_ms": 1250.4,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3571,
+          "gen_ai.usage.output_tokens": 190
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "23943d136c394c5f",
+        "started_at": 1794141648.276904,
+        "ended_at": 1794141648.2775867,
+        "duration_ms": 0.7,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "FX spread tier1 EUR to USD conversion fee free allowance"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "FX spread tier1 EUR to USD conversion fee free allowance",
+            "fragments": [
+              {
+                "id": "tariffs.md#s2",
+                "doc": "tariffs.md",
+                "score": 1.8028,
+                "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tier | FX spread | Free monthly conversion allowance |\n|---|---|---|\n| Tier 1 | 1.5% | EUR 500 |\n| Tier 2 | 0.9% | EUR 1,000 |\n| Tier 3 | 0.5% | EUR 5,000 |"
+              },
+              {
+                "id": "fx-operations.md#s3",
+                "doc": "fx-operations.md",
+                "score": 1.7372,
+                "text": "Currency conversion operations\n## Allowance accounting\nThe free monthly conversion allowance is counted in EUR equivalent and resets on\nthe first calendar day of each month. Allowance consumption is recorded at\nsettlement. A conversion that would cross the allowance boundary has the tier\nspread applied to the entire conversion, not only to the portion above the\nboundary."
+              },
+              {
+                "id": "fx-guide.md#s1",
+                "doc": "fx-guide.md",
+                "score": 1.6977,
+                "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier spread (a percentage of the gross converted amount);\nthe free monthly conversion allowance. If the whole conversion fits within the\ncustomer's remaining monthly allowance, no spread is charged. Once the\nallowance is exhausted, the full tier spread applies to the conversion."
+              },
+              {
+                "id": "fees-detail.md#s2",
+                "doc": "fees-detail.md",
+                "score": 1.1471,
+                "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+              }
+            ]
+          },
+          "retrieval.query": "FX spread tier1 EUR to USD conversion fee free allowance",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "tariffs.md#s2",
+              "score": 1.8028,
+              "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tie"
+            },
+            {
+              "id": "fx-operations.md#s3",
+              "score": 1.7372,
+              "text": "Currency conversion operations\n## Allowance accounting\nThe free monthly conversion allowance is counted in EUR equivalent and resets on\nthe first calendar day o"
+            },
+            {
+              "id": "fx-guide.md#s1",
+              "score": 1.6977,
+              "text": "Currency conversion guide\n## How a conversion is priced\nA conversion quote has these components, in order: the mid-market rate for the\ncurrency pair; the tier s"
+            },
+            {
+              "id": "fees-detail.md#s2",
+              "score": 1.1471,
+              "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "540d9daa5e134d7a",
+        "started_at": 1794141648.2776663,
+        "ended_at": 1794141651.0141325,
+        "duration_ms": 2736.5,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4367,
+          "gen_ai.usage.output_tokens": 529
+        },
+        "children": []
+      }
+    ]
+  }
+}

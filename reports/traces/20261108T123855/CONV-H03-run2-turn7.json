@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 2,
+  "turn": 7,
+  "user": "Unrelated question: what is the fee for an international transfer?",
+  "answer": "For an international transfer, the Verta tariff schedule lists a SWIFT transfer fee of **EUR 15.00 flat plus 0.3%** of the EUR equivalent of the amount.\n\nFor example, a EUR 1,000.00 SWIFT transfer would cost EUR 15.00 + EUR 3.00 (0.3%) = **EUR 18.00** in fees. If the transfer involves a currency conversion, the FX spread (1.5% for Tier 1, after your EUR 500 monthly free allowance) would also apply. I can run a full quote for a specific amount if you tell me the amount and currencies.\n\nBack to TX-0401: I still need your \"yes\" to file the dispute, and your answer about TX-0402.",
+  "trace": {
+    "request_id": "603df7ec55a3498e",
+    "name": "agent.request",
+    "span_id": "65518f020f504269",
+    "started_at": 1794141802.4678934,
+    "ended_at": 1794141804.7872264,
+    "duration_ms": 2319.3,
+    "attributes": {
+      "session.id": "783781e4b5cf",
+      "dialog.step_number": 7,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5142,
+      "gen_ai.usage.total_output_tokens": 430
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "040cecc5820742f3",
+        "started_at": 1794141802.4681005,
+        "ended_at": 1794141804.787209,
+        "duration_ms": 2319.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5142,
+          "gen_ai.usage.output_tokens": 430
+        },
+        "children": []
+      }
+    ]
+  }
+}

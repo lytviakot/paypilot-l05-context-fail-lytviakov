@@ -1,0 +1,140 @@
+{
+  "case": "MEM-001-RC",
+  "run": 1,
+  "turn": 3,
+  "user": "And what are the typical timelines?",
+  "answer": "For your dispute on TX-0401 (dispute ID 1, duplicate_charge, EUR 240.00):\n\n- **Review target:** 10 business days, because duplicate_charge is a card reason code.\n- **Complex cases:** If the transaction involves a foreign acquirer, review can take up to 45 calendar days. You would be notified if that happens.\n- **Provisional credit:** Provisional credits are applied only to fraud-code disputes over EUR 50. This does not apply to a duplicate_charge dispute.\n\nThe case moves through these stages: open, under review, provisional credit, then resolved (upheld or declined). Only open or under-review cases can be withdrawn, and a withdrawal is final.\n\nI can't give you an exact resolution date for this case. If you want a status update on dispute 1, I can escalate it to a human agent.",
+  "trace": {
+    "request_id": "49e05391a463410d",
+    "name": "agent.request",
+    "span_id": "ee0193e65ea34745",
+    "started_at": 1794138502.5505345,
+    "ended_at": 1794138510.647702,
+    "duration_ms": 8097.2,
+    "attributes": {
+      "session.id": "dc135f550773",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6998,
+      "gen_ai.usage.total_output_tokens": 709
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "3f2d6a5d6b644fc2",
+        "started_at": 1794138502.550628,
+        "ended_at": 1794138506.5984051,
+        "duration_ms": 4047.8,
+        "attributes": {
+          "summary.text": "**Conversation summary: CUS-0004 (Danylo Kovalenko, tier1)**\n\n**Account**\n- Customer ID: CUS-0004\n- Account ID: ACC-1005 (EUR), balance 1310.20 EUR\n\n**Dispute opened**\n- Dispute ID: 1\n- Status: open\n- Transaction: TX-0401, dated 2026-07-20\n- Amount: 240.00 EUR\n- Reason code: duplicate_charge\n- Eligibility check (as of 2026-09-15): eligible. Reason code, transaction status, window, and compliance hold checks all passed.\n- Dispute window: 60 days; deadline 2026-09-18\n\n**Process information given to customer (from disputes-process.md, KB index kb_clean)**\n- Case states: open → under_review → provisional_credit → resolved_upheld or resolved_declined. Only open and under_review cases can be withdrawn.\n- Review target: 10 business days for card reason codes (duplicate_charge is one), 20 business days for transfer reason codes. Complex cases with a foreign acquirer may take up to 45 calendar days, and the customer is notified if so.\n- Withdrawal is final. The same transaction cannot be disputed again under the same reason code.\n\n**Commitments made**\n- No specific resolution timeline for dispute 1 beyond the general targets above.\n- Offered to escalate to a human agent if the customer wants a status update on dispute 1. Not yet requested.\n\n**Open items**\n- None outstanding. Customer has not asked to withdraw the dispute or requested an update.",
+          "summary.replaced_messages": 12
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "32296d320fd147b5",
+        "started_at": 1794138506.5984685,
+        "ended_at": 1794138508.5619736,
+        "duration_ms": 1963.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3136,
+          "gen_ai.usage.output_tokens": 328
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "d35188820e784f29",
+        "started_at": 1794138508.5620112,
+        "ended_at": 1794138508.5625298,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute review timeline business days card reason codes duplicate_charge"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute review timeline business days card reason codes duplicate_charge",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s4",
+                "doc": "disputes-process.md",
+                "score": 1.9825,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+              },
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 1.4586,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "complaints.md#s3",
+                "doc": "complaints.md",
+                "score": 0.8575,
+                "text": "Complaints\n## Acknowledgement and resolution\nA complaint is acknowledged within one business day and resolved within 15\nbusiness days. Complex complaints may take up to 35 business days, with the\ncustomer informed of the delay."
+              },
+              {
+                "id": "disputes-process.md#s3",
+                "doc": "disputes-process.md",
+                "score": 0.8006,
+                "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied within two business days. Provisional credit is\nreversed if the dispute is later declined."
+              }
+            ]
+          },
+          "retrieval.query": "dispute review timeline business days card reason codes duplicate_charge",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s4",
+              "score": 1.9825,
+              "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex"
+            },
+            {
+              "id": "disputes.md#s1",
+              "score": 1.4586,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute o"
+            },
+            {
+              "id": "complaints.md#s3",
+              "score": 0.8575,
+              "text": "Complaints\n## Acknowledgement and resolution\nA complaint is acknowledged within one business day and resolved within 15\nbusiness days. Complex complaints may ta"
+            },
+            {
+              "id": "disputes-process.md#s3",
+              "score": 0.8006,
+              "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied wit"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "1dc62544ecaa4d4f",
+        "started_at": 1794138508.562583,
+        "ended_at": 1794138510.6476886,
+        "duration_ms": 2085.1,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3862,
+          "gen_ai.usage.output_tokens": 381
+        },
+        "children": []
+      }
+    ]
+  }
+}

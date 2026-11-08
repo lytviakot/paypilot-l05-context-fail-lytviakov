@@ -1,0 +1,47 @@
+{
+  "case": "CONV-002-L10",
+  "run": 4,
+  "turn": 7,
+  "user": "And I still have time to file, right?",
+  "answer": "Yes. As of today, 2026-09-15, you have time for both charges:\n\n- **TX-0402** (EUR 240.00, 2026-07-14): deadline **2026-10-12**\n- **TX-0401** (EUR 240.00, 2026-07-20): deadline **2026-10-18**\n\nFiling is still on hold. Please tell me which transaction is for the order that never arrived, and confirm that you want me to open a \"goods not received\" dispute for EUR 240.00.",
+  "trace": {
+    "request_id": "2b0249c084ef41b4",
+    "name": "agent.request",
+    "span_id": "9e239dc8d97f44fa",
+    "started_at": 1794140160.1448867,
+    "ended_at": 1794140161.7415414,
+    "duration_ms": 1596.7,
+    "attributes": {
+      "session.id": "3a6e70550e47",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6043,
+      "gen_ai.usage.total_output_tokens": 278
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "82970754c7d54642",
+        "started_at": 1794140160.1451347,
+        "ended_at": 1794140161.7415268,
+        "duration_ms": 1596.4,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6043,
+          "gen_ai.usage.output_tokens": 278
+        },
+        "children": []
+      }
+    ]
+  }
+}

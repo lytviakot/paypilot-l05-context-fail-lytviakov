@@ -1,0 +1,44 @@
+{
+  "case": "CONV-002",
+  "run": 1,
+  "turn": 5,
+  "user": "Fine. Back to that charge — what do I do next?",
+  "answer": "To open the dispute, I need your explicit go-ahead first, because filing is irreversible. Here is what I would file:\n\n- **Transaction:** TX-0401, EUR 240.00, dated 2026-07-20\n- **Reason:** Goods not received\n- **Eligibility:** Checked today. The dispute is eligible and the deadline is 2026-10-18.\n\nOnce you confirm, I will open the dispute. Please reply \"yes\" to proceed, or tell me if you'd like to change anything first, such as the amount or the reason.",
+  "trace": {
+    "request_id": "eea36886a8834fbb",
+    "name": "agent.request",
+    "span_id": "3757f8c1ad544393",
+    "started_at": 1794138614.490779,
+    "ended_at": 1794138616.5573146,
+    "duration_ms": 2066.5,
+    "attributes": {
+      "session.id": "7cbc14a40c92",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4601,
+      "gen_ai.usage.total_output_tokens": 406
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "0b03ebc126ee479d",
+        "started_at": 1794138614.4910152,
+        "ended_at": 1794138616.557299,
+        "duration_ms": 2066.3,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4601,
+          "gen_ai.usage.output_tokens": 406
+        },
+        "children": []
+      }
+    ]
+  }
+}

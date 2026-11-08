@@ -1,0 +1,47 @@
+{
+  "case": "CONV-002",
+  "run": 4,
+  "turn": 6,
+  "user": "240 euro, as I said at the start.",
+  "answer": "Both TechMart Online payments are EUR 240.00, so the amount alone doesn't identify the charge. I also need to correct my earlier message: I said the dispute was eligible, but I can't tie that check to a specific transaction in this conversation, so I shouldn't have said it. Nothing has been filed.\n\nPlease tell me which payment is the one for goods that never arrived:\n\n- **TX-0402**, 14 July 2026\n- **TX-0401**, 20 July 2026\n\nOnce you confirm, I'll run a fresh eligibility check for that transaction under the goods-not-received reason. If it passes, I'll show you the details and open the dispute only after you explicitly confirm.",
+  "trace": {
+    "request_id": "1363d5e8c6c6478f",
+    "name": "agent.request",
+    "span_id": "cff7cd12e78a4c60",
+    "started_at": 1794138861.1460693,
+    "ended_at": 1794138864.5985286,
+    "duration_ms": 3452.5,
+    "attributes": {
+      "session.id": "edaaf4198083",
+      "dialog.step_number": 6,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4103,
+      "gen_ai.usage.total_output_tokens": 576
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "60db211a41354bca",
+        "started_at": 1794138861.1463099,
+        "ended_at": 1794138864.5985153,
+        "duration_ms": 3452.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4103,
+          "gen_ai.usage.output_tokens": 576
+        },
+        "children": []
+      }
+    ]
+  }
+}

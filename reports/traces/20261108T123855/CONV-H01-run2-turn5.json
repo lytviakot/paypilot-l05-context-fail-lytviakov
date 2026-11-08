@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H01",
+  "run": 2,
+  "turn": 5,
+  "user": "And I still have time to file, right?",
+  "answer": "Yes. As of today, 15 September 2026, the deadline is **18 October 2026**, so you have 33 days left.\n\nFiling is your decision. Reply **yes** and I'll open the goods_not_received dispute for 240.00 EUR on TX-0401.",
+  "trace": {
+    "request_id": "b4ba1521437a4415",
+    "name": "agent.request",
+    "span_id": "506cdbae463d435e",
+    "started_at": 1794141562.1043508,
+    "ended_at": 1794141563.6617732,
+    "duration_ms": 1557.4,
+    "attributes": {
+      "session.id": "e0697ba16dc7",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5210,
+      "gen_ai.usage.total_output_tokens": 190
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "795bc1fdf4df43c4",
+        "started_at": 1794141562.1045508,
+        "ended_at": 1794141563.6617525,
+        "duration_ms": 1557.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5210,
+          "gen_ai.usage.output_tokens": 190
+        },
+        "children": []
+      }
+    ]
+  }
+}

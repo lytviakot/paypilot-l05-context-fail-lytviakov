@@ -1,0 +1,79 @@
+{
+  "case": "CONV-H02",
+  "run": 4,
+  "turn": 6,
+  "user": "240 euro, as I said at the start.",
+  "answer": "The dispute is open.\n\n- **Dispute ID:** 1\n- **Transaction:** TX-0401, EUR 240.00, dated 2026-07-20\n- **Reason:** Goods not received\n- **Status:** Open\n\nYou can withdraw it until it is resolved. A withdrawal is final, and this transaction can't be disputed again under the same reason code. If the goods arrive or the merchant resolves the issue, let us know.",
+  "trace": {
+    "request_id": "2b5bdea776184748",
+    "name": "agent.request",
+    "span_id": "33e5f0a42b70416f",
+    "started_at": 1794141710.7422214,
+    "ended_at": 1794141713.713329,
+    "duration_ms": 2971.1,
+    "attributes": {
+      "session.id": "f58670a8494d",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 10287,
+      "gen_ai.usage.total_output_tokens": 435
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "c5c23315bc8f4db8",
+        "started_at": 1794141710.7455397,
+        "ended_at": 1794141712.6335366,
+        "duration_ms": 1888.0,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5065,
+          "gen_ai.usage.output_tokens": 293
+        },
+        "children": []
+      },
+      {
+        "name": "tool.create_dispute",
+        "span_id": "af12147292854995",
+        "started_at": 1794141712.6335943,
+        "ended_at": 1794141712.6512115,
+        "duration_ms": 17.6,
+        "attributes": {
+          "tool.name": "create_dispute",
+          "tool.arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "goods_not_received",
+            "amount": 240.0,
+            "currency": "EUR"
+          },
+          "tool.result": {
+            "dispute_id": 1,
+            "status": "open"
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "b2f4fffe84a14afa",
+        "started_at": 1794141712.6512945,
+        "ended_at": 1794141713.713308,
+        "duration_ms": 1062.0,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5222,
+          "gen_ai.usage.output_tokens": 142
+        },
+        "children": []
+      }
+    ]
+  }
+}

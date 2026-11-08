@@ -1,0 +1,119 @@
+{
+  "case": "CONV-002-L10",
+  "run": 5,
+  "turn": 7,
+  "user": "And I still have time to file, right?",
+  "answer": "Yes, you still have time. Both TechMart Online charges are eligible for a goods-not-received dispute as of today, 15 September 2026:\n\n- **TX-0402**, 14 July 2026, EUR 240.00: deadline **12 October 2026**\n- **TX-0401**, 20 July 2026, EUR 240.00: deadline **18 October 2026**\n\nI still need to know which order didn't arrive. Once you tell me, I'll summarise the dispute for your confirmation, and I won't file it until you explicitly confirm, because filing can't be undone.",
+  "trace": {
+    "request_id": "86608dbd916d4faf",
+    "name": "agent.request",
+    "span_id": "4c75887316d348f1",
+    "started_at": 1794140192.0397325,
+    "ended_at": 1794140195.443427,
+    "duration_ms": 3403.7,
+    "attributes": {
+      "session.id": "ef044535542e",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 10875,
+      "gen_ai.usage.total_output_tokens": 617
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "79194316745a4adc",
+        "started_at": 1794140192.0399826,
+        "ended_at": 1794140193.8039334,
+        "duration_ms": 1764.0,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5197,
+          "gen_ai.usage.output_tokens": 330
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_dispute_eligibility",
+        "span_id": "e85aeb2ad92342f3",
+        "started_at": 1794140193.803964,
+        "ended_at": 1794140193.8045819,
+        "duration_ms": 0.6,
+        "attributes": {
+          "tool.name": "check_dispute_eligibility",
+          "tool.arguments": {
+            "transaction_id": "TX-0401",
+            "reason_code": "goods_not_received"
+          },
+          "tool.result": {
+            "eligible": true,
+            "reason_code": "goods_not_received",
+            "window_days": 90,
+            "tx_date": "2026-07-20",
+            "as_of": "2026-09-15",
+            "deadline": "2026-10-18",
+            "checks": {
+              "reason_code": "pass",
+              "tx_status": "pass",
+              "window": "pass",
+              "compliance_hold": "pass"
+            }
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_dispute_eligibility",
+        "span_id": "e95ea13ba192432d",
+        "started_at": 1794140193.8046162,
+        "ended_at": 1794140193.8050013,
+        "duration_ms": 0.4,
+        "attributes": {
+          "tool.name": "check_dispute_eligibility",
+          "tool.arguments": {
+            "transaction_id": "TX-0402",
+            "reason_code": "goods_not_received"
+          },
+          "tool.result": {
+            "eligible": true,
+            "reason_code": "goods_not_received",
+            "window_days": 90,
+            "tx_date": "2026-07-14",
+            "as_of": "2026-09-15",
+            "deadline": "2026-10-12",
+            "checks": {
+              "reason_code": "pass",
+              "tx_status": "pass",
+              "window": "pass",
+              "compliance_hold": "pass"
+            }
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "6b6c1bade5414229",
+        "started_at": 1794140193.805024,
+        "ended_at": 1794140195.4434137,
+        "duration_ms": 1638.4,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5678,
+          "gen_ai.usage.output_tokens": 287
+        },
+        "children": []
+      }
+    ]
+  }
+}

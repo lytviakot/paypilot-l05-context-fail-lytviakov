@@ -1,0 +1,140 @@
+{
+  "case": "CONV-H05",
+  "run": 1,
+  "turn": 3,
+  "user": "How does the review process work and how long does it take?",
+  "answer": "Here is how the dispute review works, based on our dispute documentation:\n\n**Case stages:** A dispute moves through open, under_review, provisional_credit, and then resolved_upheld or resolved_declined. You can withdraw a dispute only while it is open or under review.\n\n**Review timelines (targets):**\n- **10 business days** for card reason codes\n- **20 business days** for transfer reason codes\n- **Up to 45 calendar days** for complex cases involving a foreign acquirer. You would be notified if your case falls into this category.\n\nThe documentation does not say which group goods_not_received falls under. I can't confirm the exact timeline for your case until that is checked.\n\n**Important points for your dispute on TX-0401 (240.00 EUR):**\n- The dispute has not been opened yet. Eligibility was confirmed on 2026-09-15, and the deadline to file is **2026-10-18**.\n- Once filed, it cannot be reversed. You can withdraw it only before it is resolved, and a withdrawal is final. The same transaction cannot then be disputed again under the same reason code.\n\nWould you like me to open the dispute for TX-0401 now under goods_not_received for the full 240.00 EUR?",
+  "trace": {
+    "request_id": "f2a1d4d1a3b0495d",
+    "name": "agent.request",
+    "span_id": "24e22bb733e748ab",
+    "started_at": 1794140948.1740305,
+    "ended_at": 1794140955.9570105,
+    "duration_ms": 7783.0,
+    "attributes": {
+      "session.id": "065d06a4bf06",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6777,
+      "gen_ai.usage.total_output_tokens": 781
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "2f3e7c8404be44c8",
+        "started_at": 1794140948.174138,
+        "ended_at": 1794140951.3903158,
+        "duration_ms": 3216.2,
+        "attributes": {
+          "summary.text": "**Conversation summary (CUS-0004)**\n\n- **Customer:** CUS-0004\n- **Transaction:** TX-0401, 240.00 EUR, dated 2026-07-20\n- **Issue:** Customer reports the goods were never received.\n- **Reason code:** goods_not_received, which applies to paid purchases that were never delivered. The code must match what happened, because a dispute filed under the wrong code is declined and must be refiled, which may push it past its window.\n- **Window:** 90 days from the transaction date.\n- **Eligibility check (run 2026-09-15):** Eligible. Reason code, transaction status, window, and compliance hold all passed.\n- **Deadline:** 2026-10-18.\n- **Status:** The dispute has **not** been opened. The agent asked the customer whether to open it now for the full 240.00 EUR under goods_not_received. No confirmation has been received yet.\n- **Notes:** Disputes cannot be reversed once filed. A customer may withdraw a dispute before resolution, but withdrawal is final, and the same transaction cannot be disputed again under the same reason code.\n- **Commitments made:** None beyond offering to open the dispute on the customer's confirmation.\n\n**Next step:** Await the customer's confirmation, then open the dispute for TX-0401 (240.00 EUR, goods_not_received) before 2026-10-18.",
+          "summary.replaced_messages": 8
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "ab422e61852d4457",
+        "started_at": 1794140951.390344,
+        "ended_at": 1794140952.717493,
+        "duration_ms": 1327.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3072,
+          "gen_ai.usage.output_tokens": 191
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "565204d3bdd34bf4",
+        "started_at": 1794140952.717549,
+        "ended_at": 1794140952.7179759,
+        "duration_ms": 0.4,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute review process timeline how long"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute review process timeline how long",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 0.7071,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              },
+              {
+                "id": "disputes-process.md#s4",
+                "doc": "disputes-process.md",
+                "score": 0.61,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+              },
+              {
+                "id": "disputes-process.md#s2",
+                "doc": "disputes-process.md",
+                "score": 0.6,
+                "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under_review cases can be\nwithdrawn by the customer."
+              },
+              {
+                "id": "disputes-process.md#s1",
+                "doc": "disputes-process.md",
+                "score": 0.5714,
+                "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a reason code. The agent verifies eligibility\nbefore the case is opened; an ineligible request is refused with the failing\ncondition named, except where confidentiality rules apply."
+              }
+            ]
+          },
+          "retrieval.query": "dispute review process timeline how long",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s6",
+              "score": 0.7071,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            },
+            {
+              "id": "disputes-process.md#s4",
+              "score": 0.61,
+              "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex"
+            },
+            {
+              "id": "disputes-process.md#s2",
+              "score": 0.6,
+              "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under"
+            },
+            {
+              "id": "disputes-process.md#s1",
+              "score": 0.5714,
+              "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a re"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "b17b8d7100a24d51",
+        "started_at": 1794140952.718025,
+        "ended_at": 1794140955.9569798,
+        "duration_ms": 3239.0,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3705,
+          "gen_ai.usage.output_tokens": 590
+        },
+        "children": []
+      }
+    ]
+  }
+}

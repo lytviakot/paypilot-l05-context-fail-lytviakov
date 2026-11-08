@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H03",
+  "run": 5,
+  "turn": 8,
+  "user": "OK, back to the dispute. Remind me which reason code we are talking about.",
+  "answer": "The reason code is **goods_not_received**, the goods-not-received code.\n\nThe transaction still needs to be identified. The two TechMart Online payments of EUR 240.00 are TX-0401 (20 Jul 2026) and TX-0402 (14 Jul 2026). Once you tell me which one is for the goods that never arrived, I'll run the eligibility check for that transaction under this code. I won't open the dispute until you confirm.",
+  "trace": {
+    "request_id": "c10eb7aafe0a4f29",
+    "name": "agent.request",
+    "span_id": "8d87fcd60ccf40e7",
+    "started_at": 1794142496.4688823,
+    "ended_at": 1794142498.4388616,
+    "duration_ms": 1970.0,
+    "attributes": {
+      "session.id": "0a67c8b0fa83",
+      "dialog.step_number": 8,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5654,
+      "gen_ai.usage.total_output_tokens": 332
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "6e3aa38ac3114df3",
+        "started_at": 1794142496.4693704,
+        "ended_at": 1794142498.4388402,
+        "duration_ms": 1969.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5654,
+          "gen_ai.usage.output_tokens": 332
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H02",
+  "run": 5,
+  "turn": 5,
+  "user": "Fine. Back to that charge, what do I do next?",
+  "answer": "Your charge is **TX-0401, EUR 240.00**, dated 2026-07-20, on account ACC-1005. You've told us the goods never arrived.\n\nI've checked that a dispute can be opened under the **goods not received** reason code. It is eligible as of today, 2026-09-15, and must be filed by **2026-10-18**.\n\nI have not opened it yet. Please confirm:\n\n- **Do you want me to open a goods-not-received dispute for EUR 240.00 on TX-0401?** Reply **yes** or **no**.\n\nPlease note:\n- Once opened, a dispute cannot be undone. If it is withdrawn, the decision is final, and the same transaction cannot be disputed again under the same code.\n- If you'd rather not proceed, say no and nothing will be filed. You can still come back before the deadline.",
+  "trace": {
+    "request_id": "fe15f98b746147ac",
+    "name": "agent.request",
+    "span_id": "fc0f59b017aa4bbe",
+    "started_at": 1794141735.0613565,
+    "ended_at": 1794141738.4425278,
+    "duration_ms": 3381.2,
+    "attributes": {
+      "session.id": "e8630b8d080d",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4592,
+      "gen_ai.usage.total_output_tokens": 636
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "5bcc58c53b254271",
+        "started_at": 1794141735.0615308,
+        "ended_at": 1794141738.4425063,
+        "duration_ms": 3381.0,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4592,
+          "gen_ai.usage.output_tokens": 636
+        },
+        "children": []
+      }
+    ]
+  }
+}

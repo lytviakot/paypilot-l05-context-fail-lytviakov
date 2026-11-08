@@ -1,0 +1,47 @@
+{
+  "case": "CONV-002-L10",
+  "run": 1,
+  "turn": 6,
+  "user": "240 euro, as I said at the start.",
+  "answer": "I have to correct the record here. My notes from the earlier conversation show EUR 180.00, not EUR 240.00, so I can't confirm the amount from the start of our chat. Your account does show two EUR 240.00 card charges from TechMart Online:\n\n- **TX-0401**, 2026-07-20, EUR 240.00, settled\n- **TX-0402**, 2026-07-14, EUR 240.00, settled\n\nWhich one is the charge for goods that never arrived? Once you tell me, I'll check whether it's eligible under the service_not_rendered reason code. I won't open a dispute until you've confirmed the transaction and told me to proceed.",
+  "trace": {
+    "request_id": "f41251da4cd44051",
+    "name": "agent.request",
+    "span_id": "48aa5bcb7a4c4728",
+    "started_at": 1794140037.0422122,
+    "ended_at": 1794140040.3814185,
+    "duration_ms": 3339.2,
+    "attributes": {
+      "session.id": "6c96b8e04be8",
+      "dialog.step_number": 6,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4796,
+      "gen_ai.usage.total_output_tokens": 610
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "ad30b5289f714c4b",
+        "started_at": 1794140037.0446796,
+        "ended_at": 1794140040.381393,
+        "duration_ms": 3336.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4796,
+          "gen_ai.usage.output_tokens": 610
+        },
+        "children": []
+      }
+    ]
+  }
+}

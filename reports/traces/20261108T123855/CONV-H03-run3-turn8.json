@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 3,
+  "turn": 8,
+  "user": "OK, back to the dispute. Remind me which reason code we are talking about.",
+  "answer": "The reason code is **goods_not_received**. It covers the claim that the goods were never received for TX-0401, EUR 240.00 dated 2026-07-20.\n\nThe dispute is not open yet. Reply **\"yes\"** and I will file it for the full EUR 240.00 under goods_not_received.",
+  "trace": {
+    "request_id": "710239ba041c46aa",
+    "name": "agent.request",
+    "span_id": "72864ebbff754ca6",
+    "started_at": 1794141831.4646327,
+    "ended_at": 1794141832.5165868,
+    "duration_ms": 1052.0,
+    "attributes": {
+      "session.id": "e22605cee1eb",
+      "dialog.step_number": 8,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5648,
+      "gen_ai.usage.total_output_tokens": 98
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "c9fb01fc07e74179",
+        "started_at": 1794141831.4647863,
+        "ended_at": 1794141832.51657,
+        "duration_ms": 1051.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5648,
+          "gen_ai.usage.output_tokens": 98
+        },
+        "children": []
+      }
+    ]
+  }
+}

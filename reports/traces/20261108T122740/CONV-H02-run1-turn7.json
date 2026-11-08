@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H02",
+  "run": 1,
+  "turn": 7,
+  "user": "And I still have time to file, right?",
+  "answer": "Yes. The eligibility check on 2026-09-15 found the deadline is **2026-10-18**, so you have about a month. The dispute is still not filed, and I'll only file it after you reply \"yes.\"",
+  "trace": {
+    "request_id": "c387310016c54b6d",
+    "name": "agent.request",
+    "span_id": "53c7d3ace0a44099",
+    "started_at": 1794140895.3840334,
+    "ended_at": 1794140896.6675527,
+    "duration_ms": 1283.5,
+    "attributes": {
+      "session.id": "37c4f250d62d",
+      "dialog.step_number": 7,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5083,
+      "gen_ai.usage.total_output_tokens": 155
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "846af69b7ff34572",
+        "started_at": 1794140895.3844376,
+        "ended_at": 1794140896.6675277,
+        "duration_ms": 1283.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5083,
+          "gen_ai.usage.output_tokens": 155
+        },
+        "children": []
+      }
+    ]
+  }
+}

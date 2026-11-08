@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H05",
+  "run": 3,
+  "turn": 6,
+  "user": "Is the deadline the same for every reason code?",
+  "answer": "No, the deadline depends on the reason code. Each code has its own window, counted in days from the transaction date:\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| service_not_rendered | 90 |\n| duplicate_charge | 60 |\n| unauthorized_debit | 56 |\n\nFor TX-0401 (transaction date 2026-07-20), goods_not_received has a 90-day window, which gives the deadline of 2026-10-18 I gave you earlier.\n\nPlease also note that the reason code must match what actually happened. A dispute filed under the wrong code is declined and must be refiled, which may push it past the window. If you confirm the goods never arrived, I will open the goods_not_received dispute for EUR 240.00.",
+  "trace": {
+    "request_id": "c02aecf222c54a8a",
+    "name": "agent.request",
+    "span_id": "9ea880e4897a4d1b",
+    "started_at": 1794142037.9330254,
+    "ended_at": 1794142040.6151776,
+    "duration_ms": 2682.2,
+    "attributes": {
+      "session.id": "fd456d7125cc",
+      "dialog.step_number": 6,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 10863,
+      "gen_ai.usage.total_output_tokens": 457
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "015fffe66dcb4738",
+        "started_at": 1794142037.933131,
+        "ended_at": 1794142039.1598384,
+        "duration_ms": 1226.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5078,
+          "gen_ai.usage.output_tokens": 189
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "047288d772df4456",
+        "started_at": 1794142039.15987,
+        "ended_at": 1794142039.1605318,
+        "duration_ms": 0.7,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute window days by reason code duplicate_charge fraud goods_not_received service_not_rendered unauthorized_debit"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute window days by reason code duplicate_charge fraud goods_not_received service_not_rendered unauthorized_debit",
+            "fragments": [
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 2.4797,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              },
+              {
+                "id": "reason-codes.md#s6",
+                "doc": "reason-codes.md",
+                "score": 1.372,
+                "text": "Reason code guide\n## Choosing a code\nThe reason code must match what actually happened. A dispute filed under the\nwrong code is declined and must be refiled, which may push it past its window."
+              },
+              {
+                "id": "disputes-process.md#s3",
+                "doc": "disputes-process.md",
+                "score": 1.1209,
+                "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied within two business days. Provisional credit is\nreversed if the dispute is later declined."
+              },
+              {
+                "id": "reason-codes.md#s5",
+                "doc": "reason-codes.md",
+                "score": 1.118,
+                "text": "Reason code guide\n## unauthorized_debit\nUsed for a direct debit the customer never mandated. This code carries the\nshortest window overall."
+              }
+            ]
+          },
+          "retrieval.query": "dispute window days by reason code duplicate_charge fraud goods_not_received service_not_rendered unauthorized_debit",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes.md#s1",
+              "score": 2.4797,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute o"
+            },
+            {
+              "id": "reason-codes.md#s6",
+              "score": 1.372,
+              "text": "Reason code guide\n## Choosing a code\nThe reason code must match what actually happened. A dispute filed under the\nwrong code is declined and must be refiled, wh"
+            },
+            {
+              "id": "disputes-process.md#s3",
+              "score": 1.1209,
+              "text": "Dispute handling process\n## Provisional credit\nWhere the disputed amount exceeds EUR 50 and the reason code is a fraud code, a\nprovisional credit is applied wit"
+            },
+            {
+              "id": "reason-codes.md#s5",
+              "score": 1.118,
+              "text": "Reason code guide\n## unauthorized_debit\nUsed for a direct debit the customer never mandated. This code carries the\nshortest window overall."
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "2f2704d4bb2c4ba1",
+        "started_at": 1794142039.160575,
+        "ended_at": 1794142040.6151524,
+        "duration_ms": 1454.6,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5785,
+          "gen_ai.usage.output_tokens": 268
+        },
+        "children": []
+      }
+    ]
+  }
+}

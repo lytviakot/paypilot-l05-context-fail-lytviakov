@@ -1,0 +1,140 @@
+{
+  "case": "CONV-H05",
+  "run": 5,
+  "turn": 3,
+  "user": "How does the review process work and how long does it take?",
+  "answer": "Here is how the dispute review works, based on the Verta documentation:\n\n**Case stages:** A dispute moves through open, under_review, provisional_credit, and then resolved_upheld or resolved_declined. You can withdraw a dispute only while it is open or under review.\n\n**Review timelines:**\n- Card reason codes: target of 10 business days.\n- Transfer reason codes: target of 20 business days.\n- Complex cases involving a foreign acquirer may take up to 45 calendar days. You would be notified if this applies.\n\nThe documentation does not say which timeline applies to the goods_not_received code, so I can't confirm the timeline for TX-0401 yet.\n\n**Withdrawal:** You can withdraw a dispute before it is resolved, but withdrawal is final. The same transaction cannot be disputed again under the same reason code.\n\nFor TX-0401 (EUR 240.00, goods not received), the eligibility check passed on 15 September 2026, and the deadline to open the dispute is 18 October 2026. The dispute has not been opened yet. If you want me to proceed, reply \"yes\" to confirm, and I will open it.",
+  "trace": {
+    "request_id": "c697879d528c4a5a",
+    "name": "agent.request",
+    "span_id": "2de04521fecf44e4",
+    "started_at": 1794142070.5082977,
+    "ended_at": 1794142077.6203218,
+    "duration_ms": 7112.0,
+    "attributes": {
+      "session.id": "a031e98b4e8a",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6677,
+      "gen_ai.usage.total_output_tokens": 726
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "839d312d31034b17",
+        "started_at": 1794142070.5084093,
+        "ended_at": 1794142073.6924021,
+        "duration_ms": 3184.0,
+        "attributes": {
+          "summary.text": "**Support conversation summary (for future reference)**\n\n- **Customer:** CUS-0004\n- **Transaction:** TX-0401, EUR 240.00, transaction date 20 July 2026\n- **Issue:** Goods were never received.\n- **Reason code:** goods_not_received, which has a 90-day window from the transaction date. The knowledge base says the code must match what actually happened, since a dispute filed under the wrong code is declined and must be refiled, possibly after the window has closed.\n- **Eligibility check (as of 15 September 2026):** Eligible. All checks passed: reason_code, tx_status, window, and compliance_hold. Dispute deadline: **18 October 2026**.\n- **Status:** No dispute has been opened. The agent told the customer that filing is irreversible and asked for explicit confirmation. Pending the customer's reply \"yes\" to open the dispute for TX-0401 (EUR 240.00, goods_not_received).\n- **Commitments made:** The agent offered to open the dispute only after the customer confirms. No other commitments were made.\n- **Policy notes:** A customer may withdraw a dispute before resolution, but withdrawal is final and the same transaction cannot be disputed again under the same reason code.",
+          "summary.replaced_messages": 8
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "f31b3091b97c4aee",
+        "started_at": 1794142073.6924272,
+        "ended_at": 1794142074.9678068,
+        "duration_ms": 1275.4,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3022,
+          "gen_ai.usage.output_tokens": 216
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "2063d86711a64f82",
+        "started_at": 1794142074.9678364,
+        "ended_at": 1794142074.9682832,
+        "duration_ms": 0.4,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute review process how long does it take"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute review process how long does it take",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 0.7071,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              },
+              {
+                "id": "disputes-process.md#s4",
+                "doc": "disputes-process.md",
+                "score": 0.61,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+              },
+              {
+                "id": "disputes-process.md#s2",
+                "doc": "disputes-process.md",
+                "score": 0.6,
+                "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under_review cases can be\nwithdrawn by the customer."
+              },
+              {
+                "id": "disputes-process.md#s1",
+                "doc": "disputes-process.md",
+                "score": 0.5714,
+                "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a reason code. The agent verifies eligibility\nbefore the case is opened; an ineligible request is refused with the failing\ncondition named, except where confidentiality rules apply."
+              }
+            ]
+          },
+          "retrieval.query": "dispute review process how long does it take",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s6",
+              "score": 0.7071,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            },
+            {
+              "id": "disputes-process.md#s4",
+              "score": 0.61,
+              "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex"
+            },
+            {
+              "id": "disputes-process.md#s2",
+              "score": 0.6,
+              "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under"
+            },
+            {
+              "id": "disputes-process.md#s1",
+              "score": 0.5714,
+              "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a re"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "edc553d0059840b8",
+        "started_at": 1794142074.968323,
+        "ended_at": 1794142077.620307,
+        "duration_ms": 2652.0,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3655,
+          "gen_ai.usage.output_tokens": 510
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H01",
+  "run": 2,
+  "turn": 4,
+  "user": "Fine. Back to that charge, what do I do next?",
+  "answer": "Here's what happens next. The dispute hasn't been filed yet.\n\n1. **Confirm the dispute.** Your \"Fine\" was not a clear yes, so I haven't opened it. Reply **yes** and I'll file a goods_not_received dispute for 240.00 EUR on TX-0401.\n2. **Gather evidence.** The case may require proof, such as an order confirmation, a delivery record, or correspondence with the merchant. Collect these now.\n3. **Respond quickly if asked.** If you're asked for evidence and don't supply it within 7 calendar days, the case is declined.\n4. **Track the case.** Disputes move through open, under_review, provisional_credit, resolved_upheld, or resolved_declined. You can withdraw a dispute while it is open or under review. Withdrawal is final, and the same transaction can't be disputed again under the same reason code.\n\nThe filing deadline is 18 October 2026. Do you want me to file the dispute now?",
+  "trace": {
+    "request_id": "5b5ee125c9f84b3a",
+    "name": "agent.request",
+    "span_id": "7cdce8352386432a",
+    "started_at": 1794141557.6722806,
+    "ended_at": 1794141562.0984442,
+    "duration_ms": 4426.2,
+    "attributes": {
+      "session.id": "e0697ba16dc7",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 9056,
+      "gen_ai.usage.total_output_tokens": 728
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "0df6381fc44e488f",
+        "started_at": 1794141557.6724048,
+        "ended_at": 1794141559.5980964,
+        "duration_ms": 1925.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4177,
+          "gen_ai.usage.output_tokens": 294
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "b018131525614ca3",
+        "started_at": 1794141559.5981417,
+        "ended_at": 1794141559.598662,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute handling process after filing goods not received evidence"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute handling process after filing goods not received evidence",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s5",
+                "doc": "disputes-process.md",
+                "score": 0.9733,
+                "text": "Dispute handling process\n## Evidence requirements\nThe customer may be asked for supporting evidence: an order confirmation, a\ndelivery record, correspondence with the merchant. Failure to supply requested\nevidence within 7 calendar days results in the case being declined."
+              },
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 0.8839,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              },
+              {
+                "id": "disputes-process.md#s2",
+                "doc": "disputes-process.md",
+                "score": 0.8,
+                "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under_review cases can be\nwithdrawn by the customer."
+              },
+              {
+                "id": "disputes.md#s1",
+                "doc": "disputes.md",
+                "score": 0.7293,
+                "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute opened after the window closes is not eligible.\n\n| Reason code | Window (days) |\n|---|---|\n| fraud_card_not_present | 120 |\n| goods_not_received | 90 |\n| duplicate_charge | 60 |\n| service_not_rendered | 90 |\n| unauthorized_debit | 56 |"
+              }
+            ]
+          },
+          "retrieval.query": "dispute handling process after filing goods not received evidence",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s5",
+              "score": 0.9733,
+              "text": "Dispute handling process\n## Evidence requirements\nThe customer may be asked for supporting evidence: an order confirmation, a\ndelivery record, correspondence wi"
+            },
+            {
+              "id": "disputes-process.md#s6",
+              "score": 0.8839,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            },
+            {
+              "id": "disputes-process.md#s2",
+              "score": 0.8,
+              "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under"
+            },
+            {
+              "id": "disputes.md#s1",
+              "score": 0.7293,
+              "text": "Payment dispute rules\n## Reason codes and chargeback windows\nEach dispute reason code has its own window, counted in days from the\ntransaction date. A dispute o"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "950c34e7aebd4b24",
+        "started_at": 1794141559.5987153,
+        "ended_at": 1794141562.0984285,
+        "duration_ms": 2499.7,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4879,
+          "gen_ai.usage.output_tokens": 434
+        },
+        "children": []
+      }
+    ]
+  }
+}

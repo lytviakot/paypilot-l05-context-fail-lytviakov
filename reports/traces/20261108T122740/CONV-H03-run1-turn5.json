@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 1,
+  "turn": 5,
+  "user": "Fine. Back to that charge, what do I do next?",
+  "answer": "To open the dispute on TX-0401 (EUR 240.00, 2026-07-20, goods not received), I need your confirmation:\n\n1. **Confirm the amount:** the full EUR 240.00.\n2. **Confirm you want it opened** under the reason \"goods not received.\"\n\nOnce you confirm, I'll open it. It must be opened by **2026-10-18**, and I'll confirm the status to you after it's filed.\n\nBefore you confirm, please note:\n- **Review time:** card disputes are usually reviewed within 10 business days, and transfer disputes within 20. Complex cases with foreign acquirers can take up to 45 calendar days, and you'd be notified if that applies.\n- **Notifications:** you'll receive a notice at each status change.\n- **Withdrawal is final:** you can withdraw before a decision, but once withdrawn, TX-0401 cannot be disputed again under \"goods not received.\"\n\nDo you want me to open the dispute for EUR 240.00?",
+  "trace": {
+    "request_id": "c992466ebf144fe6",
+    "name": "agent.request",
+    "span_id": "0fe218d1125e4019",
+    "started_at": 1794140914.4419568,
+    "ended_at": 1794140917.8283007,
+    "duration_ms": 3386.3,
+    "attributes": {
+      "session.id": "bb06b44bcb4e",
+      "dialog.step_number": 5,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4609,
+      "gen_ai.usage.total_output_tokens": 611
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "cceae96292344e74",
+        "started_at": 1794140914.442072,
+        "ended_at": 1794140917.8282862,
+        "duration_ms": 3386.2,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4609,
+          "gen_ai.usage.output_tokens": 611
+        },
+        "children": []
+      }
+    ]
+  }
+}

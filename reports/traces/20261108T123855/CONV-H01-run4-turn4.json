@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H01",
+  "run": 4,
+  "turn": 4,
+  "user": "Fine. Back to that charge, what do I do next?",
+  "answer": "To continue, reply **\"yes\"** and I will open a goods_not_received dispute on TX-0401 for **EUR 240.00**. The deadline for opening it is **18 October 2026**. Disputes cannot be undone once opened, so I won't file until you confirm.\n\nAfter it's filed, the dispute will be reviewed. You can withdraw it before it's resolved, but a withdrawal is final and the same transaction can't be disputed again under the same reason code.",
+  "trace": {
+    "request_id": "0d794912ec4e4fca",
+    "name": "agent.request",
+    "span_id": "8cbd275e91194f7e",
+    "started_at": 1794141585.0637505,
+    "ended_at": 1794141586.9246209,
+    "duration_ms": 1860.9,
+    "attributes": {
+      "session.id": "7f6fc4ea7a90",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4132,
+      "gen_ai.usage.total_output_tokens": 284
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "5cc25f313f094e70",
+        "started_at": 1794141585.0639217,
+        "ended_at": 1794141586.9246054,
+        "duration_ms": 1860.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4132,
+          "gen_ai.usage.output_tokens": 284
+        },
+        "children": []
+      }
+    ]
+  }
+}

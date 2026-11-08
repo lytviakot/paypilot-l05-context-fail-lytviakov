@@ -1,0 +1,137 @@
+{
+  "case": "CONV-H02",
+  "run": 2,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily transfer limit on file for your tier (tier1) is EUR 5,000.00. As of today (2026-09-15) you have not spent any of it, so the full EUR 5,000.00 is available.\n\nFor reference, your monthly limit is EUR 50,000.00, with EUR 35.50 used so far this month, leaving EUR 49,964.50.\n\nThe limits tool reports transfer limits, so I can't confirm from it whether the same figure applies to card payments specifically. If you need that confirmed, I can search our documentation or escalate to a human agent.\n\nRegarding the dispute on TX-0401 (EUR 240.00, goods not received): it is still not filed. Would you like me to open it now under the goods_not_received code for EUR 240.00? Please reply yes or no.",
+  "trace": {
+    "request_id": "2e16b3d7d8944349",
+    "name": "agent.request",
+    "span_id": "c1bb7fec4a124788",
+    "started_at": 1794141640.564092,
+    "ended_at": 1794141647.021158,
+    "duration_ms": 6457.1,
+    "attributes": {
+      "session.id": "9699481c7948",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 9385,
+      "gen_ai.usage.total_output_tokens": 464
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "ede0b50f8a2849be",
+        "started_at": 1794141640.5642338,
+        "ended_at": 1794141643.6246514,
+        "duration_ms": 3060.4,
+        "attributes": {
+          "summary.text": "**Case summary: CUS-0004, dispute on TX-0401**\n\n- **Customer:** CUS-0004\n- **Transaction:** TX-0401, EUR 240.00, dated 2026-07-20\n- **Issue:** Goods were paid for but never arrived.\n- **Reason code:** goods_not_received (90-day window from transaction date)\n- **Eligibility check (as of 2026-09-15):** Eligible. All checks passed: reason code, transaction status, window, and compliance hold.\n- **Dispute deadline:** 2026-10-18\n- **Status:** Dispute NOT yet filed. I offered to open it for the full EUR 240.00 and asked the customer to confirm yes/no. Filing is irreversible, so do not file without explicit confirmation.\n\n**Policy notes:**\n- A dispute filed under the wrong reason code is declined and must be refiled, which may push it past the window. The code must match what happened.\n- The customer may withdraw a dispute before resolution, but withdrawal is final. The same transaction cannot be disputed again under the same reason code.",
+          "summary.replaced_messages": 8
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "cee9d56580dd4453",
+        "started_at": 1794141643.6246927,
+        "ended_at": 1794141644.7641733,
+        "duration_ms": 1139.5,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 2968,
+          "gen_ai.usage.output_tokens": 151
+        },
+        "children": []
+      },
+      {
+        "name": "tool.get_account",
+        "span_id": "146ef8df430c4e06",
+        "started_at": 1794141644.764204,
+        "ended_at": 1794141644.7646303,
+        "duration_ms": 0.4,
+        "attributes": {
+          "tool.name": "get_account",
+          "tool.arguments": {},
+          "tool.result": {
+            "customer": {
+              "id": "CUS-0004",
+              "name": "Danylo Kovalenko",
+              "tier": "tier1"
+            },
+            "accounts": [
+              {
+                "id": "ACC-1005",
+                "customer_id": "CUS-0004",
+                "currency": "EUR",
+                "balance": 1310.2,
+                "tier": "tier1",
+                "holder": "Danylo Kovalenko"
+              }
+            ]
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "d7c5719daea24a7c",
+        "started_at": 1794141644.7646759,
+        "ended_at": 1794141645.402677,
+        "duration_ms": 638.0,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3121,
+          "gen_ai.usage.output_tokens": 56
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "db938463fa3649f5",
+        "started_at": 1794141645.4027143,
+        "ended_at": 1794141645.4033036,
+        "duration_ms": 0.6,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "0a97f0932f954e47",
+        "started_at": 1794141645.4033623,
+        "ended_at": 1794141647.0211382,
+        "duration_ms": 1617.8,
+        "attributes": {
+          "agent.loop_step": 2,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3296,
+          "gen_ai.usage.output_tokens": 257
+        },
+        "children": []
+      }
+    ]
+  }
+}

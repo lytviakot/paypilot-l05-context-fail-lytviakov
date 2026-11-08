@@ -1,0 +1,128 @@
+{
+  "case": "MEM-001-AMT",
+  "run": 1,
+  "turn": 2,
+  "user": "Thanks. How does the review process work in general?",
+  "answer": "Here is how disputes are handled, based on Verta's dispute documentation:\n\n1. **Opening:** A dispute is raised against a single settled transaction with a reason code. Eligibility is checked before the case is opened. Your dispute for TX-0401 was opened after that check passed.\n2. **Case states:** A dispute moves through open, under_review, provisional_credit, resolved_upheld, or resolved_declined.\n3. **Review timelines:** The target is 10 business days for card reason codes and 20 business days for transfer reason codes. Complex cases involving a foreign acquirer may take up to 45 calendar days, and you would be notified if that happens. Duplicate charges are card-related, so the 10-business-day target would normally apply, though I can't confirm the exact timing for your case.\n4. **Withdrawal:** You can withdraw a dispute while it is open or under review. Withdrawal is final, and the same transaction cannot be disputed again under the same reason code.\n\nI can't see the outcome of a case from here. If you want updates or have questions about the review itself, I can escalate to a human agent.",
+  "trace": {
+    "request_id": "c9a022797f294ad6",
+    "name": "agent.request",
+    "span_id": "9c2fcb6d079e4c60",
+    "started_at": 1794138515.2132702,
+    "ended_at": 1794138518.7201636,
+    "duration_ms": 3506.9,
+    "attributes": {
+      "session.id": "95d8731db767",
+      "dialog.step_number": 2,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 7379,
+      "gen_ai.usage.total_output_tokens": 579
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "6f00969e866e4c0a",
+        "started_at": 1794138515.213466,
+        "ended_at": 1794138516.414846,
+        "duration_ms": 1201.4,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3372,
+          "gen_ai.usage.output_tokens": 176
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "240a4ba7c1054639",
+        "started_at": 1794138516.4148922,
+        "ended_at": 1794138516.4154007,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "dispute review process timeline outcome"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "dispute review process timeline outcome",
+            "fragments": [
+              {
+                "id": "disputes-process.md#s6",
+                "doc": "disputes-process.md",
+                "score": 0.7071,
+                "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction cannot be disputed again under the same reason code."
+              },
+              {
+                "id": "disputes-process.md#s4",
+                "doc": "disputes-process.md",
+                "score": 0.61,
+                "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex cases involving a foreign acquirer may\nrun to 45 calendar days; the customer is notified when that happens."
+              },
+              {
+                "id": "disputes-process.md#s2",
+                "doc": "disputes-process.md",
+                "score": 0.6,
+                "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under_review cases can be\nwithdrawn by the customer."
+              },
+              {
+                "id": "disputes-process.md#s1",
+                "doc": "disputes-process.md",
+                "score": 0.5714,
+                "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a reason code. The agent verifies eligibility\nbefore the case is opened; an ineligible request is refused with the failing\ncondition named, except where confidentiality rules apply."
+              }
+            ]
+          },
+          "retrieval.query": "dispute review process timeline outcome",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "disputes-process.md#s6",
+              "score": 0.7071,
+              "text": "Dispute handling process\n## Withdrawing a dispute\nA customer may withdraw a dispute at any time before resolution. Withdrawal is\nfinal; the same transaction can"
+            },
+            {
+              "id": "disputes-process.md#s4",
+              "score": 0.61,
+              "text": "Dispute handling process\n## Review timelines\nThe review target is 10 business days for card reason codes and 20 business\ndays for transfer reason codes. Complex"
+            },
+            {
+              "id": "disputes-process.md#s2",
+              "score": 0.6,
+              "text": "Dispute handling process\n## Case states\nA dispute moves through: open, under_review, provisional_credit,\nresolved_upheld, resolved_declined. Only open and under"
+            },
+            {
+              "id": "disputes-process.md#s1",
+              "score": 0.5714,
+              "text": "Dispute handling process\n## Raising a dispute\nA dispute is raised against a single settled transaction. The customer supplies\nthe transaction reference and a re"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "9d5fec8678a54758",
+        "started_at": 1794138516.4154682,
+        "ended_at": 1794138518.7201486,
+        "duration_ms": 2304.7,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4007,
+          "gen_ai.usage.output_tokens": 403
+        },
+        "children": []
+      }
+    ]
+  }
+}

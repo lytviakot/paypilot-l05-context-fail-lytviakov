@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H03",
+  "run": 1,
+  "turn": 9,
+  "user": "And what amount are we disputing?",
+  "answer": "The amount would be **EUR 240.00**, the full amount of whichever TechMart Online charge you mean. Both charges are EUR 240.00, so the amount is the same either way.\n\nI still need the transaction ID to run the eligibility check. Which one is the order that didn't arrive?\n\n- **TX-0402**, 2026-07-14, EUR 240.00\n- **TX-0401**, 2026-07-20, EUR 240.00",
+  "trace": {
+    "request_id": "1574ce6cd80742b8",
+    "name": "agent.request",
+    "span_id": "f9668e56dd7d4108",
+    "started_at": 1794142355.366456,
+    "ended_at": 1794142357.8144135,
+    "duration_ms": 2448.0,
+    "attributes": {
+      "session.id": "ff0bacf3228a",
+      "dialog.step_number": 9,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5468,
+      "gen_ai.usage.total_output_tokens": 421
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "500e04c3011047c9",
+        "started_at": 1794142355.3667548,
+        "ended_at": 1794142357.8143995,
+        "duration_ms": 2447.6,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5468,
+          "gen_ai.usage.output_tokens": 421
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "case": "CONV-002-L10",
+  "run": 3,
+  "turn": 7,
+  "user": "And I still have time to file, right?",
+  "answer": "Yes. Today is 15 September 2026, and both charges are within the window:\n\n- **TX-0401** (20 July, EUR 240.00): deadline **18 October 2026**\n- **TX-0402** (14 July, EUR 240.00): deadline **12 October 2026**\n\nTell me which charge you want to dispute and confirm the reason code (goods_not_received fits what you described). I'll then open the dispute once you give your explicit go-ahead.",
+  "trace": {
+    "request_id": "a4596fc198914bac",
+    "name": "agent.request",
+    "span_id": "56534624298449e4",
+    "started_at": 1794140122.890042,
+    "ended_at": 1794140124.599663,
+    "duration_ms": 1709.6,
+    "attributes": {
+      "session.id": "f7876e56c1ff",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5948,
+      "gen_ai.usage.total_output_tokens": 300
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "1d8e7debb3ba45fb",
+        "started_at": 1794140122.890295,
+        "ended_at": 1794140124.5996475,
+        "duration_ms": 1709.4,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5948,
+          "gen_ai.usage.output_tokens": 300
+        },
+        "children": []
+      }
+    ]
+  }
+}

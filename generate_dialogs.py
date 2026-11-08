@@ -5,7 +5,7 @@ goods_not_received, deadline 2026-10-18). The same customer also has TX-0402
 (240.00 EUR, deadline 2026-10-12): when the agent loses the case it lists both
 charges, so the 12 October deadline is used as the "wrong charge" signal.
 
-Run:  python generate_dialogs.py > sets/l05_dialogs.jsonl   (use bash or pwsh,
+Run:  python generate_dialogs.py > l05_dialogs.jsonl   (use bash or pwsh,
 not Windows PowerShell 5.1: it writes UTF-16)
 """
 import json

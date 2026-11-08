@@ -1,0 +1,128 @@
+{
+  "case": "CONV-H03",
+  "run": 4,
+  "turn": 7,
+  "user": "Unrelated question: what is the fee for an international transfer?",
+  "answer": "I couldn't find a fee for international transfers in the knowledge base. The documents I searched cover FX spreads, conversion allowances and transfer limits, but not a flat international transfer fee, so I can't give you a figure.\n\nWhat I can confirm for Tier 1:\n- **FX spread:** 1.5% over the mid-market rate, applied once your monthly conversion allowance of EUR 500 is used up.\n- **Transfer limits:** EUR 5,000 per day and EUR 50,000 per month.\n\nIf you tell me the amount and currency you plan to send, I can run a full FX quote. For the transfer fee itself, I can search again with different terms or escalate to a human agent.",
+  "trace": {
+    "request_id": "c8c84d952b974e60",
+    "name": "agent.request",
+    "span_id": "433bac64b3fe4783",
+    "started_at": 1794141856.9348376,
+    "ended_at": 1794141859.5476604,
+    "duration_ms": 2612.8,
+    "attributes": {
+      "session.id": "bb74d50c040b",
+      "dialog.step_number": 7,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 10712,
+      "gen_ai.usage.total_output_tokens": 363
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "84b29a2e7d2d4d1d",
+        "started_at": 1794141856.9350126,
+        "ended_at": 1794141857.9789462,
+        "duration_ms": 1043.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4951,
+          "gen_ai.usage.output_tokens": 140
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "ddd9ddcb52e14e5a",
+        "started_at": 1794141857.9789798,
+        "ended_at": 1794141857.9793468,
+        "duration_ms": 0.4,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "international transfer fee Tier 1"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "international transfer fee Tier 1",
+            "fragments": [
+              {
+                "id": "glossary.md#s6",
+                "doc": "glossary.md",
+                "score": 1.4596,
+                "text": "Glossary\n## Tier\nThe tariff level of a customer: Tier 1, Tier 2 or Tier 3. The tier determines\nspreads, allowances and transfer limits."
+              },
+              {
+                "id": "tariffs.md#s2",
+                "doc": "tariffs.md",
+                "score": 1.1094,
+                "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tier | FX spread | Free monthly conversion allowance |\n|---|---|---|\n| Tier 1 | 1.5% | EUR 500 |\n| Tier 2 | 0.9% | EUR 1,000 |\n| Tier 3 | 0.5% | EUR 5,000 |"
+              },
+              {
+                "id": "tariffs.md#s1",
+                "doc": "tariffs.md",
+                "score": 1.0607,
+                "text": "Verta tariff schedule\n## Account tiers\nVerta offers three account tiers: Tier 1, Tier 2 and Tier 3. The tier\ndetermines the FX spread, the free monthly conversion allowance and the\ntransfer limits."
+              },
+              {
+                "id": "limits.md#s1",
+                "doc": "limits.md",
+                "score": 1.0392,
+                "text": "Transfer limits\n## Daily and monthly limits by tier\nOutgoing transfer limits are tracked in EUR equivalent, separately per day and\nper calendar month. The daily and the monthly remainder are different numbers:\nboth are computed from the same settled-transactions source, but over\ndifferent windows.\n\n| Tier | Daily limit | Monthly limit |\n|---|---|---|\n| Tier 1 | EUR 5,000 | EUR 50,000 |\n| Tier 2 | EUR 20,000 | EUR 200,000 |\n| Tier 3 | EUR 100,000 | EUR 1,000,000 |"
+              }
+            ]
+          },
+          "retrieval.query": "international transfer fee Tier 1",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "glossary.md#s6",
+              "score": 1.4596,
+              "text": "Glossary\n## Tier\nThe tariff level of a customer: Tier 1, Tier 2 or Tier 3. The tier determines\nspreads, allowances and transfer limits."
+            },
+            {
+              "id": "tariffs.md#s2",
+              "score": 1.1094,
+              "text": "Verta tariff schedule\n## FX spreads by tier\nThe spread is applied over the mid-market rate only after the free monthly\nconversion allowance is exhausted.\n\n| Tie"
+            },
+            {
+              "id": "tariffs.md#s1",
+              "score": 1.0607,
+              "text": "Verta tariff schedule\n## Account tiers\nVerta offers three account tiers: Tier 1, Tier 2 and Tier 3. The tier\ndetermines the FX spread, the free monthly conversi"
+            },
+            {
+              "id": "limits.md#s1",
+              "score": 1.0392,
+              "text": "Transfer limits\n## Daily and monthly limits by tier\nOutgoing transfer limits are tracked in EUR equivalent, separately per day and\nper calendar month. The daily"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "408ea19c4bef4d72",
+        "started_at": 1794141857.9793985,
+        "ended_at": 1794141859.5476308,
+        "duration_ms": 1568.2,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5761,
+          "gen_ai.usage.output_tokens": 223
+        },
+        "children": []
+      }
+    ]
+  }
+}

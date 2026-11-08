@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H03",
+  "run": 4,
+  "turn": 10,
+  "user": "And I still have time to file, right?",
+  "answer": "Yes. The dispute window for TX-0401 closes on **2026-10-18**, and the eligibility check I ran on 2026-09-15 passed. The dispute is not yet open, so nothing has been filed. Reply \"yes\" to confirm EUR 240.00 under goods not received, and I'll open it.",
+  "trace": {
+    "request_id": "72d45bc662384819",
+    "name": "agent.request",
+    "span_id": "007d416287a947c8",
+    "started_at": 1794141861.6478882,
+    "ended_at": 1794141863.1378193,
+    "duration_ms": 1489.9,
+    "attributes": {
+      "session.id": "bb74d50c040b",
+      "dialog.step_number": 10,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6156,
+      "gen_ai.usage.total_output_tokens": 235
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "d87913d0e9354418",
+        "started_at": 1794141861.6480653,
+        "ended_at": 1794141863.1377969,
+        "duration_ms": 1489.7,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6156,
+          "gen_ai.usage.output_tokens": 235
+        },
+        "children": []
+      }
+    ]
+  }
+}

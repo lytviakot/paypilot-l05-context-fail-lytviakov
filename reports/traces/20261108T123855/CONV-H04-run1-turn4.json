@@ -1,0 +1,44 @@
+{
+  "case": "CONV-H04",
+  "run": 1,
+  "turn": 4,
+  "user": "And what was the amount we are disputing?",
+  "answer": "The amount proposed for the dispute is **EUR 240.00**, the full amount of transaction TX-0401 dated 20 July 2026. No dispute has been opened yet, so nothing has been filed for that amount.\n\nIf you want a partial amount disputed instead, tell me before I open it. Otherwise, please confirm TX-0401, EUR 240.00, goods not received, and I'll open the dispute before the 18 October 2026 deadline.",
+  "trace": {
+    "request_id": "8090a092d3b34b00",
+    "name": "agent.request",
+    "span_id": "e7e1cf50ee644859",
+    "started_at": 1794141912.9814112,
+    "ended_at": 1794141914.7883294,
+    "duration_ms": 1806.9,
+    "attributes": {
+      "session.id": "819634f33a08",
+      "dialog.step_number": 4,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 4068,
+      "gen_ai.usage.total_output_tokens": 289
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "1e6604b72f624b65",
+        "started_at": 1794141912.981542,
+        "ended_at": 1794141914.7883162,
+        "duration_ms": 1806.8,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 4068,
+          "gen_ai.usage.output_tokens": 289
+        },
+        "children": []
+      }
+    ]
+  }
+}

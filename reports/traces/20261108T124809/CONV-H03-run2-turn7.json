@@ -1,0 +1,131 @@
+{
+  "case": "CONV-H03",
+  "run": 2,
+  "turn": 7,
+  "user": "Unrelated question: what is the fee for an international transfer?",
+  "answer": "The standard international (SWIFT) transfer fee is **EUR 15.00 flat, plus 0.3% of the EUR equivalent of the amount sent**. The tariff schedule lists no tier-specific difference for this fee.\n\nFor example, a EUR 1,000 SWIFT transfer would cost:\n- Flat fee: EUR 15.00\n- Percentage fee: 0.3% × EUR 1,000 = EUR 3.00\n- Total fee: **EUR 18.00**\n\nCorrespondent bank charges deducted by intermediary banks along the route are outside Verta's control and are not refunded.\n\nIf you want the exact fee for a specific amount or currency, tell me the amount and I can check the details further.",
+  "trace": {
+    "request_id": "0d419dff10a448e8",
+    "name": "agent.request",
+    "span_id": "10eed5f43f1949a7",
+    "started_at": 1794142389.6052122,
+    "ended_at": 1794142393.1798866,
+    "duration_ms": 3574.7,
+    "attributes": {
+      "session.id": "c3c182d78bb1",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 11662,
+      "gen_ai.usage.total_output_tokens": 653
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "cfc9d3ba0dba49a7",
+        "started_at": 1794142389.6054926,
+        "ended_at": 1794142390.7875898,
+        "duration_ms": 1182.1,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5502,
+          "gen_ai.usage.output_tokens": 138
+        },
+        "children": []
+      },
+      {
+        "name": "tool.search_knowledge_base",
+        "span_id": "266815fd9c474ba7",
+        "started_at": 1794142390.7876217,
+        "ended_at": 1794142390.7881312,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "search_knowledge_base",
+          "tool.arguments": {
+            "query": "international transfer fee tier1"
+          },
+          "tool.result": {
+            "index": "kb_clean",
+            "top_k": 4,
+            "query": "international transfer fee tier1",
+            "fragments": [
+              {
+                "id": "fees-detail.md#s2",
+                "doc": "fees-detail.md",
+                "score": 0.9177,
+                "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+              },
+              {
+                "id": "tariffs.md#s3",
+                "doc": "tariffs.md",
+                "score": 0.8571,
+                "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |\n| SWIFT | EUR 15.00 | 0.3% |\n| Card payment | EUR 0.00 | 1.2% |\n\nThe percentage fee is calculated on the EUR equivalent of the transfer amount."
+              },
+              {
+                "id": "fees-detail.md#s1",
+                "doc": "fees-detail.md",
+                "score": 0.6172,
+                "text": "Fee details\n## How the SWIFT fee is composed\nA SWIFT transfer carries a flat fee plus a percentage of the EUR equivalent of\nthe amount sent. Correspondent bank charges deducted en route are outside the\ncontrol of Verta and are not refunded."
+              },
+              {
+                "id": "fees-detail.md#s4",
+                "doc": "fees-detail.md",
+                "score": 0.5669,
+                "text": "Fee details\n## Fee refunds\nA fee is refunded only when the underlying transaction is reversed because of a\nVerta error. Fees on customer-initiated reversals are not refunded."
+              }
+            ]
+          },
+          "retrieval.query": "international transfer fee tier1",
+          "retrieval.index": "kb_clean",
+          "retrieval.top_k": 4,
+          "retrieval.fragments": [
+            {
+              "id": "fees-detail.md#s2",
+              "score": 0.9177,
+              "text": "Fee details\n## Card payment fee\nCard payments carry a percentage fee on the EUR equivalent. No flat fee\napplies."
+            },
+            {
+              "id": "tariffs.md#s3",
+              "score": 0.8571,
+              "text": "Verta tariff schedule\n## Transfer fees by type\n| Transfer type | Flat fee | Percentage fee |\n|---|---|---|\n| Internal | EUR 0.00 | 0% |\n| SEPA | EUR 0.35 | 0% |"
+            },
+            {
+              "id": "fees-detail.md#s1",
+              "score": 0.6172,
+              "text": "Fee details\n## How the SWIFT fee is composed\nA SWIFT transfer carries a flat fee plus a percentage of the EUR equivalent of\nthe amount sent. Correspondent bank "
+            },
+            {
+              "id": "fees-detail.md#s4",
+              "score": 0.5669,
+              "text": "Fee details\n## Fee refunds\nA fee is refunded only when the underlying transaction is reversed because of a\nVerta error. Fees on customer-initiated reversals are"
+            }
+          ]
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "73dfe3a0a20f4256",
+        "started_at": 1794142390.788195,
+        "ended_at": 1794142393.179866,
+        "duration_ms": 2391.7,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 6160,
+          "gen_ai.usage.output_tokens": 515
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "case": "CONV-H03",
+  "run": 1,
+  "turn": 3,
+  "user": "What is my daily card limit?",
+  "answer": "Your daily limit on file for your tier (tier1) is **EUR 5,000.00**.\n\nAs of today (2026-09-15):\n- Daily spent: EUR 0.00\n- Daily remaining: **EUR 5,000.00**\n- Monthly limit: EUR 50,000.00, with EUR 35.50 spent and EUR 49,964.50 remaining\n\nThe limits above cover transfers in general as reported by our limits check. I can't confirm from this data whether card payments are counted separately, so if you need that specific breakdown, I can escalate to a human agent.",
+  "trace": {
+    "request_id": "c2d252ae595c4e27",
+    "name": "agent.request",
+    "span_id": "451422836eca4000",
+    "started_at": 1794141748.5170825,
+    "ended_at": 1794141756.2102528,
+    "duration_ms": 7693.2,
+    "attributes": {
+      "session.id": "ab726e761a22",
+      "dialog.step_number": 3,
+      "run.profile": "clean",
+      "run.active_defects": [],
+      "prompt.version": "base.v1",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 6700,
+      "gen_ai.usage.total_output_tokens": 482
+    },
+    "children": [
+      {
+        "name": "agent.summarize",
+        "span_id": "803f679e71d640cc",
+        "started_at": 1794141748.517217,
+        "ended_at": 1794141753.1164744,
+        "duration_ms": 4599.3,
+        "attributes": {
+          "summary.text": "**Conversation summary (for support reference)**\n\n**Customer:** CUS-0004, Danylo Kovalenko, tier1\n**Account:** ACC-1005, EUR, balance 1,310.20\n\n**Issue:** Customer reports that goods for TX-0401 (EUR 240.00) never arrived and asks which dispute reason code applies and whether they can dispute it.\n\n**Findings:**\n- Reason code: **goods_not_received**, with a **90-day window counted from the transaction date**. A dispute opened after the window closes is not eligible.\n- Eligibility check for TX-0401: **eligible: true**.\n  - Transaction date: **2026-07-20**\n  - As-of date: 2026-09-15\n  - Dispute deadline: **2026-10-18**\n  - Checks: reason_code pass, tx_status pass, window pass, **compliance_hold** pass. (The earlier reply said \"account status\" passed. The check was actually compliance_hold.)\n\n**Dispute handling policy (from KB):**\n- Review target: 10 business days for card reason codes, 20 business days for transfer reason codes. Complex cases with a foreign acquirer may take up to 45 calendar days, and the customer is notified if so.\n- Customer can withdraw a dispute any time before resolution. Withdrawal is final, and the same transaction cannot be disputed again under the same reason code.\n- Every state change generates a notification. Notifications state the new state, never the internal reason for a decision.\n\n**Current status:** No dispute has been filed yet.\n\n**Commitments made:**\n- Agent said the dispute would be opened only after the eligibility check passed and only after the customer confirmed.\n- Agent",
+          "summary.replaced_messages": 9
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "7eccd28010974384",
+        "started_at": 1794141753.1165037,
+        "ended_at": 1794141754.897057,
+        "duration_ms": 1780.6,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3164,
+          "gen_ai.usage.output_tokens": 295
+        },
+        "children": []
+      },
+      {
+        "name": "tool.get_account",
+        "span_id": "aa596c7fd305450e",
+        "started_at": 1794141754.897088,
+        "ended_at": 1794141754.8975616,
+        "duration_ms": 0.5,
+        "attributes": {
+          "tool.name": "get_account",
+          "tool.arguments": {},
+          "tool.result": {
+            "customer": {
+              "id": "CUS-0004",
+              "name": "Danylo Kovalenko",
+              "tier": "tier1"
+            },
+            "accounts": [
+              {
+                "id": "ACC-1005",
+                "customer_id": "CUS-0004",
+                "currency": "EUR",
+                "balance": 1310.2,
+                "tier": "tier1",
+                "holder": "Danylo Kovalenko"
+              }
+            ]
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "tool.check_limits",
+        "span_id": "3fcdfa4d014b4023",
+        "started_at": 1794141754.8976614,
+        "ended_at": 1794141754.8980062,
+        "duration_ms": 0.3,
+        "attributes": {
+          "tool.name": "check_limits",
+          "tool.arguments": {
+            "customer_id": "CUS-0004"
+          },
+          "tool.result": {
+            "tier": "tier1",
+            "as_of": "2026-09-15",
+            "daily_limit_eur": 5000,
+            "daily_spent_eur": 0,
+            "daily_remaining_eur": 5000,
+            "monthly_limit_eur": 50000,
+            "monthly_spent_eur": 35.5,
+            "monthly_remaining_eur": 49964.5
+          }
+        },
+        "children": []
+      },
+      {
+        "name": "llm.call",
+        "span_id": "557bb0754e034ced",
+        "started_at": 1794141754.8980362,
+        "ended_at": 1794141756.2102318,
+        "duration_ms": 1312.2,
+        "attributes": {
+          "agent.loop_step": 1,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 3536,
+          "gen_ai.usage.output_tokens": 187
+        },
+        "children": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "case": "CONV-H02",
+  "run": 1,
+  "turn": 7,
+  "user": "And I still have time to file, right?",
+  "answer": "Yes. Both charges are within the 90-day window, and the earliest deadline is **12 October 2026** for TX-0402. TX-0401 can be filed until **18 October 2026**.\n\nI haven't filed anything yet. Reply with the transaction ID (TX-0401 or TX-0402) and confirm you want me to file it, and I'll open the dispute.",
+  "trace": {
+    "request_id": "0c7738c030944220",
+    "name": "agent.request",
+    "span_id": "7eb638926ad74e6c",
+    "started_at": 1794142188.6218433,
+    "ended_at": 1794142189.9472194,
+    "duration_ms": 1325.4,
+    "attributes": {
+      "session.id": "19a5b3ec5418",
+      "dialog.step_number": 7,
+      "run.profile": "lesson-05",
+      "run.active_defects": [
+        "D06",
+        "D07"
+      ],
+      "prompt.version": "base.v1+D07",
+      "reply.language_detected": "",
+      "llm.provider": "anthropic",
+      "session.customer_id": "CUS-0004",
+      "context.replay_active": false,
+      "gen_ai.usage.total_input_tokens": 5758,
+      "gen_ai.usage.total_output_tokens": 194
+    },
+    "children": [
+      {
+        "name": "llm.call",
+        "span_id": "45fc1db2ff544e64",
+        "started_at": 1794142188.622269,
+        "ended_at": 1794142189.9472022,
+        "duration_ms": 1324.9,
+        "attributes": {
+          "agent.loop_step": 0,
+          "gen_ai.request.model": "claude-haiku-5-5",
+          "gen_ai.usage.input_tokens": 5758,
+          "gen_ai.usage.output_tokens": 194
+        },
+        "children": []
+      }
+    ]
+  }
+}

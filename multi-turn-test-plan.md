@@ -13,6 +13,7 @@ agent model        claude-haiku-5-5 (Anthropic)
 main scenario      C-07, 7 steps, customer CUS-0004
 summarize after    2 steps (set with PUT /api/_test/summarize_after)
 set                sets/l05.jsonl, 4 cases, set_hash 947ef71be283
+length cases       sets/l05_len.jsonl, 2 cases, set_hash 93a0b5eae73d
 clock              2026-09-15T10:00:00Z (fixed)
 run date           2026-11-08
 ```
@@ -105,13 +106,18 @@ Same in all 5 runs unless a number is given.
 
 ### 2.5. Length axis: shorter and longer scenario
 
-Not run yet. Planned for the next lab step (5-step and 10-step versions of C-07 on `lesson-05`).
+Two extra cases in `sets/l05_len.jsonl` (set_hash `93a0b5eae73d`): `CONV-002-S5` is the first 5 steps of C-07, `CONV-002-L10` is C-07 plus three steps (a question about the international transfer fee, then "back to the dispute, which transaction?", then "amount and deadline for it"). Each was run 5 times on `lesson-05` and once on `clean` (report `l05_len-lesson-05-20261108T121142.json`, `l05_len-clean-20261108T121049.json`).
 
 | Scenario version | Profile | Amount lost? At which step | What else is lost |
 | --- | --- | --- | --- |
-| 5 steps | `lesson-05` | to fill | to fill |
-| 7 steps (main) | `lesson-05` | step 3 (from 2.3) | code and window in some runs |
-| 10 steps (+1 topic switch) | `lesson-05` | to fill | to fill |
+| 5 steps | `lesson-05` | step 3 in 5 of 5 runs; shown at step 5 in 5 of 5 | date, code, window, TX id (same four). In 1 of 5 the summary invented a value (EUR 180.00) |
+| 7 steps (main) | `lesson-05` | step 3 in 5 of 5 (from 2.3) | the same four; no invented value in 5 runs |
+| 10 steps (+1 topic switch) | `lesson-05` | step 3 in 5 of 5 | the same four; after the return to the dispute (steps 9 and 10) the agent cannot name the charge in 5 of 5; in 1 of 5 the invented EUR 180.00 is carried from step 3 to step 10 |
+| 5 and 10 steps | `clean` | not lost (1 run each) | nothing |
+
+**Conclusion on the length axis:** with the threshold at 2 steps even the 5-step version loses the case at step 3, so the short version is not a safe control here. The lesson expects the defect not to fire at 5 steps, but that assumes the threshold of 5 messages; our stand is set lower. The only safe dialogs are the ones shorter than 3 steps. The 10-step version adds no new lost values, it makes the damage longer (steps 3 to 10 without the case).
+
+Across the 15 `lesson-05` runs of all three versions, the summary **invented** a value in 2 (EUR 180.00 instead of 240.00, both times in the 5-step and 10-step runs, never in the 7-step runs). That is a different failure from forgetting: the agent then states a wrong amount with confidence. See 4.1.
 
 ---
 
@@ -182,7 +188,9 @@ Checked on the traces of the same runs as in 2.3 (`analyze_traces.py`, function 
 
 Oracle: the engine (`disputes` tool result: window 90, deadline 2026-10-18) at step 2, where the value was first said.
 
-**What the checks showed:** the invariants stay green almost everywhere, because the agent does not change the number, it loses the case and asks again. The only red result (run 1) is the same hedge as in 3.2, so an invariant on its own finds the divergence but not the loss. The loss is caught by checking that the case values are still available at the later steps (retention), which is not an invariant.
+Over all 15 `lesson-05` runs of the 5, 7 and 10-step versions, check 1 (amount) is **red in 2 of 15**: `CONV-002-S5` run 4 (step 5: "TX-0401 (EUR 180.00)") and `CONV-002-L10` run 1 (EUR 180.00 from step 3 to step 10). The case's own check at step 5 ("answer mentions TX-0401 or 240") stayed green in both runs, so here the invariant catches what the pattern check does not. In `CONV-002-L10` run 1 the agent noticed at step 9 that its summary says 180.00 and the account says 240.00, and said so.
+
+**What the checks showed:** on the 7-step scenario the invariants stay green almost everywhere, because the agent does not change the number, it loses the case and asks again. The only red result (run 1) is the same hedge as in 3.2, so an invariant on its own finds the divergence but not the loss. The loss is caught by checking that the case values are still available at the later steps (retention), which is not an invariant.
 
 The case checks in `sets/l05.jsonl` failed in 2 of 5 runs: run 1 at step 7 (the pattern "60"), run 4 at step 4 (the agent asked for an amount before giving the spread). The first is the pattern weakness in 3.2, the second is a real effect of the lost amount.
 

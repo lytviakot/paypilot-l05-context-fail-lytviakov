@@ -1,299 +1,47 @@
-# L05 · пам'ять і діалог · ранер
+# L05 · Multi-turn Test Plan — PayPilot
 
-Набір із 4 кейсів (3 діалоги + контрольний одноповідомленнєвий), ранер курсу і
-дошки до лабораторної заняття L05 курсу з тестування LLM-агентів. Набір перевіряє бота підтримки PayPilot:
-правильні відповіді в кейсах рахує код банку — рушії стенду, а сам набір
-проганяється на справній версії стенду і на зламаній.
+Homework 4: where a dialog with the PayPilot agent falls apart, how to catch it automatically, and which dialogs to cover. The document is `multi-turn-test-plan.md`, the dialog cases are in `l05_dialogs.jsonl`.
 
-Python локально не потрібен: ранер іде в Docker, у голому образі
-`python:3.12-slim`, без збирання і без залежностей. Ключ API цьому
-репозиторію теж не потрібен: ранер ходить у стенд по HTTP, а ключ моделі
-живе в `.env` стенду.
+## Run
 
-## Що зробити, коротко
+Put `l05_dialogs.jsonl` into `sets/` of the course kit and run:
 
-Корінь курсу завжди `~/paypilot`: стенд у `~/paypilot/paypilot-stand`, цей
-репозиторій — у `~/paypilot/l05` (папка уроку, поруч із `l02`).
+    docker compose run --rm eval --set l05_dialogs --profile clean
+    docker compose run --rm eval --set l05_dialogs --profile lesson-05
 
-1. Підняти локальний стенд: у 
-`~/paypilot/paypilot-stand` — `docker compose up -d --build`,
-потім 
-`docker exec -it paypilot-stand-stand-1 python scripts/doctor.py`.
-2. Склонувати допоміжний репозиторій поруч зі стендом:
-   `git clone https://github.com/alex-pancho/paypilot-l05-eval ~/paypilot/l05`
-   Перейти у папку репозиторію:
-   `cd ~/paypilot/l05`
-3. Встановити згортку після 2х кроків:
-   `bash api.sh PUT /api/_test/summarize_after '{"steps": 2}'`
-   Перевірити:
-   `bash api.sh GET /api/_test/summarize_after`
-4. Задати час прогону "2026-09-15T10:00:00+00:00":
-    `bash api.sh PUT /api/_test/clock '{"now":null}'`
-   Перевірити:
-    `bash api.sh GET /api/_test/clock`
-5. Перевірити запуск набору: `docker compose run --rm eval --dry-run`.
-6. Прогнати набір на справній версії: `docker compose run --rm eval --profile clean`.
-7. Прогнати на зламаній: `docker compose run --rm eval --profile lesson-05 --traces`. 
+`set_hash`: `546d67fb0eb3`
 
-> **УВАГА!** для більш розлогого аналізу потрібно зберігати трейси, переконайтеся, що вказали ключ `--traces`
+Agent model: `claude-haiku-5-5`. Stand profile and the summary threshold (2 steps) are set by the runner from each case.
 
-Команди влаштовані як на L02: усе після `eval` — прапорці.
-```
-  -h, --help            show this help message and exit
-  --profile NAME        switch the stand to this profile before the run
-  --only IDS            run only these cases, comma-separated
-  --set NAME            read sets/<NAME>.jsonl
-  --gate {daily,release,all}
-                        which gate's cases to run, daily by default
-  --summarize-after N   set the summarize threshold (steps) before every case; overrides summarize_after in the cases
-  --repeat N            run every selected case N times (overrides runs in the case)
-  --traces              save the full trace of every turn to reports/traces/<stamp>/
-  --brief               one line per case, without the case details
-  --dry-run             print the set hash and coverage, call nothing
-```
+## Dialog cases
 
+| id | Role in the plan | Length · entities · switches | Invariants |
+| --- | --- | --- | --- |
+| CONV-H01 | контроль | 5 · 2 · 1 | dispute amount (level 2), filing deadline (level 3); summary threshold 8, so no summary is made |
+| CONV-H02 | основний | 7 · 2 · 1 | dispute amount (level 2), filing deadline (level 3); equals complaint C-07 |
+| CONV-H03 | найгірший | 10 · 3 · 2 | dispute amount (level 2), reason code (level 3), filing deadline (level 3) |
+| CONV-H04 | ізоляція осі | 4 · 1 · 0 | dispute amount (level 2) |
+| CONV-H05 | ізоляція осі | 7 · 3 · 0 | dispute amount (level 2), reason code (level 3), filing deadline (level 3) |
 
-## Що в репозиторії
+The role names are in Ukrainian because the course loader accepts only these values.
 
-| Файл | Що це |
-|---|---|
-| `complaints.md` | двадцять скарг C-01…C-20, той самий корпус, що на L02 |
-| `triage.md` | дошка кроку 1: скарги в трьох купках за відтворюваністю — придатні одразу, після добору контексту, непридатні |
-| `sets/l05.jsonl` | набір L05: контрольний FX-004 і діалоги MEM-001, MEM-001-AMT, MEM-002; по одному кейсу на рядок |
-| `generate_from_engines.py` | генератор: викликає рушії стенду і друкує кейси з готовими очікуваннями |
-| `ladder.md` | дошка драбини перевірок: рівень перевірки для кожного кейса |
-| `gaps.md` | дошка «чого набір не ловить» |
-| `runner.py`, `loader.py`, `assertions.py`, `stand.py`, `judge.py`, `console.py` | ранер курсу, лише стандартна бібліотека Python |
-| `validate.py` | друкує `set_hash` і покриття набору |
-| `cli.py` | розбирає прапорці запуску, перемикає профіль стенду і викликає ранер |
-| `docker-compose.yml`, `.env.example` | запуск у Docker і шаблон `.env` |
+## Prediction
 
-## Що потрібно
+Written before the run on `lesson-05` (before any final run of this set). Basis: the lab runs, where the summary always fired at step 3 and dropped the case values, and where the agent listed both 240 EUR charges (TX-0401 and TX-0402) after the loss.
 
-- Docker Desktop (macOS, Windows) або Docker Engine з compose (Linux).
-- Піднятий **локальний** стенд `~/paypilot/paypilot-stand` на
-  `http://localhost:8000` із живою моделлю: `doctor.py` показує
-  `llm provider [OK]`. Ранер скидає базу стенду перед кожним кейсом, тому на
-  спільному стенді його не запускай.
-- Каталог стенду на цьому ж комп'ютері: ранер і генератор імпортують з нього
-  рушії (`app/engines`). Клонуй цей репозиторій у `~/paypilot/l05`, поруч зі
-  стендом: тоді шлях за замовчуванням (`../paypilot-stand`) уже правильний.
+- `CONV-H01` stays green: the threshold is above the dialog length, no summary is made.
+- `CONV-H02` fails at step 7: the agent lists both charges and names the 12 October deadline.
+- `CONV-H03` fails at step 8 (reason code) or step 10 (deadline).
+- `CONV-H04` most likely stays green: the agent re-reads the transactions and both are 240 EUR, so the amount check passes. If it fails, it fails at step 4.
+- `CONV-H05` fails at step 5 (reason code) or step 7 (deadline).
 
-## Запуск
+Commit with the prediction: to fill in after the commit.
 
-```bash
-mkdir -p ~/paypilot
-git clone https://github.com/alex-pancho/paypilot-l05-eval ~/paypilot/l05
-cd ~/paypilot/l05
-docker compose run --rm eval --dry-run
-```
+## Runs
 
-`--dry-run` нічого не викликає: друкує хеш набору і зведення — скільки
-кейсів, які оракули, які рівні перевірок. Для демо-набору перший рядок —
-`set l05.jsonl set_hash 83cf9eeefa09`. Два прогони можна порівнювати, лише
-коли хеш однаковий: зміниш хоч один символ у наборі — зміниться хеш.
+| Run | Profile | Result | Report |
+| --- | --- | --- | --- |
+| Baseline | `clean` | to fill | to fill |
+| Lesson profile | `lesson-05` | to fill | to fill |
 
-Прогін і код повернення:
-
-```bash
-docker compose run --rm eval --profile clean
-echo $?
-```
-
-`--profile` перемикає стенд на названий профіль перед прогоном і чекає,
-поки стенд почне приймати запити. Без `--profile` ранер профіль не чіпає:
-ганяє той, що зараз на стенді. Який профіль був у прогоні, видно в першому
-рядку виводу.
-
-Ранер ставить боту кейси набору по одному, перед кожним скидає базу стенду
-і друкує блок на кейс: рядок із `PASS` або `FAIL`, рівнем і назвою
-перевірки, а під ним — питання, що очікувалося, кожен виклик інструмента з
-аргументами і результатом, вердикт і початок відповіді бота. У звіт по
-подробиці ходити не треба. Із `--brief` лишається по рядку на кейс. Колір є
-лише в терміналі; змінна `NO_COLOR` його вимикає.
-
-```text
-FAIL  MEM-001    L4 memory      dialog  7.3s, 16351 tokens
-      turn 1    U: I'm CUS-0004. Please open a dispute for transaction TX-0401 with reason code duplicate_charge, amount
-                240.00 EUR.
-                A: Dispute successfully opened for transaction TX-0401 under reason code duplicate_charge for the amount
-                of 240.00 EUR. Dispute ID: 1.
-      turn 2    U: Thanks. How does the review process work in general?
-```
-
-Набір — це 4 кейси, 3 з них діалоги по 4–7 повідомлень. Код
-повернення — 0, якщо пройшли всі кейси, і 1, якщо впав хоч один; у
-PowerShell його показує `$LASTEXITCODE`. Читай його одразу після прогону:
-будь-яка команда між ними його перезапише. І не додавай до прогону `| tee`:
-після конвеєра `$?` — це код `tee`.
-
-Далі те саме з `--profile lesson-05`: справна версія дає точку відліку, а
-зламана перевіряє сам набір. Якщо набір на ній не червоніє, слабкий набір, а
-не бот. Після прогонів стенд лишається на останньому профілі.
-
-## Діалоги: як влаштований кейс L05
-
-Дефекти заняття: **D06** (сума зникає зі зведення) і **D07** (код причини
-підмінено). Вони з'являються лише тоді, коли розмова згортається в
-зведення, а згортка за замовчуванням вмикається після 8 кроків. Тому кожен
-діалог-кейс має `"summarize_after": 2`, і ранер сам ставить поріг після
-скидання бази перед кожним прогоном. Руками в панелі («Пам'ять і пошук» →
-«згортка після» → 2 → Задати) поріг потрібен лише для демонстрації в чаті.
-
-Кейс-діалог читається так:
-
-```json
-{"id": "MEM-001",
- "turns": [{"role": "user", "content": "…"}, …],
- "context": {"customer_id": "CUS-0004", "clock": "2026-09-15T10:00:00Z"},
- "additional_metadata": {
-   "layer": "memory", "assertion": "dialog", "summarize_after": 2,
-   "checks": [
-     {"turn": 3, "assertion": "has_span", "span": "agent.summarize", "precondition": true},
-     {"turn": 4, "assertion": "regex", "pattern": "duplicate[_ ]charge", "defect": "D07"}]}}
-```
-
-- Усі репліки йдуть в одну сесію, а `turn` лічить репліки користувача з 1.
-- `checks` — перевірки по ходах. Кожна — звичайна перевірка ранера
-  (`contains`, `regex`, `not_regex`, `numeric`, `has_span`, …) плюс `turn`.
-  `turns: [3, 4, 5]` означає «достатньо одного з ходів».
-- `precondition: true` — умова, без якої кейс нічого не перевіряє. Якщо
-  `agent.summarize` у трейсі немає, кейс падає з вердиктом `precondition`, а
-  не зеленіє: бот без згортки відповідає правильно. Його підказка (`hint`)
-  нагадує про поріг.
-- `defect` лише підписує перевірку в виводі й звіті.
-- У виводі ходи друкуються парами «U/A», а хід, на якому спрацювала
-  згортка, позначений `~ agent.summarize`. Видно, що згортка (хід 3) і
-  прояв (хід 4) — різні моменти.
-
-| Кейс | Діалог | Що ловить |
-|---|---|---|
-| `MEM-001` | C-18: диспут TX-0401, 4 ходи | D07: на ході 4 має бути `duplicate_charge`, а не `service_not_rendered` |
-| `MEM-001-AMT` | ті самі 3 ходи, на 4-му питання про суму | D06: сума 240.00 на ході 4 |
-| `CONV-002` | C-07: диспут TX-0401 у 7 ходів | D06 на ході 5 (агент знову питає суму), D07 на ході 7 (60 днів замість 120); ходи 1–4 — контроль до втрати |
-| `FX-004` | одне повідомлення | контроль: набір не червоніє «взагалі всюди» |
-
-Очікування: `--profile clean` дає 4/4, `--profile lesson-05` дає 1/4 (падають
-три діалоги, FX-004 лишається зеленим). Значення в MEM-002 (240.00, 120
-днів, EUR 5 000, 0.9%) взято з транскрипта заняття: спершу прожени
-`clean`, і якщо контрольні ходи 1–4 червоні, бери дані зі seed стенду.
-
-Поріг після прогону лишається 2. Щоб повернути типовий: `--summarize-after 8`
-або кнопка в панелі.
-
-## Прапорці
-
-| Прапорець | Що робить |
-|---|---|
-| `--profile clean` | перемикає стенд на профіль перед прогоном |
-| `--only FX-004,LIM-003` | лише названі кейси |
-| `--set l05` | який набір читати: `sets/<назва>.jsonl` |
-| `--gate daily` | кейси якого гейта: `daily`, `release` або `all`; за замовчуванням `daily` |
-| `--summarize-after 2` | перед кожним кейсом задати поріг згортки (`PUT /api/_test/summarize_after`); сильніший за `summarize_after` у кейсі |
-| `--brief` | по рядку на кейс, без подробиць |
-| `--dry-run` | хеш і покриття набору, нічого не викликає |
-
-```bash
-docker compose run --rm eval --profile clean --only FX-004,LIM-003
-```
-
-Профіль можна перемкнути й без прогону — у чаті стенду
-(`http://localhost:8000`, бічна панель, блок «Профіль заняття») або з
-термінала:
-
-```bash
-curl -s -X PUT localhost:8000/api/_test/profile \
-  -H 'Content-Type: application/json' -d '{"profile":"clean"}'
-```
-
-## Змінні ранера
-
-Те саме, що прапорці, але через оточення; прапорець сильніший за змінну.
-Передаються через `-e` після `--rm`:
-
-| Змінна | Що робить |
-|---|---|
-| `SET=l05` | який набір читати: `sets/<SET>.jsonl`; за замовчуванням `l05`. `validate.py` читає ту саму змінну |
-| `CASE=FX-004,LIM-003` | лише названі кейси |
-| `GATE=daily` | лише кейси щоденного гейта, це значення за замовчуванням; `GATE=release` — лише релізні, `GATE=` — усі |
-| `SUMMARIZE_AFTER=2` | поріг згортки перед кожним кейсом; сильніший за `summarize_after` у кейсі |
-| `BRIEF=1` | по рядку на кейс, без подробиць |
-
-```bash
-docker compose run --rm -e CASE=FX-004,LIM-003 eval
-```
-
-Свій набір для домашнього завдання клади поруч із демо-набором, у
-`sets/<назва>.jsonl`, і запускай із `--set <назва>`.
-
-Команди з `python` після `eval` працюють як раніше:
-`docker compose run --rm eval python validate.py`.
-
-## Генератор
-
-```bash
-docker compose run --rm eval python generate_from_engines.py > sets/_generated.jsonl
-```
-
-Генератор викликає рушії стенду напряму, без бота й моделі: працює за
-секунду й нічого не коштує. Кейси він друкує у стандартний вивід, а рядок
-`# 21 cases generated from the engines` — у потік помилок, тому його видно
-в терміналі, а не у файлі. Не пиши вивід генератора в `sets/l05.jsonl`:
-перезапишеш демо-набір, і зміниться `set_hash`.
-
-У Windows PowerShell 5.1 `>` пише файл у кодуванні UTF-16, і такий набір
-ранер не прочитає. У PowerShell 7 (`pwsh`), macOS і Linux файл виходить у
-UTF-8.
-
-## Клієнт кейса
-
-Стенд не бере клієнта з тексту питання: «I'm CUS-0007» у запиті сесію не
-відкриває. Ранер передає стенду `context.customer_id` кейса — це те саме,
-що обрати клієнта в дропдауні «як клієнт» у вебінтерфейсі. Кейс без
-`customer_id` іде «без клієнта», і `get_account` відповідає
-`no customer is signed in for this session`. Пишеш свій кейс про рахунок,
-ліміт чи обмін — додай йому `"context": {"customer_id": "CUS-…"}`.
-
-## Звіти
-
-Кожен прогін пише JSON-звіт у `reports/` цього каталогу:
-`reports/<набір>-<профіль>-<час>.json`. У ньому `set_hash`,
-`prompt_version`, профіль, вердикт кожного кейса і відповіді бота. Ранер
-друкує шлях як `evals/reports/…`: так його бачить контейнер, а файл лежить
-у `reports/`. На Linux файли звітів належать користувачу root: читати їх
-можна, видаляти — через `sudo`.
-
-## `.env`
-
-Файл необов'язковий: без нього діють значення за замовчуванням. Якщо треба
-їх змінити — `cp .env.example .env`.
-
-| Змінна | Що це |
-|---|---|
-| `STAND_DIR` | шлях до каталогу `paypilot-stand`, за замовчуванням `../paypilot-stand`. Windows: `C:/paypilot/paypilot-stand` |
-| `EVAL_STAND_URL` | адреса стенду зсередини контейнера, за замовчуванням `http://host.docker.internal:8000`, див. нижче |
-| `JUDGE_MODEL` | модель-суддя для перевірок рівня 7, наприклад `claude-haiku-5-5`. Порожнє значення означає «судді немає»: кейс рівня 7 тоді падає з `judge not configured` |
-| `ANTHROPIC_API_KEY` | ключ судді, той самий, що в `.env` стенду |
-
-`judge.py` — модель-суддя для перевірок рівня 7. У демо-наборі таких
-перевірок немає, тож на самому занятті ключ судді не потрібен. Для ДЗ він
-потрібен: там рівень 7 обов'язковий, тож впиши в `.env` ключ і
-`JUDGE_MODEL=claude-haiku-5-5`.
-
-## Адреса стенду
-
-Усередині контейнера `localhost` — це сам контейнер, а не твій комп'ютер.
-Тому сервіс `eval` ходить на стенд через `http://host.docker.internal:8000`.
-Стенд на іншому порту — задай `EVAL_STAND_URL` у `.env`, наприклад
-`http://host.docker.internal:8010`.
-
-Linux, стенд опублікований лише на `127.0.0.1`: `host.docker.internal` туди
-не дістане. Бери сервіс `eval-host`, він працює в мережі хоста й ходить на
-`http://127.0.0.1:8000`:
-
-```bash
-docker compose --profile host run --rm eval-host
-```
-
-Змінні й команди в нього ті самі, що в `eval`. Стенд на іншому порту — у
-`.env` задай `EVAL_STAND_URL=http://127.0.0.1:<порт>`.
+What failed: to fill. Difference from the prediction: to fill.
